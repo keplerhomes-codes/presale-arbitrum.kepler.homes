@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="18px" viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>shengyin</title>
+    <defs>
+        <polygon id="path-1" points="0 0 20 0 20 17.7795285 0 17.7795285"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Market" transform="translate(-21.000000, -602.000000)">
+            <g id="shengyin" transform="translate(21.000000, 602.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-2"></g>
+                <path d="M13.3327907,14.4459239 L15.555183,14.4459239 L15.555183,3.33360463 L13.3327907,3.33360463 L13.3327907,14.4459239 Z M4.44299392,14.4459239 L6.66541871,14.4459239 L6.66541871,3.33360463 L4.44299392,3.33360463 L4.44299392,14.4459239 Z M-0.00195332211,11.1121891 L2.22047147,11.1121891 L2.22047147,6.66733948 L-0.00195332211,6.66733948 L-0.00195332211,11.1121891 Z M17.7776078,11.1121891 L20,11.1121891 L20,6.66733948 L17.7776078,6.66733948 L17.7776078,11.1121891 Z M8.88781094,17.7795285 L11.1102357,17.7795285 L11.1102357,0 L8.88781094,0 L8.88781094,17.7795285 Z" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

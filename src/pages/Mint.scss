@@ -1,0 +1,281 @@
+.mint-bg {
+    background: #000 url('../assets/images/mint/mint-bg.png') right top / 100% no-repeat;
+    font-family: "BMHANNA" !important
+ }
+ .fz-med {
+     font-size: 14px;
+ }
+.mint-container {
+    // max-width: 1410px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+    padding-top:120px;
+}
+.mint-crumbs {
+  color: #fff;
+  font-size: 16px;
+
+  .cur {
+    color: #E07D26;
+  }
+}
+.submit-btn {
+    // width: 80px;
+    line-height: 32px;
+    text-align: center;
+}
+.mint {
+    .left-part {
+        padding: 0 50px;
+    }
+    .banner-box {
+        // max-width: 100%;
+        width: 100%;
+        // padding-bottom: 100%;
+        // height: 560px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        model-viewer{
+            width: 100%;
+            height: 100%;
+            background-color: #313134;
+            position: absolute;
+            top: 0;
+        }
+    }
+    .banner {
+        width: 100%;
+        // height: 100%;
+        background-color: #ccc;
+        // position: relative;
+        // position: absolute;
+        margin: 0 auto;
+        height: max-content;
+        
+    }
+    .right-part {
+        width: 400px;
+        margin-right: 90px;
+    }
+    .youtube {
+        &:hover {
+            color: #E07D26
+        }
+    }
+    .asset {
+        width:22px;
+        height: 24px;
+    }
+    .num {
+        width: 50px;
+        height:50px;
+        border:1px solid #5D5D5D;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        border-radius: 4px;
+        &.active {
+            border-color: #E07D26;
+            color:#E07D26;
+            background-color: rgba(224,125,38,0.1);
+        }
+    }
+    .num-input {
+        background-color: transparent;
+        border: 1px solid #5D5D5D;
+        outline: none;
+        width: 145px;
+        border-radius: 4px;
+    }
+    .handle-area {
+        border-top: 1px solid  rgba(255,255,255,0.1);
+    }
+    .mint-btn {
+        width:100%;
+        height: 50px;
+        border-radius: 4px;
+        line-height: 50px;
+    }
+    .eth {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+    }
+    .price {
+        span {
+            line-height: 30px;
+            font-family: "BMHANNA" !important
+        }
+    }
+    
+    .type-title {
+        font-size: 18px;
+        width: 115px;
+    }
+    .price-title {
+        font-size: 14px;
+    }
+    .price-num {
+        font-size: 18px;
+    }
+    .nft-name {
+        font-size: 40px;
+        font-family: "BMHANNA"
+    }
+    .mint-tab {
+        max-width: 960px;
+        margin: 0 auto;
+        margin-top: 40px;
+        .ant-tabs-tab {
+            margin-right: 60px;
+            padding-bottom: 30px;
+        }
+    }
+    .tab-title {
+        font-size: 20px;
+    }
+    .tab-content {
+        font-size: 20px;
+    }
+    .progress {
+       .progress-last {
+           height: 4px;
+           background-color: #d8d8d8;
+           opacity: 0.1;
+       }
+    }
+    .apply {
+        text-decoration: underline;
+        // background-color: #222224;
+        text-align: right;
+        &:hover {
+            color: #E07D26
+        }
+    }
+    .btn-area {
+        // border: 10px solid #222224
+        width: 100%;
+    }
+    .full-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        z-index: 999;
+        text-align: center;
+        background-color: rgba(0,0,0,0.6);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        video{
+            max-width: 100%;
+            width: 1200px;
+        }
+        .close {
+            // position: absolute;
+            z-index: 99;
+            color: #fff;
+            text-align: right;
+            max-width: 100%;
+            width: 1200px;
+            margin: 0 auto;
+            height: 50px;
+            
+        }
+    }
+    .input-area {
+        input {
+            background-color: transparent;
+            outline: none;
+            border: 1px solid #5d5d5d;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .mint-bg {
+        background: #000 url('../assets/images/mint/mint-bg.png');
+        background-size: 200% 100%;
+        font-family: "BMHANNA" !important
+     }
+    .mint-wrap {
+        flex-direction: column;
+    }
+    .left-part {
+        width: 100%;
+        padding: 0 !important;
+    }
+    .fz-med {
+        font-size: 14px;
+    }
+    .quantity {
+        margin-top:10px
+    }
+    .mint-container {
+        padding-top:80px;
+    }
+    
+    // .right-part {
+    //     margin-top: 0px !important;
+    //     width: 100% !important;
+    //     margin-right: 0 !important
+    // }
+   .price-title {
+       font-size: 14px !important;
+       padding-left: 0;
+   }
+   .price-num {
+       font-size: 20px !important;
+   }
+   .nft-name {
+       font-size: 20px !important;
+       flex-direction: column;
+       align-items: flex-start;
+   }
+   .type-title {
+       font-size: 14px !important;
+   }
+   
+   .mint {
+    .banner-box {
+        width: 100%  !important;
+        // height: 0;
+        // padding-bottom: 100% !important;
+        // height: 560px !important;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+   }
+   .mint-btn {
+        width:100% !important;
+        padding: 0 5px !important;
+    }
+    .handle-area {
+        flex-direction: column;
+        .btn-area {
+            width: 100%;
+            margin-top: 20px;
+        }
+        .price-area {
+            width: 100%;
+        }
+    }
+   .mint-tab {
+    margin-top: 30px !important;
+    .ant-tabs-tab {
+        margin-right: 20px !important; 
+        padding-bottom: 15px !important;
+    }
+    
+    .tab-title {
+        font-size: 15px !important;
+    }
+    .tab-content {
+        font-size: 14px !important;
+    }
+  }
+}

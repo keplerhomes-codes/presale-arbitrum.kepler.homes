@@ -1,0 +1,45 @@
+.connect-wallet {
+  width: 133px;
+  height: 40px;
+  background: linear-gradient(147deg, #3B3AD0 0%, #FC7500 100%);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.connected-wallet {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 1px;
+
+  .connected-chain {
+    // padding: 0 14px;
+    height:100%;
+    display: flex;
+    align-items: center;
+    // background: linear-gradient(57deg, #3B3AD0 0%, #FC7500 100%);
+    .bsc-iocn {
+      width: 24px;
+      height:24px;
+    }
+  }
+
+  .connected-account {
+    // background-color: #141416;
+    height: 100%;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    // border: 1px solid;
+    // background-color: transparent;
+    // border-image: radial-gradient(circle, rgba(59, 58, 208, 1), rgba(252, 117, 0, 1)) 1 1;
+  }
+}

@@ -1,0 +1,42 @@
+.claim-wrap {
+    .claim-item {
+        width: 180px;
+        height: 85px;
+        background: rgba(37, 40, 47, 0.4);
+        border-radius: 16px;
+    }
+    .claim-info {
+        padding-bottom: 24px;
+        border-bottom: 1px solid rgba(234, 216, 183, 0.2);
+    }
+    .claim-item-offset{
+        width: 180px;
+        height: 85px;
+    }
+    .claim-area{
+        border-bottom: 1px solid rgba(234, 216, 183, 0.2);
+    }
+    .claim-btn {
+        width: 252px;
+        height: 56px;
+        background: #0084F4;
+        border-radius: 22px;
+        &:hover{
+            color:#fff !important
+         }
+         &.ant-btn[disabled] {
+             color: #fff;
+             background-color: #0084F4;
+         }
+    }
+}
+
+.ant-table-tbody > tr.ant-table-placeholder:hover > td {
+    background-color: #000;
+    .ant-empty-description {color: #fff}
+}
+
+.ant-table-tbody > tr.ant-table-placeholder > td {
+    background-color: #000;
+    .ant-empty-description {color: #fff}
+}

@@ -1,0 +1,170 @@
+.connect-wallet-modal {
+  background-color: #fff;
+  color: #141416;
+  padding-bottom: 0;
+  
+  .ant-modal-content {
+    background-color: #fff;
+    color: #141416;
+  }
+
+  .ant-modal-body {
+    padding: 0;
+  }
+
+  .connect-wallet-modal-header {
+    padding: 20px;
+    .modal-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-right: -8px;
+      h2 {
+        font-size: 20px;
+      }
+      .modal-close {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+    .thermofservice-checkbox {
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+
+      .highlight {
+      }
+
+      img {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .highlight {
+        color: #E07D26;
+      }
+    }
+  }
+
+  .wallet-choose {
+    background-color: #EFEFEF;
+    border-radius: 16px 16px 0px 0px;
+    padding: 20px;
+
+    &.disabled {
+      pointer-events: none;
+    }
+  }
+
+  .chain-image {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .chain-name {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .wallet-choose-title {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+	.chain-list {
+		display: flex;
+		margin-bottom: 20px;
+
+		.chain-item {
+			padding: 5px 10px;
+			// margin-right: 20px;
+      width: 20%;
+			cursor: pointer;
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      &.hide {
+        display: none;
+      }
+			&.active {
+        .chain-image {
+          border: 1px solid #141416;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -7px;
+            width: 22px;
+            height: 22px;
+            background: url(../../assets/images/ConnectWallet/selected.svg) no-repeat center / contain;
+          }
+        }
+        
+			}
+		}
+	}
+
+	.wallet-list {
+		display: flex;
+    flex-wrap: wrap;
+
+		.wallet-item {
+			// margin-right: 20px;
+      width: 20%;
+			cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+
+			&.active {
+				border-color: red;
+			}
+
+      .wallet-image {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+      }
+
+      .wallet-name {
+        font-size: 12px;
+        text-align: center;
+      }
+
+      &.sol-wallet-item {
+
+        .wallet-image-wrapper {
+          width: 50px;
+          height: 50px;
+          margin-bottom: 10px;
+          border-radius: 50%;
+          overflow: hidden;
+
+          .wallet-image {
+            margin-bottom: 0;
+          }
+        }
+      }
+		}
+	}
+}

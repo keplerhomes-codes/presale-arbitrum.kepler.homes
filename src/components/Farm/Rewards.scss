@@ -1,0 +1,357 @@
+.farm-rewards {
+  padding-top: 80px;
+  color: #fff;
+  min-height: 100vh;
+  background: url(../../assets/images/farm/farm-bg.png) no-repeat center / cover;
+
+  .is-hidden-mobile {
+    display: block !important;
+  }
+  .is-hidden-desktop {
+    display: none !important;
+  }
+  
+  .farm-banner {
+    background: url(../../assets/images/farm/farm-banner.png) repeat-x left center / cover;
+    
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 0;
+    // padding-left: 8.85416666666667vw;
+    // padding-left: 170px;
+
+    .banner-image {
+      // position: absolute;
+      // left: 0;
+      // top: 50%;
+      // transform: translateY(-50%);
+      // min-width: 1373px;
+      // height: 100%;
+      // z-index: -1;
+    }
+
+    .banner-content {
+      padding-left: 170px;
+    }
+
+    .banner-title {
+      font-size: 20px;
+      margin-bottom: 5px;
+
+      a {
+        color: #E07D26;
+      }
+    }
+
+    .banner-subtitle {
+      font-size: 16px;
+    }
+  }
+
+  .farm-content {
+    padding: 40px;
+
+    .farm-header {
+      display: flex;
+      border-bottom: 1px solid #313134;;
+      padding-bottom: 20px;
+      align-items: center;
+      height: 66px;
+
+      .tab-list {
+        display: flex;
+        margin: 0 -15px;
+
+        .tab-item {
+          margin: 0 15px;
+          color: rgba($color: #fff, $alpha: .4);
+          cursor: pointer;
+          position: relative;
+
+          &.active {
+            color: #fff;
+
+            &:after {
+              content: '';
+              position: absolute;
+              height: 3px;
+              width: 100%;
+              background: #E07D26;
+              left: 0;
+              bottom: -31px;
+            }
+          }
+        }
+      }
+
+      .filter-group {
+        margin-left: auto;
+        display: flex;
+      }
+    }
+
+    .farm-list {
+
+      .ant-table {
+        background-color: transparent;
+        color: #fff;
+
+        .ant-table-thead > tr > th {
+          background-color: transparent;
+        }
+
+        .ant-table-tbody > tr.ant-table-row:hover > td, .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+          background-color: transparent;
+        }
+
+        .ant-table-tbody > tr > td {
+          border-color: #242429;
+        }
+
+        .ant-table-thead > tr > th, .ant-table-tbody > tr > td, .ant-table tfoot > tr > th, .ant-table tfoot > tr > td {
+          padding: 28px 0;
+        }
+      }
+
+      .cell-item {
+
+        .cell-title {
+          font-size: 14px;
+          opacity: .4;
+        }
+
+        .cell-value {
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+
+          .token-logo {
+            width: 16px;
+            height: 16px;
+            margin-left: 6px;
+            border-radius: 50%;
+          }
+        }
+
+        .highlight {
+          color: #E07D26;
+        }
+      }
+
+      .cell-item-op {
+        width: 82px;
+      }
+
+      .pair-info {
+        display: flex;
+        align-items: center;
+        z-index: 0;
+
+        .token-logo1 {
+          width: 34px;
+          height: 34px;
+          z-index: 1;
+          border-radius: 50%;
+        }
+        .token-logo2 {
+          width: 30px;
+          height: 30px;
+          margin-left: -3px;
+          z-index: 0;
+          border-radius: 50%;
+        }
+
+        .pair-name {
+          margin-left: 10px;
+          font-size: 16px;
+        }
+
+        .link {
+          width: 14px;
+          height: 14px;
+          margin-left: 10px;
+        }
+      }
+
+      .btn-approve, .btn-stake, .btn-locked, .btn-unstake, .btn-claim, .btn-withdraw {
+        width: 92px;
+        height: 30px;
+        background: #E07D26;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        color: #fff;
+        border-radius: 0;
+      }
+
+      .btn-stake, .btn-unstake, .btn-claim, .btn-withdraw {
+        background: linear-gradient(147deg, #3B3AD0 0%, #FC7500 100%);
+      }
+
+      .btn-claim[disabled] {
+        background: #313134;
+      }
+
+      .btn-locked {
+        background: #313134;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 60px;
+
+    .is-hidden-mobile {
+      display: none !important;
+    }
+    .is-hidden-desktop {
+      display: block !important;
+    }
+
+    .farm-banner {
+      height: 120px;
+      // padding-left: 8.85416666666667vw;
+      // padding-left: 170px;
+      background: url(../../assets/images/farm/farm-banner.png) no-repeat center / cover;
+  
+      .banner-image {
+        position: absolute;
+        // left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        // min-width: 1373px;
+        // height: 100%;
+        // z-index: -1;
+      }
+  
+      .banner-content {
+        width: 100%;
+        padding: 0 15px;
+      }
+  
+      .banner-title {
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+  
+      .banner-subtitle {
+        font-size: 13px;
+      }
+    }
+
+    .farm-content {
+      padding: 15px;
+
+      .filter-group-mobile {
+        display: flex;
+        margin: 15px 0;
+
+        & > div {
+          width: 50%;
+
+          input {
+            width: 100%;
+          }
+
+          &:last-child {
+            margin-left: 15px;
+          }
+        }
+      }
+  
+      .farm-header {
+        padding-bottom: 15px;
+        height: auto;
+        .filter-group {
+          display: none;
+        }
+
+        .tab-list {
+          margin: 0 -10px;
+  
+          .tab-item {
+            margin: 0 10px;
+  
+            &.active {
+  
+              &:after {
+                bottom: -15px;
+              }
+            }
+          }
+        }
+      }
+
+      .farm-list {
+        .farm-item {
+          background: #1D1D22;
+          border: 1px solid #313134;
+          margin-top: 15px;
+
+          .farm-item-header {
+            padding: 15px;
+            border-bottom: 1px solid #313134;
+            display: flex;
+            align-items: center;
+          }
+
+          .farm-item-body {
+            padding: 15px;
+          }
+
+          .pair-info {
+            margin-right: auto;
+            .token-logo1 {
+              width: 32px;
+              height: 32px;
+            }
+            .token-logo2 {
+              width: 26px;
+              height: 26px;
+              margin-left: -8px;
+            }
+    
+            .pair-name {
+              margin-left: 8px;
+              font-size: 16px;
+            }
+    
+            .link {
+              width: 14px;
+              height: 14px;
+              margin-left: 10px;
+            }
+          }
+
+          .btn-claim, .btn-locked, .btn-withdraw .btn-connect {
+            width: 70px;
+            height: 26px;
+            font-size: 12px;
+          }
+
+          .btn-connect {
+            width: 106px;
+          }
+
+          .cell-item {
+            display: flex;
+            margin-bottom: 15px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .cell-value {
+              margin-left: auto;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,217 @@
+.second-header {
+  display: flex;
+  // margin-bottom: 100px;
+  padding: 0 40px 0 0;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  height: 80px;
+  width: 100%;
+  top: 0;
+  transition: background-color .4s;
+  color: #fff;
+
+  &.has-bg {
+    background-color: #141416;
+    border-bottom: 1px solid #242429;
+  }
+
+
+ 
+    .logo-wrap{
+        // width: 228px;
+        text-align: center;
+        padding: 27px 20px;
+        // border-bottom:1px solid  #242429 ;
+        border-right:1px solid  #242429 ;
+        &.logo-wrap-fold{
+          padding: 31px 28px;
+        }
+    }
+    .logo {
+        // width: 163px;
+        height: 25px;
+        margin-right: 40px;
+        flex-shrink: 0;
+        cursor: pointer;
+
+        img {
+        width: 100%;
+        }
+    }
+
+  .nav-list {
+    display: flex;
+    margin: 0 -15px 0;
+    font-weight: 500;
+    font-size: 16px;
+    height: 100%;
+
+    .nav-item {
+      margin: 0 15px;
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .icon-arrow {
+        width: 6px;
+        height: 4px;
+        margin-left: 4px;
+        position: relative;
+        top: 1px;
+        transition: transform 0.4s ease 0s;
+      }
+
+      a {
+        height: 100%;
+        cursor: pointer;
+        transition: transform 0.4s ease 0s;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          transform: translateY(-2px);
+
+          .icon-arrow {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      &.active, &:hover {
+        // &::after {
+        //   content: '';
+        //   width: 100%;
+        //   // background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%);
+        //   position: absolute;
+        //   border-bottom: 1px solid #fff;
+        //   left: 0;
+        //   bottom: 0;
+        // }
+      }
+
+      // &.active {
+      //   a {
+      //     &:hover {
+      //       transform: none;
+      //     }
+      //   }
+      // }
+    }
+  }
+
+  .header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .icon-list {
+      display: flex;
+      margin: 0 -15px;
+      height: calc(100% - 6px);
+
+      .icon-item {
+        margin: 0 15px;
+        flex-shrink: 0;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .connect-wallet {
+    width: 133px;
+    height: 40px;
+    background: #2E3689;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media screen and (max-width: 767.5px) {
+    height: 60px;
+    padding: 0 20px 0 0 ;
+    background-color: #141416;
+    // justify-content: center;
+    .logo-wrap {
+      padding: 15px 40px;
+      border: none;
+      &.logo-wrap-fold {
+        padding: 17px 29px;
+      }
+  }
+    .logo {
+      width: 130px;
+      height: 24px;
+      margin-right: 20px;
+    }
+
+    .nav-list {
+      display: none;
+    }
+
+    .header-right {
+      display: none;
+    }
+
+    .mobile-menu {
+      width: 18px;
+      height: 14px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      display: block;
+      z-index: 999;
+    }
+    .login-mobile{
+      position: absolute;
+      left: 20px;
+      top: 18px;
+      display: block;
+    }
+    .lang-mobile {
+      position: absolute;
+      right: 60px;
+      top: 18px;
+      display: block;
+    }
+  }
+
+.ant-dropdown-menu {
+  background: #313134;
+ 
+  .ant-dropdown-menu-item {
+    padding: 10px 45px;
+  }
+
+  .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
+    background: #4A4A52;
+  }
+
+  .menu-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23px;
+    margin-bottom: 4px;
+  }
+
+  .menu-title-sub {
+    color: rgba($color: #fff, $alpha: .4);
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+}

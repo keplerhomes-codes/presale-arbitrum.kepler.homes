@@ -1,0 +1,35 @@
+.thumb {
+    width: 90px;
+    height: 90px;
+    .thumb-img{
+        width: 100%;
+    }
+}
+.tab {
+    width: 32px;
+    height:90px;
+    background-color: rgba(216, 216, 216, 0.2);
+    .tangle-left{ 
+        transform: rotate(90deg);
+        width: 11px;
+    }
+    .tangle-right{ 
+        transform: rotate(-90deg);
+        width: 11px;
+    }
+}
+.img-wrap {
+    overflow-x: auto;
+    .img-content {
+        width: 522px;
+    }
+    .thumb {
+        display: inline-block;
+        margin-left: 12px;
+        &.active {
+            padding: 5px;
+            border: 1px solid #E07D26
+        }
+
+    }
+}

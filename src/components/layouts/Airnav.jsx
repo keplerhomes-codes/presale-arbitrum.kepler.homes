@@ -1,0 +1,177 @@
+import React, { useState, useEffect, useRef, useCallback} from 'react';
+import {Tooltip} from 'antd'
+import iconMenu from '../../assets/images/home/icon-menu.svg'
+import { Menu, Dropdown } from 'antd';
+import iconArrow from '../../assets/images/home/icon-arrow.svg'
+// import logo from '../../assets/images/home/logo.svg'
+import iconLanguage from '../../assets/images/home/icon-language.svg'
+import iconDownload from '../../assets/images/home/icon-download.svg'
+import logo from '../../assets/images/nav/logo.svg'
+import menu from '../../assets/images/nav/menu.svg'
+import classnames from 'classnames'
+import './Airnav.scss'
+import { useTranslation} from 'react-i18next'
+import ConnectWallet from '../ConnectWallet';
+import Login from '../Login';
+import Menumint from './Menumint'
+import {connect, useSelector} from 'react-redux'
+import notification from '../notification'
+
+import Bus from '../../lib/eventBus'
+import { NavLink } from 'react-router-dom';
+import { sign } from '../../contract/methods/mint';
+import { post,get} from '../../http';
+import { ChainIdMap } from '../../lib/util';
+import store, { setFirst, setToken, setUserInfo} from '../../store';
+import {Button} from 'antd'
+
+let communityList = [{
+    name: 'twitter',
+    icon: require('../../assets/images/airdrop/twitter.svg').default,
+    activeIcon: require('../../assets/images/airdrop/twitter_active.svg').default,
+    link: 'https://twitter.com/KeplerHomes'
+  },
+  {
+    name: 'telegram',
+    icon: require('../../assets/images/airdrop/telegram.svg').default,
+    activeIcon: require('../../assets/images/airdrop/telegram_active.svg').default,
+    link: 'https://t.me/KeplerHomes'
+  },
+  {
+    name: 'discord',
+    icon: require('../../assets/images/airdrop/discord.svg').default,
+    activeIcon: require('../../assets/images/airdrop/discord_active.svg').default,
+    link: 'https://discord.gg/keplerhomes'
+  },
+  {
+    name: 'medium',
+    icon: require('../../assets/images/airdrop/medium.svg').default,
+    activeIcon: require('../../assets/images/airdrop/medium_active.svg').default,
+    link: 'https://medium.com/@KeplerHomes'
+  }
+
+]
+
+function Header(props) {
+  let { t ,i18n} = useTranslation()
+  let language = i18n.language.split('-')[0]
+  let [hasBg, setBg] = useState(false)
+  const [isConnectWalletVisible, setIsConnectWalletVisible] = useState(false)
+  
+  let [isFold, setFold] = useState(false)
+
+
+  const handleConnectWalletOk = () => {
+    setIsConnectWalletVisible(false)
+  }
+
+  const handleConnectCancel = () => {
+    setIsConnectWalletVisible(false)
+  }
+
+  const handleConnectWallet = () => {
+    setIsConnectWalletVisible(true)
+  }
+  const copyAddress = useCallback(async () => {
+    if(!props.account) {
+      notification.error({
+          message: t('Please connect your wallet first')
+        });
+        return
+     }
+    await navigator.clipboard.writeText('https://'+window.location.host+'/nft-mint?address='+props.account);
+    notification.success({
+      message: t('Invitation link has been generated, please send it to your friends!'),
+    });
+  }, [props.account]);
+  useEffect(()=> {
+    window.addEventListener('scroll', function() {
+      if(document.documentElement.scrollTop > 0) {
+        setBg(true)
+      } else {
+        setBg(false)
+      }
+    })
+  }, [])
+
+  
+  let foldfn = () => {
+    Bus.emit('foldChange', !isFold);
+}
+
+useEffect(() => {
+    Bus.addListener('foldChange', (isfold) => {
+        setFold(isfold)
+    });
+}, [])
+
+const Login = async() => {
+  let signature = await sign('login')
+  post('/api/account/connect', {
+    chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'ETH'],
+    user: props.account,
+    signature
+  }).then(res => {
+    props.dispatch(setToken(res.data.token))
+    // get person info
+    get('/api/v1/account').then(res => {
+      store.dispatch(setUserInfo(res.data))
+    })
+  }).catch(err => {
+    notification.error({
+      message: t('Login Fail'),
+      description: t('Something goes wrong')
+  });
+  })
+}
+// useEffect(() => {
+//   console.log(props)
+//    if(props.account && !props.token && props.isFirst) {
+//     store.dispatch(setFirst(false))
+//     Login()
+//    }
+
+// }, [props.account, props.token, props.isFirst])
+
+  
+
+  return (
+    <div>
+    <div className={classnames(["airdrop-header flex flex-between", {"has-bg": hasBg}])}>
+     <div className="logo-wrap flex flex-center flex-middle flex-between logo-wrap-fold" >
+         {/* <a href="/" className='logo'> */}
+           <img src={logo} alt="" className='logo'/>
+            <a className="nav-item cf  fz-16 m-l-40 islink" target="_blank" href="https://kepler.homes">
+                    Home
+              </a>
+              <NavLink className="nav-item cf  fz-16 m-l-40 islink" to="/">
+                    Private
+              </NavLink>
+              {/* <NavLink className="nav-item cf  fz-16 m-l-40 islink" to="/whitelist">
+                    Whitelist
+              </NavLink> */}
+
+      </div>
+      <div className="header-right">
+        <a href="https://nft-mint.kepler.homes" target="_blank">
+          <Button className='mint-btn cf fz-16'>NFT-Mint</Button>
+        </a>
+        <Button className='invite-btn m-l-12 cf fz-16' onClick={copyAddress}>Invite friends</Button>
+      </div>
+      <div className='connect'>
+        <ConnectWallet hideChain={['ETH','BSC', 'Polygon', 'Solana']} isVisible={isConnectWalletVisible} handleOk={handleConnectWalletOk} handleCancel={handleConnectCancel} />
+      </div>
+    </div>
+
+    </div>
+  )
+}
+
+export default connect(
+  (state, props) => {
+    return {...state, ...props}
+  }
+)(
+  Header
+);
+

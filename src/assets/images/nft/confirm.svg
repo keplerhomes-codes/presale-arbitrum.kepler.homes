@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="53px" height="53px" viewBox="0 0 53 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 14</title>
+    <defs>
+        <radialGradient cx="19.5813098%" cy="7.45526102%" fx="19.5813098%" fy="7.45526102%" r="185.051987%" id="radialGradient-1">
+            <stop stop-color="#3B3AD0" offset="0%"></stop>
+            <stop stop-color="#FC7500" offset="100%"></stop>
+        </radialGradient>
+        <polygon id="path-2" points="0 0 15.9979576 0 15.9979576 16 0 16"></polygon>
+        <radialGradient cx="19.5813098%" cy="7.45526102%" fx="19.5813098%" fy="7.45526102%" r="185.052269%" id="radialGradient-4">
+            <stop stop-color="#3B3AD0" offset="0%"></stop>
+            <stop stop-color="#FC7500" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Market-详情-提交交易" transform="translate(-643.000000, -344.000000)">
+            <g id="编组-14" transform="translate(644.000000, 345.000000)">
+                <path d="M0,0 L51,0 L51,51 L20.5,51 L0,51 L0,0 Z" id="矩形备份-5" stroke="url(#radialGradient-1)" fill="#F0F0F0" stroke-dasharray="2,4"></path>
+                <g id="daochu-(1)" transform="translate(18.000000, 18.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M6.755736,0.24 L8.56139514,2.04568559 L2.04367666,2.04568559 L2.04367666,13.9543144 L13.9523055,13.9543144 L13.9523055,7.43657446 L15.7579576,9.24225302 L15.7579576,15.76 L0.237991077,15.76 L0.237991077,0.24 L6.755736,0.24 Z M15.7579576,0.24 L15.7579576,6.27774595 L13.369348,3.88913639 L9.94084603,7.31767187 L8.68020114,6.0571325 L12.1088229,2.62861122 L9.72021164,0.24 L15.7579576,0.24 Z" id="Fill-1" fill="url(#radialGradient-4)" mask="url(#mask-3)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

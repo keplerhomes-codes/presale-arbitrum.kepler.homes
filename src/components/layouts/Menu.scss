@@ -1,0 +1,204 @@
+
+.menu{
+    border-right:1px solid  #242429 ;
+    height: 100vh;
+    background-color: #141416;
+    transition: all 0.2s ease-in-out;
+    // position: fixed;
+    padding-top: 80px;
+    .menu-items{
+        overflow: auto;
+        padding: 26px 0px 0 0px;
+    }
+    .buy{
+        width: 70px;
+        height: 32px;
+        line-height: 32px;
+    }
+    .metamask{
+        width: 20px;
+    }
+    .bordertop {
+        border-top: 1px solid #242429
+    }
+    .icon-inner{
+        width: 20px;
+        height:20px;
+    }
+}
+
+.menumask{
+    z-index: 97;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 228px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: none;
+}
+.menu-open{
+    width: 228px;
+}
+.menu-close{
+    width: 75px;
+    overflow: hidden;
+}
+
+.exchange-content {
+    width: 250px;
+    a {
+        display: inline-block;
+        width: 116px;
+    }
+    .exchange-item {
+        border: 1px solid transparent;
+        &:hover {
+            border-color: #E07D26
+        }
+    } 
+}
+.buy-wrapper {
+    background: linear-gradient(147deg, #3B3AD0 0%, #FC7500 100%);
+}
+.price-padding {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.community-icon {
+    .active {
+        display: none;
+    }
+    .normal {
+        display: inline;
+    }
+    &:hover {
+        .active {
+            display: inline;
+        }
+        .normal {
+            display: none;
+        }
+    }
+}
+.add-metamask {
+    background-color: #1D1D22;
+    padding: 7px 14px 7px 7px;
+    border-radius: 30px;
+    &:hover {
+        background-color: #4A4A52;
+    }
+}
+@media screen and (max-width: 767.5px) {
+    .menu {
+        padding-top: 40px;
+        position: fixed;
+        z-index: 99;
+        right: 0;
+        top: 0;
+        width: 228px;
+        .connected-wallet {
+            margin-left: 0!important;
+        }
+        .connect-wallet{
+            margin-left: 0!important;
+            width: 200px !important
+        }
+    }
+    
+    .buy-wrapper {
+        border: 1px solid; 
+        border-image: radial-gradient(circle, rgba(59, 58, 208, 1), rgba(252, 117, 0, 1)) 1 1;
+        background: #141416 !important;
+        .buy {
+            background: linear-gradient(147deg, #3B3AD0 0%, #FC7500 100%);
+            color: #fff;
+        }
+    }
+    .price-padding {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .menu-close{
+        width: 0px;
+        overflow: hidden;
+    }
+    .menu-open{
+        .menumask {
+            display: block;
+        }
+    }
+    .nav-items{
+        .inner-icon {
+            width: 16px !important;
+            height: 16px !important;
+        }
+    }
+}
+.menu-disappear {
+    width: 0px;
+    overflow: hidden;
+}
+.nav-items{
+    text-decoration: none;
+    // padding: 5px 0;
+    height: 53px;
+    .normal {
+        display: inline-block;
+    }
+    img.active{
+        display: none;
+    }
+    &.active{
+        background-color:  #1D1D22;
+        span{
+            color: #E07D26 !important
+        }
+        .normal {
+            display: none;
+        }
+        img.active{
+            display: inline-block;
+        }
+    }
+    &:hover{
+        background-color:  #1D1D22;
+    }
+    .inner-icon{
+       width: 20px;
+       height: 20px;
+    }
+    .tangle{
+        width: 7px;
+        height: 7px;
+        margin-left: auto;
+        margin-right: 15px;
+        transform: rotate(0deg);
+        transition: all 0.3s ease-in-out;
+        opacity: 0.6;
+        &.unfold{
+            opacity: 1;
+            transform: rotate(180deg);
+        }
+    }
+    &[disabled] {
+        pointer-events: none;
+        opacity: .6;
+    }
+}
+
+.inner{
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    background-color:  #141416;
+    &.fold{
+        height: 0 !important;
+        transition: all 0.3s ease-in-out;
+    }
+    &.unfold{
+        transition: all 0.3s ease-in-out;
+        border-bottom: 1px solid #242429;
+        padding-top: 6px;
+        padding-bottom:16px;
+    }
+}

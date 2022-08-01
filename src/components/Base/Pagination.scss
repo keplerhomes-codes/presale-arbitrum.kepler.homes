@@ -1,0 +1,13 @@
+.pagination{
+    width:100px;
+    height: 46px;
+    &.normal {
+        border: 1px solid #313134
+    }
+    .arrow {
+        img{
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

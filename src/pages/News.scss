@@ -1,0 +1,318 @@
+.news-wrap{
+   height: 100vh;
+}
+.news {
+  padding: 120px 40px 40px;
+  width: 1080px;
+  max-width: 100%;
+  color: #fff;
+  margin: 0 auto;
+  overflow: auto;
+
+  .news-page-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .news-banner {
+    display: flex;
+
+    .banner-main {
+      width: 750px;
+      height: 400px;
+
+      .banner-item {
+        background: #141416;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .banner-caption {
+          position: absolute;
+          left: 15px;
+          bottom: 15px;
+
+          .banner-title {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 6px;
+          }
+
+          .banner-info {
+            color: rgba($color: #fff, $alpha: .6);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+
+            .team-logo {
+              width: 20px;
+              height: 20px;
+              margin-right: 6px;
+            }
+          }
+          
+        }
+
+      }
+    }
+
+    .banner-side {
+      width: 260px;
+      margin-left: 30px;
+
+      .banner-item {
+        height: 185px;
+        width: 100%;
+        background: #141416;
+        margin-bottom: 30px;
+        position: relative;
+
+        &::after {
+          margin-bottom: 0;
+        }
+
+        .banner-caption {
+          position: absolute;
+          left: 15px;
+          bottom: 15px;
+
+          .banner-title {
+            font-size: 16px;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+  }
+
+  .news-content {
+    // border-top: 1px solid #313134;
+    padding-top: 40px;
+
+    .news-item {
+      display: flex;
+      margin-bottom: 40px;
+
+      &::after {
+        margin-bottom: 0;
+      }
+
+      .news-item-right {
+        margin-right: 20px;
+
+        .news-thumbnail {
+          width: 260px;
+          height: 185px;
+          background: #141416;
+          img{
+            width: 260px;
+            height: 185px;
+          }
+        }
+        
+      }
+
+      .news-item-left {
+        .news-title {
+          font-size: 20px;
+          color: #fff;
+          margin-bottom: 12px;
+        }
+
+        .news-brief {
+          color: rgba($color: #fff, $alpha: .6);
+          margin-bottom: 26px;
+          font-size: 16px;
+          * {
+           font-size: 16px !important;
+          }
+        }
+
+        .news-info {
+          color: rgba($color: #fff, $alpha: .6);
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+
+          .team-logo {
+            width: 20px;
+            height: 20px;
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  
+}
+
+.subscribe-panel {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 140px;
+  background-color: #2E3689;
+  color: #fff;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  .subscribe-title {
+    font-size: 24px;
+    white-space: nowrap
+  }
+  &.hide {
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+  &.subscribe-panel-menu-open {
+    left: 228px;
+  }
+
+  .subscribe-input {
+    margin-left: auto;
+    // width: 540px;
+    height: 60px;
+
+
+    .ant-input-group {
+      height: 100%;
+    }
+
+    .ant-input {
+      width: 360px;
+      height: 100%;
+      font-size: 18px;
+      border-color: #ddd;
+      padding: 4px 20px;
+    }
+
+    .ant-input:focus, .ant-input-focused {
+      box-shadow: none;
+    }
+  }
+  .input-wrap {
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .btn-register {
+    width: 180px;
+    height: 100%;
+    background: linear-gradient(147deg, #3B3AD0 0%, #FC7500 100%);
+    font-size: 18px;
+  }
+  
+  .btn-register-success {
+    width: 180px;
+    height: 100%;
+    background: #E07D26;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .news {
+     padding: 80px 15px 15px;
+     .news-page-title {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 0px;
+    }
+    .news-thumbnail-m {
+      margin-top: 8px;
+      width: 80px;
+      height: 60px;
+      background: #141416;
+      img{
+        width: 80px;
+        height: 60px;
+      }
+    }
+    .news-content {
+      .news-item {
+        border-bottom: 1px solid #313134;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        .news-item-left {
+          .news-title {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom:7px;
+          }
+
+          .news-brief {
+            color: rgba($color: #fff, $alpha: .6);
+            margin-bottom: 7px;
+            font-size: 12px;
+            * {
+             font-size: 12px !important;
+            }
+          }
+
+          .news-info {
+            color: rgba($color: #fff, $alpha: .6);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+
+            .team-logo {
+              width: 20px;
+              height: 20px;
+              margin-right: 6px;
+            }
+          }
+        }
+      }
+    }
+    
+
+  }
+  .subscribe-panel {
+    padding: 20px 15px;
+    flex-direction: column;
+    position: relative;
+    .close-m {
+      position: absolute;
+      right: 5px;
+      top:5px;
+    }
+    .subscribe-title {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .subscribe-input {
+      // margin-left: auto;
+      // width: 540px;
+      height: 60px;
+  
+  
+      .ant-input-group {
+        height: 100%;
+      }
+  
+      .ant-input {
+        // width: 222px;
+        height: 100%;
+        font-size: 16px;
+        border-color: #ddd;
+        padding: 4px 20px;
+      }
+  
+      .ant-input:focus, .ant-input-focused {
+        box-shadow: none;
+      }
+    }
+  .input-wrap {
+    height: 100%;
+    justify-content: center;
+  }
+    .btn-register {
+      width: 120px;
+      height: 100%;
+      background: linear-gradient(147deg, #3B3AD0 0%, #FC7500 100%);
+      font-size: 16px;
+    }
+  }
+}

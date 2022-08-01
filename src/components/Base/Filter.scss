@@ -1,0 +1,87 @@
+.filter{
+    position: relative;
+    .filter-wrap{
+        display: inline-flex;
+        &.normal {
+            border: 1px solid #313134
+        }
+        &.active {
+            border: 1px solid #E07D26;
+            color:#E07D26
+        }
+    }
+    .dialog{
+        position: absolute;
+        top: 57px;
+        background-color: #313134;
+        width: 1200px;
+        z-index: 999;
+    }
+    .filter-type {
+        color: rgba(255, 255, 255, 0.6);
+        width:127px;
+    }
+    .filter-item {
+        display: inline-block;
+        padding: 4px 12px;
+        margin-right: 14px;
+        border: 1px solid #313134;
+        &.active{
+            background-color: rgba(224, 125,38, 0.12);
+            border-color:rgba(224, 125,3, 1);
+        }
+        &:hover{
+            background-color: rgba(224, 125,38, 0.12);
+            border-color:rgba(224, 125,3, 1);
+        }
+    }
+}
+.filter-m{
+    .filter-m-btn {
+        position: fixed;
+        bottom: 35px;
+        left: 50%;
+        transform: translateX(-60px);
+        z-index: 98;
+        width: 120px;
+        height: 40px;
+        border-radius: 20px;
+        img{
+            width: 15px;
+        }
+    }
+    .filter-window {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #141416;
+        z-index: 102;
+        .filter-content {
+            overflow: auto;
+        }
+    }
+    
+    .filter-type {
+        color: rgba(255, 255, 255, 0.6);
+        width:127px;
+        margin-top: 20px;
+    }
+    .filter-item {
+        display: inline-block;
+        width: auto;
+        padding: 6px 12px;
+        margin-right: 16px;
+        margin-top: 10px;
+        border: 1px solid #313134;
+        &.active{
+            background-color: rgba(224, 125,38, 0.12);
+            border-color:rgba(224, 125,3, 1);
+        }
+        &:hover{
+            background-color: rgba(224, 125,38, 0.12);
+            border-color:rgba(224, 125,3, 1);
+        }
+    }
+}

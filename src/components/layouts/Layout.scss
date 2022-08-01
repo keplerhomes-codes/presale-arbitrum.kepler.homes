@@ -1,0 +1,13 @@
+.bkg{
+    height: 100vh;
+    background: url('../../assets/images/market/bkg.jpg') right bottom / cover no-repeat;
+}
+.wrap{
+    box-sizing: border-box;
+}
+.content{
+    height: 100vh;
+    overflow-x:hidden;
+    // width: 100%;
+    // max-width: 100%;
+}

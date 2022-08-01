@@ -1,0 +1,128 @@
+.faq-tab {
+  // padding: 80px + 40px 30px 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .faq-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .faq-content {
+    // max-width: 750px;
+    width: 100%;
+  }
+
+  .tab-list {
+    display: flex;
+    margin: 0 -15px;
+    padding-bottom: 20px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background-color: #313134;
+      left: 15px;
+      width: calc(100% - 30px);
+      bottom: 0;
+    }
+
+    .tab-item {
+      margin: 0 15px;
+      color: rgba($color: #fff, $alpha: .4);
+      cursor: pointer;
+      position: relative;
+
+      &.active {
+        color: #fff;
+
+        &:after {
+          content: '';
+          position: absolute;
+          height: 3px;
+          width: 100%;
+          background: #E07D26;
+          left: 0;
+          bottom: -20px;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    padding-top: 20px;
+  }
+
+  .ant-space {
+    width: 100%;
+    
+    .ant-collapse {
+      background: #1D1D22;
+      color: #fff;
+      border: 0;
+    }
+
+    .ant-collapse > .ant-collapse-item {
+      border: 0;
+    }
+
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+      color: #fff;
+      font-family: 'DINPro-Bold';
+      font-weight: bold;
+      font-size: 20px;
+
+      &:hover {
+        background: #484854;
+      }
+    }
+
+    .ant-collapse-content {
+      color: #fff;
+      background-color: #1D1D22;
+      border-color: #141416;
+      font-size: 16px;
+    }
+
+    .ant-collapse-icon-position-right > .ant-collapse-item > .ant-collapse-header {
+      padding: 25px 40px;
+    }
+
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding: 20px 40px;
+    }
+
+    .ant-collapse-icon-position-right > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+      right: 40px;
+    }
+
+    .ant-collapse-item-active {
+      .ant-collapse-arrow {
+        transform: translateY(-50%) rotateX(180deg);
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+      font-size: 16px !important;
+    }
+    .ant-collapse-content {
+      font-size: 14px !important;
+    }
+    
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding: 10px 20px !important;
+    }
+    
+    .ant-collapse-icon-position-right > .ant-collapse-item > .ant-collapse-header {
+      padding: 15px 20px !important;
+    }
+    .ant-collapse-icon-position-right > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+      right:20px !important;
+    }
+ }
+}
