@@ -77,7 +77,7 @@ export default function ({width=700}) {
       {/* '{point.name}: <b>{point.percentage:.1f}%</b>' */}
                   
                     <div className="tokenomic-title cf fwb w100 ta">{t('Tokenomics')}</div>
-                    <div className="w100 flex m-t-50 chart-wrap">
+                    <div className="w100 flex m-t-20 chart-wrap flex-column">
                       <div className='p-l-15 p-r-15 pin-wrap'>
                         <div id="container" style={{ width: width+'px'}}></div>
                       </div>
