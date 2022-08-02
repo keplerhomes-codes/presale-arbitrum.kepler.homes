@@ -58,7 +58,7 @@ export default connect(
             <div className="flex private-content flex-between p-b-100">
                   <div className="left-part">
                      <video src={videoSrc} playsInline loop autoPlay muted controls className='video'></video>
-                     <Tabs className='my-tab mint-tab' >
+                     <Tabs className='my-tab mint-tab' tabPosition="top" >
                       <TabPane tab="Hightlights" key="0">
                         {
                             privatetext.highlights.map(item => {
