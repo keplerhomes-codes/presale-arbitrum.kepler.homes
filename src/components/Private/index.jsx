@@ -23,9 +23,6 @@ import Modal from '../../components/Base/Modal'
 import notification from '../notification'
 
 let marks = {
-    6: {
-      label: '6M'
-    },
     12: {
       label: '1Y'
     },
@@ -44,10 +41,6 @@ let marks = {
   }
 let displayMoths = [
     {
-        name: '6 months',
-        value: 6
-    },
-    {
         name: '1 year',
         value: 12
     },
@@ -58,6 +51,10 @@ let displayMoths = [
     {
         name: '2 years',
         value: 24
+    },
+    {
+        name: '3 years',
+        value: 36
     },
     {
         name: '4 years',
@@ -190,7 +187,7 @@ export default connect(
     }
   )( (props)=> {
     let location = useLocation()
-    let [selectMonths, setSelectMonths] = useState(6)
+    let [selectMonths, setSelectMonths] = useState(12)
     let [showMonths, setShowMonths] = useState(false)
     let [config, setConfig] = useState({})
     let [rounds, setRounds] = useState(1)
@@ -349,7 +346,7 @@ export default connect(
              </div>
              </div>
              <div className="p-l-46 p-r-46 p-t-24 p-b-24">
-                <Slider className="rcslider" marks={marks} min={6} max={60} onChange={setSelectMonths} value={selectMonths} defaultValue={selectMonths}/>
+                <Slider className="rcslider" marks={marks} min={12} max={60} onChange={setSelectMonths} value={selectMonths} defaultValue={selectMonths}/>
              </div>
                    
                    </>
