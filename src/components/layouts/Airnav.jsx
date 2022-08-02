@@ -79,7 +79,7 @@ function Header(props) {
         });
         return
      }
-    await navigator.clipboard.writeText('https://'+window.location.host+'/nft-mint?address='+props.account);
+    await navigator.clipboard.writeText('https://'+window.location.host+'?referee='+props.account);
     notification.success({
       message: t('Invitation link has been generated, please send it to your friends!'),
     });
