@@ -1,10 +1,10 @@
 export default {
     "highlights": [
-        "Original IP from the Kepler team. The story of the Kepler galaxy is very sustainable with more scope for Kepler to follow on top of the RPG basic gameplay.",
-        "Well-designed quest and grind paths plus fantastic HD visual graphics. As positioned itself as an AAA level 3D Sci-Fi MMORPG, Kepler pursues the ultimate immersive game-playing experience.",
-        "Dual-currency tokenomics. By implementing a dual-currency mechanism, Kepler could balance the players’ entertainment needs and play-to-earn needs at a golden section ratio.",
-        "Multi-chains asset transformation. Players can trade and transform their game assets with no technical restrictions between EVM chains, such as ETH, and non-EVM chains, such like Aptos.",
-        "Non-stop superior game contents and features. Three characters and two maps are supported in the beta version game and more superior features will be added in later versions."
+        <span><span className="fwb">Original IP from the Kepler team.</span> <br/>The story of the Kepler galaxy is very sustainable with more scope for Kepler to follow on top of the RPG basic gameplay.</span>,
+        <span><span className="fwb">Well-designed quest and grind paths plus fantastic HD visual graphics. </span> <br/>As positioned itself as an AAA level 3D Sci-Fi MMORPG, Kepler pursues the ultimate immersive game-playing experience.</span>,
+        <span><span className="fwb">Dual-currency tokenomics.</span> <br/> By implementing a dual-currency mechanism, Kepler could balance the players’ entertainment needs and play-to-earn needs at a golden section ratio.</span> ,
+        <span><span className="fwb">Multi-chains asset transformation. </span> <br/>Players can trade and transform their game assets with no technical restrictions between EVM chains, such as ETH, and non-EVM chains, such like Aptos.</span> ,
+        <span><span className="fwb">Non-stop superior game contents and features.</span>  <br/>Three characters and two maps are supported in the beta version game and more superior features will be added in later versions."</span> 
     ],
     "presale rules": [
         "1 million USD will be raised through 10 rounds KEPL token presale activities.",
@@ -22,7 +22,7 @@ export default {
     "faq": [
         {
             "q": "What is KEPL presale?",
-            "a": "KEPL presale is a fair token launch for all participants, no matter individuals or institutions. 1 million USD will be raised through 10 rounds presale activities. All KEPL tokens are sold on a first come, first serve basis."
+            "a": "KEPL presale is a fair token launch for all participants, no matter individuals or institutions. 1 million USD will be raised through 10 rounds presale activities. All KEPL tokens are sold on a first come, first serve basis."
         },
         
         {
@@ -38,7 +38,7 @@ export default {
             "a": <span>
                 KEPL is the governance token and it has the voting power.<br/>
                 PreKEPL is the airdrop token which can be swapped to KEPL at an exchange rate in IDO. <br/>
-                veKEPL is the token received by locking KEPL in the vote escrow smart contract. It cannot be transferred or exchanged, but it can be used to voting and receive dividends.
+                veKEPL is the token received by locking KEPL in the vote escrow smart contract. It cannot be transferred or exchanged, but it can be used to vote and receive dividends.
             </span>
         },
         
@@ -52,7 +52,7 @@ export default {
         },
         {
             "q": "Am I must to lock my KEPL tokens?",
-            "a": "Yes, it is required. The locking period ranging from 6 months to 5 years."
+            "a": "Yes, it is required. The locking period ranges from 1 year to 5 years."
         },
         {
             "q": "How does dividends are allocated and distributed?",
@@ -61,7 +61,7 @@ export default {
         {
             "q": "What is the referral bonus?",
             "a": <span>All KEPL or veKEPL token holders are recommended to share an invitation link to their friends. <br/>
-                        Holders whose KEPL asset is over $10,000 could get 5% of their friend's purchase amount as a referral bonus which can be claimed immediately.
+                        Holders whose KEPL asset is over $10,000 could get 5% of their friend's purchase amount as a referral bonus.
             </span>
         }
     ]

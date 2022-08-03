@@ -299,7 +299,7 @@ export default connect(
                 <div className={"checkbox  "+ (isCheck ?'active':'')} >
                     <img src={require('../../assets/images/private/yes.svg').default} alt="" />
                 </div>
-                <span className='fz-16 cf m-l-11'>Select the release cycle period</span>
+                <span className='fz-16 cf m-l-11'>Select the locking period</span>
              </div>
              {
                 isCheck && (
@@ -309,7 +309,7 @@ export default connect(
                     <div className="cycle-inner p-t-12 p-l-16 p-b-12 p-r-16">
                         <div className="flex flex-between cycle">
                             <span className='fz-14 ce flex flex-center'>
-                                Release cycle
+                            Locking period
                                 <Tooltip title="The longer KEPL tokens are locked for, the more dividends received.">
                                   <img className='m-l-3' src={require('../../assets/images/passport/question.svg').default} alt="" />
                                 </Tooltip>
