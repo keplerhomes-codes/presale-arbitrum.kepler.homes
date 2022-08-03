@@ -219,7 +219,7 @@ export default connect(
      }
     await navigator.clipboard.writeText('https://'+window.location.host+'/nft-mint?address='+props.account);
     notification.success({
-      message: t('Invitation link has been generated, please send it to your friends!'),
+      message: t('The invitation link has been copied. Please paste it to your friends!'),
     });
   }, [props.account]);
   const getVariable = async () => {

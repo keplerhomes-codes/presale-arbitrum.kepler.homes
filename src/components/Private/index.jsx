@@ -246,7 +246,7 @@ export default connect(
          }
         await navigator.clipboard.writeText('https://'+window.location.host+'?referee='+props.account);
         notification.success({
-          message: ('Invitation link has been generated, please send it to your friends!'),
+          message: ('The invitation link has been copied. Please paste it to your friends!'),
         });
       }, [props.account]);
     useEffect(() => {
@@ -394,7 +394,7 @@ export default connect(
                     </div>
                     <div className="fz-16 m-t-10">
                     Congratulations on participating in the pre-sale! <br/>
-                    The same quantity of veKEPL has been immediately transferred to your account;<br/>
+                    veKEPL with same quantity as KEPL has been immediately transferred to your account;<br/>
                     When claiming begins,<br/>
                     You need to burn veKEPL in exchange for KEPL every month;<br/>
                     Invite your friends to join us!

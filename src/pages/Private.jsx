@@ -46,7 +46,7 @@ export default connect(
          }
         await navigator.clipboard.writeText('https://'+window.location.host+'?referee='+props.account);
         notification.success({
-          message: ('Invitation link has been generated, please send it to your friends!'),
+          message: ('The invitation link has been copied. Please paste it to your friends!'),
         });
       }, [props.account]);
     return (

@@ -125,7 +125,7 @@ export function buy(
        res(result)
        notification.success({
         message: 'Transaction Success',
-        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}tx/${result.transactionHash}`}>Go to browser to view</a>
+        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
       })
       })
       .catch((error) => {
