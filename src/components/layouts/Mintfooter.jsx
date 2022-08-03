@@ -31,9 +31,9 @@ function Footer() {
         </div>
         <div className="footer-content-right  flex-1 flex flex-column flex-end">
             <div className="footer-link-group flex">
-              <div className="footer-link-item cf p-r-20">Home</div>
-              <div className="footer-link-item cf bl p-l-20 p-r-20">Docs</div>
-              <div className="footer-link-item cf bl p-l-20">FAQ</div>
+              <a className="footer-link-item cf p-r-20" target="_blank" href="https://kepler.homes">Home</a>
+              <a className="footer-link-item cf bl p-l-20 p-r-20" target="_blank" href="https://docs.kepler.homes/">Docs</a>
+              <a className="footer-link-item cf bl p-l-20" target="_blank" href="https://kepler.homes/faq">FAQ</a>
             </div>
             <div className="copyright cf">Kepler © 2022, All rights reserved</div>
         </div>

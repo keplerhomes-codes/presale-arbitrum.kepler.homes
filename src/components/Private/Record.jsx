@@ -60,12 +60,14 @@ export default connect(
     let [page, setPage] = useState(1)
     let [total, setTotal] = useState(0)
     let getRecordData = (page) => {
+        setLoading(true)
         get('/api/presale/records', {
             chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'Avalanche'],
             user: props.account.toLowerCase(),
             limit,
             skip: page-1
         }).then(res => {
+            setLoading(false)
             setList(res.data.list)
             setTotal(res.data.count)
         })
@@ -83,9 +85,12 @@ export default connect(
     return (
         <div className="claim-wrap">
             <Table loading={loading} columns={columns} dataSource={list} pagination={false} className="my-table" />
-              <div className="flex flex-last m-t-20">
+            {
+              total > 0 && <div className="flex flex-last m-t-20">
               <Pagination currentpage={page} limit={limit} total={total} pageChange={pageChange}/>
               </div>
+            }
+              
             
         </div>
     )
