@@ -68,12 +68,12 @@ export default connect(
                  {/* one-item */}
                 <div className="claim-item m-t-10 flex flex-column flex-center flex-middle">
                     <span className="cblue fz-20 fwb">{numFormat(toFixed(fromUnit(balance), 2))}</span>
-                    <span className="fz-14 c06">VeKEPL Balance</span>
+                    <span className="fz-14 c06">veKEPL Balance</span>
                 </div>
                  {/* one-item */}
                 <div className="claim-item m-t-10 flex flex-column flex-center flex-middle">
                     <span className="cblue fz-20 fwb">0</span>
-                    <span className="fz-14 c06">VeKEPL Burned</span>
+                    <span className="fz-14 c06">veKEPL Burned</span>
                 </div>
                  {/* one-item */}
                 <div className="claim-item m-t-10 flex flex-column flex-center flex-middle">

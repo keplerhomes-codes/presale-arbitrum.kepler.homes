@@ -268,7 +268,7 @@ export default connect(
         <div className="private-box cf">
              <div className="fz-24 fwb p-l-24 p-r-24">KEPL Presale</div>
              <div className="flex flex-between w100 fz-16 m-t-30  p-l-24 p-r-24">
-                <span>PreSale Progress</span>
+                <span>Presale Progress</span>
                 <span className='c80'>Round <span className='cf'>{rounds}/10</span></span>
              </div>
              <div className=' p-l-24 p-r-24 w100'>
