@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import { connect } from 'react-redux'
 import { queryBuyRecords } from "../../contract/methods/presale"
 import { balanceOf } from "../../contract/methods"
-import { findAddressByName, formatTimeShort, fromUnit } from "../../lib/util"
+import { findAddressByName, formatTimeShort, fromUnit, numFormat, toFixed } from "../../lib/util"
 import { format } from "date-fns"
 export default connect(
     (state, props) => {
@@ -52,7 +52,7 @@ export default connect(
             <div className="claim-info flex flex-wrap flex-between">
                 {/* one-item */}
                 <div className="claim-item m-t-10 flex flex-column flex-center flex-middle">
-                    <span className="cblue fz-20 fwb">{total.toFixed(2)}</span>
+                    <span className="cblue fz-20 fwb">{numFormat(toFixed(total, 2))}</span>
                     <span className="fz-14 c06">Total KEPL</span>
                 </div>
                  {/* one-item */}
@@ -62,12 +62,12 @@ export default connect(
                 </div>
                  {/* one-item */}
                 <div className="claim-item m-t-10 flex flex-column flex-center flex-middle">
-                    <span className="cblue fz-20 fwb">{total.toFixed(2)}</span>
+                    <span className="cblue fz-20 fwb">{numFormat(toFixed(total, 2))}</span>
                     <span className="fz-14 c06">Uncliam</span>
                 </div>
                  {/* one-item */}
                 <div className="claim-item m-t-10 flex flex-column flex-center flex-middle">
-                    <span className="cblue fz-20 fwb">{(fromUnit(balance)*1).toFixed(2)}</span>
+                    <span className="cblue fz-20 fwb">{numFormat(toFixed(fromUnit(balance), 2))}</span>
                     <span className="fz-14 c06">VeKEPL Balance</span>
                 </div>
                  {/* one-item */}

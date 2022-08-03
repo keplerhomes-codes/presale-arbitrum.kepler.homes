@@ -14,7 +14,7 @@ import { useCallback, useState } from 'react'
 import {Button, InputNumber, Tooltip } from 'antd'
 import { useEffect } from 'react'
 import { balanceOf, buy, queryConfig, queryRoundPrices, querySaledUsdAmount, queryStableCoins } from '../../contract/methods/presale'
-import { addPoint, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, showConnectWallet, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
+import { addPoint, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, numFormat, showConnectWallet, toFixed, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
 import { connect } from 'react-redux'
 import { getCurAddress } from '../../contract/testnet/address'
 import { allowance, approve } from '../../contract/methods'
@@ -138,16 +138,16 @@ const ChooseToken = (props) => {
 
     useEffect(()=>{
         if(props.account) {
-            setInputNum(balance*percent/100||'')
+            setInputNum(toFixed(balance*percent/100, 3)||'')
         } else {
             setInputNum('')
         }
-    }, [percent])
+    }, [percent, balance])
     return  (
         <div className="choose w100">
             <div className='choose-token flex flex-column p-l-24 p-r-16'>
                 <div className="left-item flex flex-center">
-                   <span className='c06 fz-14 m-b-9 flex-1 m-t-11'>Available:{props.account ? (balance ? (Number(balance)).toFixed(2):0):'--'}</span>
+                   <span className='c06 fz-14 m-b-9 flex-1 m-t-11'>Available:{props.account ? (balance ? toFixed(Number(balance), 3):0):'--'}</span>
                    <div className="percent flex flex-between m-t-11">
                         <div className={"pointer fz-14 percent-item ta c06 "+(percent == 25 ? 'active':'')} onClick={()=> {setPercent(25)}}>
                             25%
@@ -202,7 +202,7 @@ export default connect(
     let [showTip, setShowTip] = useState(false)
     
     let [referAddress, setAddress] = useState(location.search ? location.search.replace('?','').split('=')[1]?.toLowerCase():'')
-    let [endDate, setEndDate] = useState(new Date(new Date().getFullYear(), new Date().getMonth()*1+6, new Date().getDate()))
+    let [endDate, setEndDate] = useState(new Date(new Date().getFullYear(), new Date().getMonth()*1+12, new Date().getDate()))
     const numChange = (num) => {
         console.log(num)
         setInputNum(num)
@@ -260,6 +260,8 @@ export default connect(
         setConfig(config)
         setRounds(curentRounds*1+1)
         setPrice(fromUnit(prices[curentRounds]))
+        setSelectMonths(12)
+        setShowMonths(false)
         setProgress((fromUnit(saledUsd)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
     }, [refresh])
     return (
@@ -284,8 +286,8 @@ export default connect(
              </div>
              
              <div className="flex flex-between m-t-12  p-l-24 p-r-24 min-max">
-                <span className='c06 flex min-max-inner'><span>Min buyable: </span>    <span className='cf m-l-3'>{fromUnit(config.minBuyAmount)} USD</span></span>
-                <span className='c06 flex min-max-inner'><span>Max buyable: </span>  <span className='cf m-l-3'>{fromUnit(config.maxBuyAmount)} USD</span></span>
+                <span className='c06 flex min-max-inner'><span>Min buyable: </span>    <span className='cf m-l-3'>{numFormat(fromUnit(config.minBuyAmount))} USD</span></span>
+                <span className='c06 flex min-max-inner'><span>Max buyable: </span>  <span className='cf m-l-3'>{numFormat(fromUnit(config.maxBuyAmount))} USD</span></span>
              </div>
              <div className="hr w100 m-t-24"></div>
              {/* choose-token */}
