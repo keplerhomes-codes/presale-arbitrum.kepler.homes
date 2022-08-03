@@ -145,7 +145,7 @@ const Login = async() => {
                     Home
               </a>
               <NavLink className="nav-item cf  fz-16 m-l-40 islink" to="/">
-                    Private
+                 Presale
               </NavLink>
               {/* <NavLink className="nav-item cf  fz-16 m-l-40 islink" to="/whitelist">
                     Whitelist

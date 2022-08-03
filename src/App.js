@@ -39,7 +39,7 @@ import {
   SolletWalletAdapter,
   TorusWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
-import Private from "./pages/Private";
+import Presale from "./pages/Presale";
 
 function App() {
   const network = WalletAdapterNetwork.Devnet;
@@ -59,7 +59,7 @@ function App() {
     [network]
   );
   useEffect(()=> {
-    document.title = `KEPLER | ${pathname.replace('/', '')?pathname.replace('/', '').toUpperCase():'PRIVATE'}`
+    document.title = `KEPLER | ${pathname.replace('/', '')?pathname.replace('/', '').toUpperCase():'PRESALE'}`
     if (window.innerWidth < 768) {
       Bus.emit('foldChange', false);
     }
@@ -71,7 +71,7 @@ function App() {
         <div className="App">
           <Layout>
             <Routes>
-              <Route path="/" element={<Private />} />
+              <Route path="/" element={<Presale />} />
               {/* <Route path="/download" element={<Download />} />
               <Route path="/origin" element={<Origin />} />
               <Route path="/market" element={<Market />} />
@@ -92,7 +92,7 @@ function App() {
               <Route path="/news" element={<News />} />
               <Route path="/bridge" element={<Bridge />} />
               <Route path="/tokenomics" element={<Tokenomics />} /> */}
-              <Route path="/nft-whitelist" element={ <Whitelist /> } />
+              {/* <Route path="/nft-whitelist" element={ <Whitelist /> } /> */}
               {/* <Route path="/nft-mint" element={ <Mint /> } />
               <Route path="/nft-mint-test" element={ <Mintest /> } />
               <Route path="/claim" element={ <Claim /> } /> */}

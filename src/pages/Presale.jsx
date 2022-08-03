@@ -1,6 +1,6 @@
 import Airnav from "../components/layouts/Airnav"
 import Mintfooter from "../components/layouts/Mintfooter"
-import './Private.scss'
+import './Presale.scss'
 import { Button, Carousel, Tooltip} from "antd"
 import { Collapse, Space } from 'antd';
 import { Link } from "react-router-dom"
@@ -13,12 +13,12 @@ import { toFixed } from "accounting"
 import videoSrc from './movie.mp4'
 import { Tabs } from 'antd';
 import {connect} from 'react-redux'
-import Private from "../components/Private"
-import Claim from "../components/Private/Claim"
+import Presale from "../components/Presale"
+import Claim from "../components/Presale/Claim"
 import privatetext from "../lib/privatetext"
 import notification from "../components/notification";
 import Tokenomics from './Tokenomics'
-import Record from "../components/Private/Record";
+import Record from "../components/Presale/Record";
 const { Panel } = Collapse;
 
 const { TabPane } = Tabs;
@@ -113,7 +113,7 @@ export default connect(
                      </Tabs>
                   </div>
                   <div className="right-part flex flex-column">
-                      <Private onSuccess={onSuccess}/>
+                      <Presale onSuccess={onSuccess}/>
                       <div className="invite-area w100 m-t-24 flex flex-center">
                            <div className="cf">
                               You can get <span className="percent-num">5%</span> of your friend's purchase amount as a reward by inviting friends. 
