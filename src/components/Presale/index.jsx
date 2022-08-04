@@ -11,7 +11,7 @@ import 'rc-slider/assets/index.css';
 import { useLocation } from 'react-router-dom'
 
 import { useCallback, useState } from 'react'
-import {Button, InputNumber, Tooltip } from 'antd'
+import {Button, InputNumber, Skeleton, Tooltip } from 'antd'
 import { useEffect } from 'react'
 import { balanceOf, buy, queryConfig, queryRoundPrices, querySaledUsdAmount, queryStableCoins } from '../../contract/methods/presale'
 import { addPoint, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, numFormat, showConnectWallet, toFixed, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
@@ -197,12 +197,14 @@ export default connect(
     let [cur, setCur] = useState('BUSD')
     let [needApprove, setNeedApprove] = useState(false)
     let [loading, setLoading] = useState(false)
+    let [isLoading, setIsLoading] = useState(false)
     let [refresh, setRefresh] = useState(0)
     let [isCheck, setIsCheck] = useState(false)
     let [showTip, setShowTip] = useState(false)
+    let [claimStart, setClaimStart] = useState(new Date().getTime()/1000)
     
     let [referAddress, setAddress] = useState(location.search ? location.search.replace('?','').split('=')[1]?.toLowerCase():'')
-    let [endDate, setEndDate] = useState(new Date(new Date().getFullYear(), new Date().getMonth()*1+60, new Date().getDate()))
+    let [endDate, setEndDate] = useState(new Date(new Date(claimStart*1000).getFullYear(), new Date(claimStart*1000).getMonth()*1+60, new Date(claimStart*1000).getDate()))
     const numChange = (num) => {
         console.log(num)
         setInputNum(num)
@@ -250,19 +252,23 @@ export default connect(
         });
       }, [props.account]);
     useEffect(() => {
-        setEndDate(new Date(new Date().getFullYear(), new Date().getMonth()*1+selectMonths, new Date().getDate()))
-    }, [selectMonths])
+        setEndDate(new Date(new Date(claimStart*1000).getFullYear(), new Date(claimStart*1000).getMonth()*1+selectMonths, new Date(claimStart*1000).getDate()))
+    }, [selectMonths, claimStart])
     useEffect(async() => {
+        setIsLoading(true)
         let saledUsd = await querySaledUsdAmount()
         let config = await queryConfig()
         let prices = await queryRoundPrices()
         let curentRounds = Math.floor(fromUnit(saledUsd)/fromUnit(config.saleAmountPerRound))
         setConfig(config)
+        console.log(config)
+        setClaimStart(config.claimStartTime)
         setRounds(curentRounds*1+1)
         setPrice(fromUnit(prices[curentRounds]))
         setSelectMonths(60)
         setShowMonths(false)
         setProgress((fromUnit(saledUsd)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
+        setIsLoading(false)
     }, [refresh])
     return (
         <div className="private-box cf">
@@ -282,16 +288,24 @@ export default connect(
                 <span className='c06'>Current KEPL price</span>
                 <span className='cf flex flex-center'>
                     <img src={require('../../assets/images/token/KEPL.png')} className="token-logo m-r-5" alt="" />
-                    ${Number(price).toFixed(6)}</span>
+                    {
+                        isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span>${Number(price).toFixed(6)}</span>
+                    }
+                    </span>
+                    
              </div>
              
              <div className="flex flex-between m-t-12  p-l-24 p-r-24 min-max">
-                <span className='c06 flex min-max-inner'><span>Min buyable: </span>    <span className='cf m-l-3'>{numFormat(fromUnit(config.minBuyAmount))} USD</span></span>
-                <span className='c06 flex min-max-inner'><span>Max buyable: </span>  <span className='cf m-l-3'>{numFormat(fromUnit(config.maxBuyAmount))} USD</span></span>
+                <span className='c06 flex min-max-inner'><span>Min buyable: </span>    
+                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(fromUnit(config.minBuyAmount))} USD</span>}
+                </span>
+                <span className='c06 flex min-max-inner'><span>Max buyable: </span>  
+                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(fromUnit(config.maxBuyAmount))} USD</span>}
+                </span>
              </div>
              <div className="hr w100 m-t-24"></div>
              {/* choose-token */}
-             <div className="w100 p-24">
+             <div className={"w100 p-24 " +(loading?'unable':'')}>
               <ChooseToken {...props} onChange={numChange} refresh={refresh} curChange={curChange}/>
              </div>
              {/* choose-token */}
@@ -304,7 +318,7 @@ export default connect(
              {
                 isCheck && (
                    <>
-                   <div className="p-l-24 p-r-24 p-t-10 flex flex-center w100">  
+                   <div className={"p-l-24 p-r-24 p-t-10 flex flex-center w100 "+(loading?'unable':'')}>  
                 <div className="release-cycle w100">
                     <div className="cycle-inner p-t-12 p-l-16 p-b-12 p-r-16">
                         <div className="flex flex-between cycle">
@@ -347,7 +361,7 @@ export default connect(
                     
              </div>
              </div>
-             <div className="p-l-46 p-r-46 p-t-24 p-b-24">
+             <div className={"p-l-46 p-r-46 p-t-24 p-b-24 "+(loading?'unable':'')}>
                 <Slider className="rcslider" reverse marks={marks} min={12} max={60} onChange={setSelectMonths} value={selectMonths} defaultValue={selectMonths}/>
              </div>
                    

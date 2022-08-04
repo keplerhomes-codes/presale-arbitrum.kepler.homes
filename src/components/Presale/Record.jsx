@@ -84,7 +84,8 @@ export default connect(
     },[props.account, page])
     return (
         <div className="claim-wrap">
-            <Table loading={loading} columns={columns} dataSource={list} pagination={false} className="my-table" />
+             <p className="c06 fz-14 invite-tip">Holders whose KEPL asset is over $10,000 could get a referral bonus by inviting others.</p>
+            <Table loading={loading} columns={columns} dataSource={list} pagination={false} className="my-table m-t-20" />
             {
               total > 0 && <div className="flex flex-last m-t-20">
               <Pagination currentpage={page} limit={limit} total={total} pageChange={pageChange}/>
