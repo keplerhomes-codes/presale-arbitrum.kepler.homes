@@ -335,7 +335,7 @@ export default connect(
                     {
                         showMonths && <div className="months flex flex-wrap flex-between p-l-10 p-r-10 p-b-10">
                         {
-                            displayMoths.map(item => {
+                            displayMoths.reverse().map(item => {
                                 return <div className={"month-item pointer " +(item.value == selectMonths ? 'active':'')} onClick={() => {setSelectMonths(item.value)}}>
                                {item.name}
                             </div>
