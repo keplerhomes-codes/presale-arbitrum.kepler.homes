@@ -187,7 +187,7 @@ export default connect(
     }
   )( (props)=> {
     let location = useLocation()
-    let [selectMonths, setSelectMonths] = useState(12)
+    let [selectMonths, setSelectMonths] = useState(60)
     let [showMonths, setShowMonths] = useState(false)
     let [config, setConfig] = useState({})
     let [rounds, setRounds] = useState(1)
@@ -202,7 +202,7 @@ export default connect(
     let [showTip, setShowTip] = useState(false)
     
     let [referAddress, setAddress] = useState(location.search ? location.search.replace('?','').split('=')[1]?.toLowerCase():'')
-    let [endDate, setEndDate] = useState(new Date(new Date().getFullYear(), new Date().getMonth()*1+12, new Date().getDate()))
+    let [endDate, setEndDate] = useState(new Date(new Date().getFullYear(), new Date().getMonth()*1+60, new Date().getDate()))
     const numChange = (num) => {
         console.log(num)
         setInputNum(num)
@@ -260,7 +260,7 @@ export default connect(
         setConfig(config)
         setRounds(curentRounds*1+1)
         setPrice(fromUnit(prices[curentRounds]))
-        setSelectMonths(12)
+        setSelectMonths(60)
         setShowMonths(false)
         setProgress((fromUnit(saledUsd)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
     }, [refresh])
@@ -348,7 +348,7 @@ export default connect(
              </div>
              </div>
              <div className="p-l-46 p-r-46 p-t-24 p-b-24">
-                <Slider className="rcslider" marks={marks} min={12} max={60} onChange={setSelectMonths} value={selectMonths} defaultValue={selectMonths}/>
+                <Slider className="rcslider" reverse marks={marks} min={12} max={60} onChange={setSelectMonths} value={selectMonths} defaultValue={selectMonths}/>
              </div>
                    
                    </>
