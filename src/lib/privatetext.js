@@ -3,8 +3,8 @@ export default {
         <span><span className="fwb">Original IP from the Kepler team.</span> <br/>The story of the Kepler galaxy is very sustainable with more scope for Kepler to follow on top of the RPG basic gameplay.</span>,
         <span><span className="fwb">Well-designed quest and grind paths plus fantastic HD visual graphics. </span> <br/>As positioned itself as an AAA level 3D Sci-Fi MMORPG, Kepler pursues the ultimate immersive game-playing experience.</span>,
         <span><span className="fwb">Dual-currency tokenomics.</span> <br/> By implementing a dual-currency mechanism, Kepler could balance the players’ entertainment needs and play-to-earn needs at a golden section ratio.</span> ,
-        <span><span className="fwb">Multi-chains asset transformation. </span> <br/>Players can trade and transform their game assets with no technical restrictions between EVM chains, such as ETH, and non-EVM chains, such like Aptos.</span> ,
-        <span><span className="fwb">Non-stop superior game contents and features.</span>  <br/>Three characters and two maps are supported in the beta version game and more superior features will be added in later versions."</span> 
+        <span><span className="fwb">Multi-chains asset transformation. </span> <br/>Players can trade and transfer their game assets with no technical restrictions between EVM chains, such as ETH, and non-EVM chains, such like Aptos.</span> ,
+        <span><span className="fwb">Non-stop superior game contents and features.</span>  <br/>Three characters and two maps are supported in the beta version game and more superior features will be added in later versions.</span> 
     ],
     "presale rules": [
         "1 million USD will be raised through 10 rounds KEPL token presale activities.",
