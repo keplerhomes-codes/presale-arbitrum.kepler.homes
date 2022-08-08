@@ -1,0 +1,20 @@
+export default {
+    "KEPL": "0x000aa5384e9d90a6cd1d2d4ce3ec605570f7bbbf",
+    "PreKEPL": "0x6eb376d9bc067cdad77041ba73d2de0ce2b70f79",
+    "WBNB": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+    "BUSD": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+    "BTCB": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+    "ETH": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+    "USDT": "0x55d398326f99059ff775485246999027b3197955",
+    "USDC": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    "AVAX": "0x1ce0c2827e2ef14d5c4f29a091d735a204794041",
+    "MATIC": "0xcc42724c6683b7e57334c4e856f4c9965ed682bd",
+    "ChainlinkOracle": "0xaf45e788f1cf7ea05b456a38d6d2b5e1d29a4a6b",
+    "KeplerSuit": "0x0582558c9e65995571f378077273af56b51f114b",
+    "MysteryBox": "0xc05daa354d70fc2287c3d6b78e9b415ae7a6f9b4",
+    "AirdropWithSignature(STEPN)": "0x4d2df0f2d87b9b8fc8d4c9ceb6b3b00dcc971937",
+    "AirdropWithSignature(RACA)": "0xe514d0e67ad9d16c73f1e541ff6775c95b093cbb",
+    "AirdropWithSignature(MOBOX)": "0x9ad6727aeba154d0bec8136726911ee240dbb92b",
+    "veKEPL": "0x0bda196824e71a2279222d4a9355f8de16e8fc5c",
+    "Presale": "0xd0b328e4c11b564e534d64168214d414865f5549"
+}

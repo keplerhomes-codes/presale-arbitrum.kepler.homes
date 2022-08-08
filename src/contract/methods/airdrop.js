@@ -18,7 +18,7 @@ import getNetworkData, { chainSymbolMap } from '../../wallet/helper/getNetworkDa
 import { createProviderController } from '../../wallet/web3/createProviderController'
 import store from '../../store'
 import BigNumber from 'bignumber.js'
-const chain = localStorage.getItem('kepler_chain') || 'ETH'
+const chain = localStorage.getItem('kepler_chain') || 'BSC'
 
 const httpProviderURL = 'https://data-seed-prebsc-1-s1.binance.org:8545/'
 console.log(httpProviderURL)

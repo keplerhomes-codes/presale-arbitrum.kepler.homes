@@ -1,7 +1,7 @@
-import BSC_ADDRESS  from '../mainnet/bscAddress'
-import GOERLI_ADDRESS  from '../mainnet/GoerliAddress'
-import MUMBAI_ADDRESS  from '../mainnet/MumbaiAddress'
-import FUJI_ADDRESS  from '../mainnet/FujiAddress'
+import BSC_ADDRESS  from './bscAddress'
+import GOERLI_ADDRESS  from './GoerliAddress'
+import MUMBAI_ADDRESS  from './MumbaiAddress'
+import FUJI_ADDRESS  from './FujiAddress'
 
 export function getAddress (chain) {
   let ADDRESS

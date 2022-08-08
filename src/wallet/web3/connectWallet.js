@@ -7,7 +7,7 @@ import getNetworkData, {chainIdMap} from '../helper/getNetworkData';
 import notification from '../../components/notification'
 
 const networkCheck  = (web3, provider, chainId) => {
-  const chain = localStorage.getItem('kepler_chain') || 'Avalanche'
+  const chain = localStorage.getItem('kepler_chain') || 'BSC'
   const params = getNetworkData[`get${chain}Network`]().params
   const _networkId = getNetworkData[`get${chain}Network`]().networkId
   console.log(params)
@@ -85,7 +85,7 @@ const networkCheck  = (web3, provider, chainId) => {
 }
 
 const setAccount = async (provider) => {
-  const chain = localStorage.getItem('kepler_chain') || 'Avalanche'
+  const chain = localStorage.getItem('kepler_chain') || 'BSC'
   const httpProviderURL = getNetworkData[`get${chain}Network`].httpProviderURL
   
   let web3 = new Web3(provider)
@@ -137,7 +137,7 @@ const connectWallet = async (provider)=> {
     if (provider) {
       setAccount(provider)
     } else {
-      const chain = localStorage.getItem('kepler_chain') || 'Avalanche'
+      const chain = localStorage.getItem('kepler_chain') || 'BSC'
       const provider = await createProviderController(chain).connect()
       setAccount(provider)
     }

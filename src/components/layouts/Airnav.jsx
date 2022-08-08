@@ -159,7 +159,7 @@ const Login = async() => {
         <Button className='invite-btn m-l-12 cf fz-16' onClick={copyAddress}>Invite friends</Button>
       </div>
       <div className='connect'>
-        <ConnectWallet hideChain={['ETH','BSC', 'Polygon', 'Solana']} isVisible={isConnectWalletVisible} handleOk={handleConnectWalletOk} handleCancel={handleConnectCancel} />
+        <ConnectWallet hideChain={['ETH','Avalanche', 'Polygon', 'Solana']} isVisible={isConnectWalletVisible} handleOk={handleConnectWalletOk} handleCancel={handleConnectCancel} />
       </div>
     </div>
 

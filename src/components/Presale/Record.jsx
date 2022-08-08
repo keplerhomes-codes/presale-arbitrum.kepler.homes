@@ -62,7 +62,7 @@ export default connect(
     let getRecordData = (page) => {
         setLoading(true)
         get('/api/presale/records', {
-            chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'Avalanche'],
+            chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'BSC'],
             user: props.account.toLowerCase(),
             limit,
             skip: page-1

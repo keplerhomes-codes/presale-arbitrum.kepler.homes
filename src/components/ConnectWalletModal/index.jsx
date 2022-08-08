@@ -26,7 +26,7 @@ import {setChain,setconnect, connect, disconnect} from '../../store'
 import { useWallet } from '@solana/wallet-adapter-react';
 
 function ConnectWalletModal(props) {
-  const [selectChain, setSelectChain] = useState('Avalanche')
+  const [selectChain, setSelectChain] = useState('BSC')
   const [isCheck, setIsCheck] = useState(true)
   const { wallets: solWallets, select: solSelect, connect: solConnect, disconnect: solDisconnect, publicKey: solPublicKey, wallet: solWallet } = useWallet();
   const [solConnecting, setSolConnecting] = useState(false)

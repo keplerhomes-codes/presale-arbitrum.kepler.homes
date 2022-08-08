@@ -3,7 +3,7 @@ import {
   getETHNetwork,
   getPolygonNetwork,
   getAvalancheNetwork
-} from './test'
+} from './main'
 
 export const chainIdMap = {
   '0x61': getBSCNetwork, // 0x38 main 0x61 test

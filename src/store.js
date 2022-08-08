@@ -23,7 +23,7 @@ function getChainType(chain) {
 const reducer = createReducer(
   {
     connect: false,
-    chain: localStorage.getItem('kepler_chain') || 'Avalanche',
+    chain: localStorage.getItem('kepler_chain') || 'BSC',
     chainType: getChainType(localStorage.getItem('kepler_chain')) || 'EVM',
     account: '',
     theme: 'light-theme',

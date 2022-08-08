@@ -1,53 +1,53 @@
 import store,{ setToLogin, setToConnectWallet, setConnectWalletChain } from "../store";
 import web3 from 'web3';
 import BigNumber from "bignumber.js";
-import {getCurAddress} from "../contract/testnet/address";
+import {getCurAddress} from "../contract/mainnet/address";
 import chainCurrency from "./chainCurrency";
-import Nftlist from "../contract/testnet/Nftlist";
+import Nftlist from "../contract/mainnet/Nftlist";
 export const emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
-export const ChainIdName = {
-  5: 'eth',
-  97: 'bsc',
-  80001: 'matic',
-  43114: 'avax',
-  666: 'sol'
-}
-export const FullChainIdName = {
-  5: 'Ethereum',
-  97: 'Binance Smart Chain',
-  80001: 'Matic',
-  43114: 'Avax',
-  666: 'Solana'
-}
-export const ChainIdMap = {
-  'ETH': 5,  // 5test 1main
-  'BSC': 97,
-  'Polygon': 80001,
-  'Avalanche': 43113,
-  'Solana': 666
-}
 // export const ChainIdName = {
-//   1: 'eth',
-//   56: 'bsc',
-//   137: 'matic',
-//   43113: 'avax',
+//   5: 'eth',
+//   97: 'bsc',
+//   80001: 'matic',
+//   43114: 'avax',
 //   666: 'sol'
 // }
 // export const FullChainIdName = {
-//   1: 'Ethereum',
-//   56: 'Binance Smart Chain',
-//   137: 'Matic',
-//   43113: 'Avax',
+//   5: 'Ethereum',
+//   97: 'Binance Smart Chain',
+//   80001: 'Matic',
+//   43114: 'Avax',
 //   666: 'Solana'
 // }
 // export const ChainIdMap = {
-//   'ETH': 1,  // 5test 1main
-//   'BSC': 56,
-//   'Polygon': 137,
-//   'Avalanche': 43114,
+//   'ETH': 5,  // 5test 1main
+//   'BSC': 97,
+//   'Polygon': 80001,
+//   'Avalanche': 43113,
 //   'Solana': 666
 // }
+export const ChainIdName = {
+  1: 'eth',
+  56: 'bsc',
+  137: 'matic',
+  43113: 'avax',
+  666: 'sol'
+}
+export const FullChainIdName = {
+  1: 'Ethereum',
+  56: 'Binance Smart Chain',
+  137: 'Matic',
+  43113: 'Avax',
+  666: 'Solana'
+}
+export const ChainIdMap = {
+  'ETH': 1,  // 5test 1main
+  'BSC': 56,
+  'Polygon': 137,
+  'Avalanche': 43114,
+  'Solana': 666
+}
 export const fullNameBySymbol = {
   'BNB': 'binancecoin',
   'ETH': 'ethereum'
@@ -156,7 +156,7 @@ export const findNameByAddress = (address) => {
 }
 
 export const findCurrencyByAddress = (address, chainName) => {
-    let chain = chainName || localStorage.getItem('kepler_chain') || 'ETH'
+    let chain = chainName || localStorage.getItem('kepler_chain') || 'BSC'
     console.log(chain)
     if(address == ZERO_ADDRESS) {
       return chainCurrency[chain]

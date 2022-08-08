@@ -119,7 +119,7 @@ const Account = (props) => {
       setShowBind(true)
       return
     }
-    const chain = localStorage.getItem('kepler_chain') || 'ETH'
+    const chain = localStorage.getItem('kepler_chain') || 'BSC'
     const httpProviderURL = getNetworkData[`get${chain}Network`].httpProviderURL
     const provider = await createProviderController(chain).connect()
     let web3 = new Web3(provider)
