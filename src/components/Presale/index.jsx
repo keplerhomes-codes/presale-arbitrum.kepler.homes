@@ -313,7 +313,9 @@ export default connect(
                 <div className={"checkbox  "+ (isCheck ?'active':'')} >
                     <img src={require('../../assets/images/private/yes.svg').default} alt="" />
                 </div>
-                <span className='fz-16 cf m-l-11'>Select the locking period</span>
+                <span className='fz-16 cf m-l-11 flex flex-center'>
+                    <span style={{color: 'red', top: '3px', position: 'relative'}}>*&nbsp;</span>
+                    Select the locking period</span>
              </div>
              {
                 isCheck && (
