@@ -340,7 +340,7 @@ export default connect(
                                     downIcon: <span> <img src={Tangle} alt="" className='input-icon' /></span>,
                                     upIcon: <span> <img src={Tangle} alt="" className='rotate input-icon'/></span>
                                 }
-                              } className='month-input fz-20' min={6} max={60} defaultValue={6} value={selectMonths} onChange={setSelectMonths}/> Months
+                              } className='month-input fz-20' min={12} max={60} defaultValue={60} value={selectMonths} onChange={setSelectMonths}/> Months
                             </span>
                             <div className="choose-btn fz-16 ta flex-middle flex flex-center pointer" onClick={()=>setShowMonths(!showMonths)}>
                                 {showMonths ?'Hide':'Choose'} preset
