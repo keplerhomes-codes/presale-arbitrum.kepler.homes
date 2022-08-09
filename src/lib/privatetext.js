@@ -63,6 +63,10 @@ export default {
             "a": <span>All KEPL or veKEPL token holders are recommended to share an invitation link to their friends. <br/>
                         Holders whose KEPL asset is over $10,000 could get 5% of their friend's purchase amount as a referral bonus.
             </span>
+        },
+        {
+            "q": "What are the unlocking rules?",
+            "a": "After starting to claim, release once a month. The release quantity is equal to the purchase quantity divided by the locked months"
         }
     ]
 }

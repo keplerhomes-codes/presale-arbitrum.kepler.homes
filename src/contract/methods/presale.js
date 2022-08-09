@@ -86,6 +86,7 @@ export function queryConfig() {
 // presale
 export function queryStableCoins() {
   const web3 = createCurWeb3()
+  console.log(getCurAddress())
   return new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.queryStableCoins().call()
 }
 // presale
