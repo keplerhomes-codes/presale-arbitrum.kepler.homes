@@ -9,7 +9,7 @@ export default {
     "presale rules": [
         "1 million USD will be raised through 10 rounds KEPL token presale activities.",
         "The KEPL token price is $0.0244140625 in the first round and will get an additional 5% increase in the following nine rounds.",
-        "KEPL tokens sold in presale are required to be locked in the vote escrow smart contract compulsorily at least 6 months.",
+        "KEPL tokens sold in presale are required to be locked in the vote escrow smart contract compulsorily at least 12 months.",
         "The locking weight is 1:1 (KEPL: veKEPL) and it remains constant in all rounds.",
         "The minimum subscription is $2000. Holders whose KEPL asset is over $10,000 could get a referral bonus by inviting others.",
         "All KEPL tokens sold in presale can circulate freely after IDO."
