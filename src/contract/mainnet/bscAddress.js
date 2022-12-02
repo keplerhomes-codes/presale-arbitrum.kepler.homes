@@ -16,5 +16,5 @@ export default {
     "AirdropWithSignature(RACA)": "0xe514d0e67ad9d16c73f1e541ff6775c95b093cbb",
     "AirdropWithSignature(MOBOX)": "0x9ad6727aeba154d0bec8136726911ee240dbb92b",
     "veKEPL": "0x0bda196824e71a2279222d4a9355f8de16e8fc5c",
-    "Presale": "0xd0b328e4c11b564e534d64168214d414865f5549"
+    "Presale": "0x49c55e686329adb89bf8fa3b219a27e7556d6d8d"
 }

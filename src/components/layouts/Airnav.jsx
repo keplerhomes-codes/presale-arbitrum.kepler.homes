@@ -158,7 +158,7 @@ const Login = async() => {
         </a> */}
         <span className="flex flex-center ">
         <Button className='invite-btn m-l-12 cf fz-16' onClick={copyAddress}>Invite friends</Button>
-        <Tooltip title="Holders whose KEPL asset is over $10,000 could get a referral bonus by inviting others.">
+        <Tooltip title="Holders whose KEPL asset is over $500 could get a referral bonus by inviting others.">
                                         <span>
                                         <img className='m-l-3' src={require('../../assets/images/passport/question.svg').default} alt="" />
                                         </span>

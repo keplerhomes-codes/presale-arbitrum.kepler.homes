@@ -122,7 +122,7 @@ export default connect(
                             <Button className="invite-btn fz-14" onClick={copyAddress}>
                                 Invite Friends
                             </Button>
-                            <Tooltip title="Holders whose KEPL asset is over $10,000 could get a referral bonus by inviting others.">
+                            <Tooltip title="Holders whose KEPL asset is over $500 could get a referral bonus by inviting others.">
                                         <span>
                                         <img className='m-l-3' src={require('../assets/images/passport/question.svg').default} alt="" />
                                         </span>
