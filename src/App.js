@@ -59,7 +59,7 @@ function App() {
     [network]
   );
   useEffect(()=> {
-    document.title = `KEPLER | ${pathname.replace('/', '')?pathname.replace('/', '').toUpperCase():'PRESALE'}`
+    document.title = `KEPLER | ${pathname.replace('/', '')?pathname.replace('/', '').toUpperCase():'PRESALE-BSC'}`
     if (window.innerWidth < 768) {
       Bus.emit('foldChange', false);
     }

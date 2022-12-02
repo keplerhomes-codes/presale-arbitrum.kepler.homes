@@ -147,16 +147,23 @@ const Login = async() => {
               <NavLink className="nav-item cf  fz-16 m-l-40 islink" to="/">
                  Presale
               </NavLink>
-              {/* <NavLink className="nav-item cf  fz-16 m-l-40 islink" to="/whitelist">
-                    Whitelist
-              </NavLink> */}
-
+              <a className="nav-item cf  fz-16 m-l-40 islink" href="https://presale-aptos.kepler.homes" target="_blank">
+                    <img src={require('../../assets/images/token/Aptos.png')} alt="" style={{width: 20}} className="m-r-5"/>
+                   Aptos Presale
+              </a>
       </div>
       <div className="header-right">
-        <a href="https://nft-mint.kepler.homes" target="_blank">
+        {/* <a href="https://nft-mint.kepler.homes" target="_blank">
           <Button className='mint-btn cf fz-16'>NFT-Mint</Button>
-        </a>
+        </a> */}
+        <span className="flex flex-center ">
         <Button className='invite-btn m-l-12 cf fz-16' onClick={copyAddress}>Invite friends</Button>
+        <Tooltip title="Holders whose KEPL asset is over $10,000 could get a referral bonus by inviting others.">
+                                        <span>
+                                        <img className='m-l-3' src={require('../../assets/images/passport/question.svg').default} alt="" />
+                                        </span>
+                                </Tooltip>
+        </span>
       </div>
       <div className='connect'>
         <ConnectWallet hideChain={['ETH','Avalanche', 'Polygon', 'Solana']} isVisible={isConnectWalletVisible} handleOk={handleConnectWalletOk} handleCancel={handleConnectCancel} />
