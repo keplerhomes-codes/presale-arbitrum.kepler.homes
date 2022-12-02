@@ -364,7 +364,7 @@ export default connect(
              </div>
              </div>
              <div className={"p-l-46 p-r-46 p-t-24 p-b-24 "+(loading?'unable':'')}>
-                <Slider className="rcslider" reverse marks={marks} min={12} max={60} onChange={setSelectMonths} value={selectMonths} defaultValue={selectMonths}/>
+                <Slider className="rcslider" marks={marks} min={12} max={60} onChange={setSelectMonths} value={selectMonths} defaultValue={selectMonths}/>
              </div>
                    
                    </>
@@ -377,9 +377,9 @@ export default connect(
                     Approve {cur}
                   </Button>:(
                     props.account ?
-                    <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum < 2000 || inputNum > 100000}>
+                    <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum < 500 || inputNum > 100000}>
                     {
-                       inputNum < 2000 ? (
+                       inputNum < 500 ? (
                         inputNum == 0 ? 'Please input your amount':'Amount is too small'
                        ):(
                         inputNum > 100000 ? (
