@@ -138,7 +138,7 @@ const ChooseToken = (props) => {
 
     useEffect(()=>{
         if(props.account) {
-            setInputNum(toFixed(balance*percent/100, 3)||'')
+            balance*percent > 0 ? setInputNum(toFixed(balance*percent/100, 3)||''):setInputNum('')
         } else {
             setInputNum('')
         }
@@ -193,7 +193,7 @@ export default connect(
     let [rounds, setRounds] = useState(1)
     let [progress, setProgress] = useState(0)
     let [price, setPrice] = useState(0)
-    let [inputNum, setInputNum] = useState(0)
+    let [inputNum, setInputNum] = useState('')
     let [cur, setCur] = useState('BUSD')
     let [needApprove, setNeedApprove] = useState(false)
     let [loading, setLoading] = useState(false)
