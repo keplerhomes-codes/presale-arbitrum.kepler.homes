@@ -120,6 +120,16 @@ export function buy(
         usdAmount,
         lockPeriods,
         referrer
+      ).estimateGas({from: address}).then(res=>{
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
+      new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy(
+        usdToken,
+        usdAmount,
+        lockPeriods,
+        referrer
       )
       .send({from: address})
       .then((result) => {
