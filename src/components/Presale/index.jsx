@@ -21,6 +21,7 @@ import { allowance, approve } from '../../contract/methods'
 import { formatTimeStr } from 'antd/lib/statistic/utils'
 import Modal from '../../components/Base/Modal'
 import notification from '../notification'
+import { useRef } from 'react'
 
 let marks = {
     12: {
@@ -88,6 +89,7 @@ const ChooseToken = (props) => {
     let [balance, setBalance] = useState(0)
     let [selectCur, setSelectCur] = useState('BUSD')
     let [inputNum, setInputNum] = useState('')
+    let timer = useRef()
     const currencyChange = async (e) => {
         setSelectCur(e)
         props.curChange(e)
@@ -96,6 +98,17 @@ const ChooseToken = (props) => {
             setBalance(fromUnit(bal))
         }
     }
+
+    const polling = useCallback((flag = false) => {
+        timer.current && clearInterval(timer.current)
+        timer.current = setInterval(() => {
+            currencyChange('BUSD')
+        }, 20000)
+      })
+    useEffect(() => {
+        polling()
+        return () => clearInterval(timer.current)
+    }, [])
     const handleSetAmount = (value) => {
         if (value === '') {
             setInputNum(value)
