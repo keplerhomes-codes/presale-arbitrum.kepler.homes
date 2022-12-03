@@ -11,7 +11,7 @@ export default {
         "The KEPL token price is $0.0293 in the first round and will get an additional 5% increase in the following nine rounds.",
         "KEPL tokens sold in presale are required to be locked in the vote escrow smart contract compulsorily at least 12 months.",
         "The locking weight is 1:1 (KEPL: veKEPL) and it remains constant in all rounds.",
-        "The minimum subscription is $500. Holders whose KEPL asset is over $500 could get a referral bonus by inviting others.",
+        "The minimum subscription is $200. Holders whose KEPL asset is over $200 could get a referral bonus by inviting others.",
         "All KEPL tokens sold in presale can circulate freely after IDO."
     ],
     "benefits": [
@@ -44,7 +44,7 @@ export default {
         
         {
             "q": "Are there any limitations on how many KEPL token I can buy?",
-            "a": "In presale, the minimum subscription is $500 for a wallet address, and the maximum is $100,000."
+            "a": "In presale, the minimum subscription is $200 for a wallet address, and the maximum is $100,000."
         },
         {
             "q": "Am I allowed to participate more than one round?",
@@ -61,7 +61,7 @@ export default {
         {
             "q": "What is the referral bonus?",
             "a": <span>All KEPL or veKEPL token holders are recommended to share an invitation link to their friends. <br/>
-            Holders whose KEPL asset is over $500 could get 5% of their friend's purchase amount as a referral bonus.
+            Holders whose KEPL asset is over $200 could get 5% of their friend's purchase amount as a referral bonus.
             </span>
         },
         {

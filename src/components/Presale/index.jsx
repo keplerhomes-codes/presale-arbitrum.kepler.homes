@@ -377,9 +377,9 @@ export default connect(
                     Approve {cur}
                   </Button>:(
                     props.account ?
-                    <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum < 500 || inputNum > 100000}>
+                    <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum < 200 || inputNum > 100000}>
                     {
-                       inputNum < 500 ? (
+                       inputNum < 200 ? (
                         inputNum == 0 ? 'Please input your amount':'Amount is too small'
                        ):(
                         inputNum > 100000 ? (
