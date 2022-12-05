@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="14px" viewBox="0 0 17 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 3</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Market" transform="translate(-195.000000, -33.000000)" fill="#FFFFFF">
+            <g id="编组-3" transform="translate(195.000000, 33.000000)">
+                <rect id="矩形" x="0" y="0" width="14" height="2"></rect>
+                <rect id="矩形备份" x="0" y="5.79529236" width="10" height="2"></rect>
+                <rect id="矩形备份-2" x="0" y="11.5182041" width="14" height="2"></rect>
+                <polygon id="路径" transform="translate(14.072891, 6.545292) rotate(-90.000000) translate(-14.072891, -6.545292) " points="17.002181 7.49551299 15.9733303 8.52438517 14.0729102 6.62396506 12.1724515 8.52438549 11.1436013 7.49551151 14.0729138 4.56619899"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

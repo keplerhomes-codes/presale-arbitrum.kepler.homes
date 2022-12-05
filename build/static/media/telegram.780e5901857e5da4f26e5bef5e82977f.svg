@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>矩形 2备份 3</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="30" height="30" rx="15"></rect>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="kepler-盲盒-NFT-Whitelist-" transform="translate(-215.000000, -391.000000)">
+            <g id="编组-19" transform="translate(215.000000, 391.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="蒙版" fill="#D8E7FF" xlink:href="#path-1"></use>
+                <g id="telegram-(1)" mask="url(#mask-2)" fill="#2E3689">
+                    <g transform="translate(6.185344, 7.500000)" id="Fill-1">
+                        <path d="M6.72486494,14.0925265 L7.00250054,9.89713452 L14.619537,3.03388381 C14.9567386,2.72652334 14.5501789,2.5777246 14.1037827,2.84548096 L4.70159736,8.7864178 L0.635245604,7.49703218 C-0.237584919,7.2490343 -0.247464155,6.6440473 0.833556744,6.20764657 L16.6725585,0.0982687569 C17.3965903,-0.229082642 18.0908681,0.276705198 17.8131454,1.38753814 L15.1154165,14.0925265 C14.9270137,14.9949948 14.3815055,15.2132678 13.6277488,14.7967127 L9.52167673,11.7617532 L7.54800872,13.6759714 C7.3199727,13.9040075 7.13145363,14.0925265 6.72486494,14.0925265 Z"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
