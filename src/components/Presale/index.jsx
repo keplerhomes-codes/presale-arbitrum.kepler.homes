@@ -14,14 +14,16 @@ import { useCallback, useState } from 'react'
 import {Button, InputNumber, Skeleton, Tooltip } from 'antd'
 import { useEffect } from 'react'
 import { balanceOf, buy, queryConfig, queryRoundPrices, querySaledUsdAmount, queryStableCoins } from '../../contract/methods/presale'
-import { addPoint, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, numFormat, showConnectWallet, toFixed, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
+import { addPoint, ChainIdMap, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, numFormat, showConnectWallet, toFixed, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
 import { connect } from 'react-redux'
 import { getCurAddress } from '../../contract/mainnet/address'
-import { allowance, approve } from '../../contract/methods'
+import { allowance, approve, sign } from '../../contract/methods'
 import { formatTimeStr } from 'antd/lib/statistic/utils'
 import Modal from '../../components/Base/Modal'
 import notification from '../notification'
 import { useRef } from 'react'
+import { post } from '../../http'
+import { setToken } from '../../store'
 
 let marks = {
     12: {
@@ -102,7 +104,7 @@ const ChooseToken = (props) => {
     const polling = useCallback((flag = false) => {
         timer.current && clearInterval(timer.current)
         timer.current = setInterval(() => {
-            currencyChange('BUSD')
+            currencyChange(selectCur)
         }, 20000)
       })
     useEffect(() => {
@@ -215,13 +217,31 @@ export default connect(
     let [isCheck, setIsCheck] = useState(false)
     let [showTip, setShowTip] = useState(false)
     let [claimStart, setClaimStart] = useState(new Date().getTime()/1000)
-    
+    let [isLogin, setIsLogin] = useState(false)
     let [referAddress, setAddress] = useState(location.search ? location.search.replace('?','').split('=')[1]?.toLowerCase():'')
     let [endDate, setEndDate] = useState(new Date(new Date(claimStart*1000).getFullYear(), new Date(claimStart*1000).getMonth()*1+60, new Date(claimStart*1000).getDate()))
     const numChange = (num) => {
         console.log(num)
         setInputNum(num)
     }
+
+  const Login = async() => {
+    let signature = await sign('login')
+    post('/api/account/connect', {
+      chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'BSC'],
+      user: props.account,
+      signature
+    }).then(res => {
+      props.dispatch(setToken(res.data.token))
+      localStorage.setItem(props.account, res.data.token)
+      setIsLogin(true)
+    }).catch(err => {
+      notification.error({
+        message: ('Login Fail'),
+        description: ('Something goes wrong')
+    });
+    })
+  }
     const curChange = async (name) => {
         setCur(name)
         if(props.account) {
@@ -283,6 +303,14 @@ export default connect(
         setProgress((fromUnit(saledUsd)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
         setIsLoading(false)
     }, [refresh])
+    useEffect(() => {
+        setIsLogin(false)
+        if(props.account && !localStorage.getItem(props.account)) {
+            Login()
+        } else {
+            setIsLogin(true)
+        }
+    }, [props.account])
     return (
         <div className="private-box cf">
              <div className="fz-24 fwb p-l-24 p-r-24">KEPL Presale</div>
@@ -389,18 +417,22 @@ export default connect(
                     needApprove ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toApprove}>
                     Approve {cur}
                   </Button>:(
-                    props.account ?
-                    <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum < 200 || inputNum > 100000}>
-                    {
-                       inputNum < 200 ? (
-                        inputNum == 0 ? 'Please input your amount':'Amount is too small'
-                       ):(
-                        inputNum > 100000 ? (
-                        'Amount is too large'
-                        ):'Submit KEPL PreSale'
-                       )
-                    }
-                    </Button>:
+                    props.account ? (
+                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum < 200 || inputNum > 100000}>
+                        {
+                           inputNum < 200 ? (
+                            inputNum == 0 ? 'Please input your amount':'Amount is too small'
+                           ):(
+                            inputNum > 100000 ? (
+                            'Amount is too large'
+                            ):'Submit KEPL PreSale'
+                           )
+                        }
+                        </Button>: <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={Login}>
+                        Approve your wallet
+                    </Button>
+                    )
+                    :
                     <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={showConnectWallet}>
                         Connect Wallet
                     </Button>
