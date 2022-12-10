@@ -23,6 +23,37 @@ const { Panel } = Collapse;
 
 const { TabPane } = Tabs;
 
+const Raffle = () => {
+  return <div>
+     <div className="fz-20 fwb cf">Raffle Rules</div>
+     <div className="c06 fz-16 m-t-10">When the number of participants in presale reaches 2000, 
+     we will randomly select 100 lucky users, each of whom will receive a bonus of $100, 
+     totaling $10,000. Users can query the winning status on this page, and the winning 
+     users need to click the claim button on this page to receive the bonus.</div>
+     <div className="m-t-20 fz-16 flex flex-center">
+       <div className="raffle-title c06 " style={{width: 180}}>Tech support</div>
+       <div className="raffle-title fwb cf"><img src={require('../assets/images/private/chainlink.png')} alt="" height={30}/></div>
+     </div>
+     <div className="m-t-20 fz-16 flex flex-center">
+       <div className="raffle-title c06 " style={{width: 180}}>Raffle status</div>
+       <div className="raffle-title fwb cf">Not Started</div>
+     </div>
+
+     <div className="m-t-20 fz-16 flex flex-center">
+       <div className="raffle-title c06 " style={{width: 180}}>Your bonus</div>
+       <div className="raffle-title fwb cf">-- <Button className="claim-raffle-btn bgblue cf  disabled bdr-15" disabled>Claim</Button></div>
+     </div>
+
+     <div className="m-t-20 fz-16 flex flex-center">
+       <div className="raffle-title c06 " style={{width: 180}}>Twitter link</div>
+       <div className="raffle-title fwb cf flex flex-center">
+          <img src={require('../assets/images/private/twitter.svg').default} alt="" height={30}/>
+          <a href="https://twitter.com/KeplerHomes/status/1600830126824239105" target="_blank" className="cblue fwb fz-18 underline m-l-5">Twitter</a>
+       </div>
+     </div>
+
+  </div>
+}
 
 
 
@@ -58,7 +89,7 @@ export default connect(
             <div className="flex private-content flex-between p-b-100">
                   <div className="left-part">
                      <video src={videoSrc} playsInline loop autoPlay muted controls className='video'></video>
-                     <Tabs className='my-tab mint-tab' tabPosition="top" >
+                     <Tabs className='my-tab mint-tab' tabPosition="top" defaultActiveKey="7" >
                       <TabPane tab="Hightlights" key="0">
                         {
                             privatetext.highlights.map(item => {
@@ -109,6 +140,10 @@ export default connect(
                           <Record/>
                       </TabPane>
                
+                      
+                      <TabPane tab="Raffle" key="7">
+                          <Raffle/>
+                      </TabPane>
                
                      </Tabs>
                   </div>
