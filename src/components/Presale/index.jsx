@@ -150,8 +150,8 @@ const ChooseToken = (props) => {
     useEffect(() => {
         setInputNum('')
         setPercent(0)
-        setSelectCur('BUSD')
-        currencyChange('BUSD')
+        setSelectCur(selectCur)
+        currencyChange(selectCur)
     }, [props.refresh])
 
     useEffect(()=>{
