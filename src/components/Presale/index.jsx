@@ -265,7 +265,7 @@ export default connect(
             setNeedApprove(allow <= 0 )
             // setNeedApprove(false )
           }
-    }, [])
+    }, [props.account])
     const toBuy = () => {
         setLoading(true)
         console.log(cur)
