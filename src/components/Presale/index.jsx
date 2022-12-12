@@ -93,6 +93,7 @@ const ChooseToken = (props) => {
     let [inputNum, setInputNum] = useState('')
     let timer = useRef()
     const currencyChange = async (e) => {
+        console.log(e)
         setSelectCur(e)
         props.curChange(e)
         if(props.account) {
@@ -101,16 +102,18 @@ const ChooseToken = (props) => {
         }
     }
 
-    const polling = useCallback((flag = false) => {
-        timer.current && clearInterval(timer.current)
-        timer.current = setInterval(() => {
-            currencyChange(selectCur)
-        }, 20000)
-      })
-    useEffect(() => {
-        polling()
-        return () => clearInterval(timer.current)
-    }, [])
+    // const polling = () => {
+    //     timer.current && clearInterval(timer.current)
+    //     timer.current = setInterval(() => {
+    //         console.log(selectCur)
+    //         console.log(props.refresh)
+    //         currencyChange(selectCur)
+    //     }, 20000)
+    //   }
+    // useEffect(() => {
+    //     polling()
+    //     return () => clearInterval(timer.current)
+    // }, [])
     const handleSetAmount = (value) => {
         if (value === '') {
             setInputNum(value)
@@ -183,7 +186,7 @@ const ChooseToken = (props) => {
                 <div className="right-item flex flex-center flex-between">
                     <input type="text" className='number-input fz-32 fwb c06' placeholder='0' value={inputNum} onChange={(e) => handleSetAmount(e.target.value)}/>
                     <div className="select-box flex flex-end">
-                        <Select options={selectOptions(currentList)}  onChange={currencyChange}/>
+                        <Select options={selectOptions(currentList)} onChange={currencyChange}/>
                     </div>
                     
                 </div>
@@ -242,17 +245,30 @@ export default connect(
     });
     })
   }
-    const curChange = async (name) => {
+    // const curChange = async (name) => {
+    //     console.log(name)
+    //     setCur(name)
+    //     if(props.account) {
+    //         console.log(cur)
+    //         let allow = await allowance(findAddressByName(name), getCurAddress().Presale).call()
+    //         console.log(allow)
+    //         setNeedApprove(allow <= 0 )
+    //       }
+    // }
+    const curChange = useCallback( async (name) => {
+           console.log(name)
         setCur(name)
         if(props.account) {
             console.log(cur)
             let allow = await allowance(findAddressByName(name), getCurAddress().Presale).call()
             console.log(allow)
             setNeedApprove(allow <= 0 )
+            // setNeedApprove(false )
           }
-    }
+    }, [])
     const toBuy = () => {
         setLoading(true)
+        console.log(cur)
        buy(findAddressByName(cur),toWei(Number(inputNum).toString()), selectMonths, (referAddress && referAddress.toLowerCase() != props.account)?referAddress:ZERO_ADDRESS).then(res => {
         setLoading(false)
         setRefresh(refresh+1)
