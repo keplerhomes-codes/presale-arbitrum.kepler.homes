@@ -133,6 +133,7 @@ const ChooseToken = (props) => {
     useEffect(async () => {
         let currencies = await queryStableCoins()
         let list = []
+        console.log(currencies)
         currencies.map(item => {
             list.push({
                 icon: iconMap[findNameByAddress(item)],

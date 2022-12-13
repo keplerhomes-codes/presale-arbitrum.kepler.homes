@@ -19,7 +19,7 @@ function Footer() {
       <div className="footer-bottom flex-1">
         <div className="social-list">
           <a className="social-item" href="https://www.youtube.com/channel/UClN9tsN8atf0QHbRtUlX5aw" target="_blank"><img src={youtube} alt="" /></a>
-          <a className="social-item"><img src={github} alt="" /></a>
+          <a className="social-item" href="https://github.com/kepler-homes/"><img src={github} alt="" /></a>
           <a className="social-item" href="https://medium.com/@KeplerHomes" target="_blank"><img src={medium} alt="" /></a>
           <a className="social-item" href="https://twitter.com/KeplerHomes" target="_blank"><img src={twitter} alt="" /></a>
           <a className="social-item" href="https://discord.gg/keplerhomes" target="_blank"><img src={discord} alt="" /></a>

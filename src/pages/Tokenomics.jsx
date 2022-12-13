@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import Release from '../components/Charts/Release'
 import {Tabs} from 'antd'
 import Token from '../components/Charts/Token'
+import privatetext from '../lib/privatetext';
 let {TabPane} = Tabs
 
 export default function ({width=700}) {
@@ -36,6 +37,13 @@ export default function ({width=700}) {
                   <Release/>
                 </div>
                    
+                </TabPane>
+                <TabPane tab="veKEPL dividends" key="1">
+                    {
+                      privatetext.benefits.map(item => {
+                          return <div className="cf fz-16 m-b-20">{item}</div>
+                      })
+                    }
                 </TabPane>
         </Tabs>
       

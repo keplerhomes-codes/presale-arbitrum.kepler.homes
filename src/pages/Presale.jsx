@@ -89,7 +89,7 @@ export default connect(
             <div className="flex private-content flex-between p-b-100">
                   <div className="left-part">
                      <video src={videoSrc} playsInline loop autoPlay muted controls className='video'></video>
-                     <Tabs className='my-tab mint-tab' tabPosition="top" defaultActiveKey="7" >
+                     <Tabs className='my-tab mint-tab' tabPosition="top" defaultActiveKey="0" >
                       <TabPane tab="Hightlights" key="0">
                         {
                             privatetext.highlights.map(item => {
@@ -97,26 +97,15 @@ export default connect(
                             })
                           }
                       </TabPane>
-                      <TabPane tab="veKEPL dividends" key="1">
-                          {
-                            privatetext.benefits.map(item => {
-                                return <div className="cf fz-16 m-b-20">{item}</div>
-                            })
-                          }
-                      </TabPane>
-                      <TabPane tab="PreSale Rules" key="2">
+                      
+                      <TabPane tab="PreSale Rules & FAQ" key="2">
                          {
                             privatetext["presale rules"].map(item => {
                                 return <div className="cf fz-16 m-b-20">{item}</div>
                             })
                           }
-                      </TabPane>
-                      
-                      <TabPane tab="Tokenomics" key="3">
-                         <Tokenomics width={500}/>
-                      </TabPane>
-                      <TabPane tab="FAQ" key="4">
-                      <Space direction="vertical" size={0}>
+                          <div className="fz-24 fwb cf m-b-20">FAQ</div>
+                          <Space direction="vertical" size={0}>
                       {
                             privatetext["faq"].map(item => {
                                 return (
@@ -130,7 +119,10 @@ export default connect(
                           }
                         
                         </Space>
+                      </TabPane>
                       
+                      <TabPane tab="Tokenomics" key="3">
+                         <Tokenomics width={500}/>
                       </TabPane>
                       <TabPane tab="Claim" key="5">
                           <Claim refresh={refresh}/>
