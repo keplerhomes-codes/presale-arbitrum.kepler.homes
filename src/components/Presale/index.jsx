@@ -4,6 +4,8 @@ import Select from './Select'
 import BUSD from '../../assets/images/token/BUSD.svg'
 import USDT from '../../assets/images/token/USDT.svg'
 import USDC from '../../assets/images/token/USDC.svg'
+import CAKE from '../../assets/images/token/CAKE.svg'
+import BNB from '../../assets/images/token/BNB.svg'
 import Tangle from '../../assets/images/base/tangle.svg'
 
 import Slider, { Range } from 'rc-slider';
@@ -13,7 +15,7 @@ import { useLocation } from 'react-router-dom'
 import { useCallback, useState } from 'react'
 import {Button, InputNumber, Skeleton, Tooltip } from 'antd'
 import { useEffect } from 'react'
-import { balanceOf, buy, queryConfig, queryRoundPrices, querySaledUsdAmount, queryStableCoins } from '../../contract/methods/presale'
+import { balanceOf, buy, getPrice, queryConfig, queryRoundPrices, querySaledUsdAmount, queryStableCoins } from '../../contract/methods/presale'
 import { addPoint, ChainIdMap, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, numFormat, showConnectWallet, toFixed, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
 import { connect } from 'react-redux'
 import { getCurAddress } from '../../contract/mainnet/address'
@@ -73,6 +75,8 @@ let iconMap = {
     'BUSD': BUSD,
     'USDT': USDT,
     'USDC': USDC,
+    'CAKE': CAKE,
+    'BNB': BNB,
 }
 
 let selectOptions = (currentList)=> {
@@ -91,6 +95,7 @@ const ChooseToken = (props) => {
     let [balance, setBalance] = useState(0)
     let [selectCur, setSelectCur] = useState('BUSD')
     let [inputNum, setInputNum] = useState('')
+    let [price, setPrice] = useState(1)
     let timer = useRef()
     const currencyChange = async (e) => {
         console.log(e)
@@ -99,6 +104,7 @@ const ChooseToken = (props) => {
         if(props.account) {
             let bal = await balanceOf(findAddressByName(e), props.account)
             setBalance(fromUnit(bal))
+            
         }
     }
 
@@ -139,6 +145,14 @@ const ChooseToken = (props) => {
                 icon: iconMap[findNameByAddress(item)],
                 name: findNameByAddress(item)
             })
+        })
+        list.push({
+            icon: BNB,
+            name: 'BNB'
+        })
+        list.push({
+            icon: CAKE,
+            name: 'CAKE'
         })
         setCurrentList(list)
         currencyChange(selectCur)
@@ -212,6 +226,7 @@ export default connect(
     let [rounds, setRounds] = useState(1)
     let [progress, setProgress] = useState(0)
     let [price, setPrice] = useState(0)
+    let [tokenPrice, setTokenPrice] = useState(1)
     let [inputNum, setInputNum] = useState('')
     let [cur, setCur] = useState('BUSD')
     let [needApprove, setNeedApprove] = useState(false)
@@ -261,11 +276,18 @@ export default connect(
         setCur(name)
         if(props.account) {
             console.log(cur)
-            let allow = await allowance(findAddressByName(name), getCurAddress().Presale).call()
+            let allow = name == 'BNB' ? 1: await allowance(findAddressByName(name), getCurAddress().Presale).call()
             console.log(allow)
             setNeedApprove(allow <= 0 )
             // setNeedApprove(false )
           }
+          if(['CAKE', 'BNB'].includes(name)) {
+            let prices = await getPrice(findAddressByName(name))
+            setTokenPrice(fromUnit(prices))
+            console.log(fromUnit(prices))
+        } else {
+            setTokenPrice(1)
+        }
     }, [props.account])
     const toBuy = () => {
         setLoading(true)
@@ -435,12 +457,12 @@ export default connect(
                     Approve {cur}
                   </Button>:(
                     props.account ? (
-                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum < 200 || inputNum > 100000}>
+                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < 200 || inputNum*tokenPrice > 100000}>
                         {
-                           inputNum < 200 ? (
+                           inputNum*tokenPrice < 200 ? (
                             inputNum == 0 ? 'Please input your amount':'Amount is too small'
                            ):(
-                            inputNum > 100000 ? (
+                            inputNum * tokenPrice > 100000 ? (
                             'Amount is too large'
                             ):'Submit KEPL PreSale'
                            )

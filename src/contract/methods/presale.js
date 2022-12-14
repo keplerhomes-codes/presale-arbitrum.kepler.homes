@@ -10,7 +10,8 @@ import { erc20ABI } from '../../contract/abi/erc20'
 import nft from '../mainnet/nft'
 import Airdrop from '../mainnet/Airdrop'
 import Presale from '../mainnet/Presale'
-import { toWei } from '../../lib/util'
+import ChainlinkOracle from '../mainnet/chainlinkOracle'
+import { toWei, ZERO_ADDRESS } from '../../lib/util'
 import {getAddress, getCurAddress}  from '../mainnet/address'
 import { MaxUint256 } from '@ethersproject/constants'
 import { post } from '../../http'
@@ -62,10 +63,13 @@ const stringToBytes32 = (s) => {
 
 export function balanceOf (contractAddress, address) {
   const web3 = createCurWeb3()
-  return new web3.eth.Contract(bep20ABI, contractAddress).methods.balanceOf(address).call()
+  return contractAddress == ZERO_ADDRESS ? web3.eth.getBalance(address) : new web3.eth.Contract(bep20ABI, contractAddress).methods.balanceOf(address).call()
 }
 
-
+export function getPrice (address) {
+  const web3 = createCurWeb3()
+  return new web3.eth.Contract(ChainlinkOracle, getCurAddress()[`ChainlinkOracle`]).methods.queryPrice(address).call()
+}
 
 // presale
 export function querySaledUsdAmount() {
@@ -115,12 +119,13 @@ export function buy(
       const web3 = new Web3(provider)
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
+      let innerJson = usdToken == ZERO_ADDRESS ? {from: address, value: usdAmount}:{from: address}
       new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy(
         usdToken,
         usdAmount,
         lockPeriods,
         referrer
-      ).estimateGas({from: address}).then(res=>{
+      ).estimateGas(innerJson).then(res=>{
         console.log(res)
       }).catch(err => {
         console.log(err)
@@ -131,7 +136,7 @@ export function buy(
         lockPeriods,
         referrer
       )
-      .send({from: address})
+      .send(innerJson)
       .then((result) => {
        res(result)
        notification.success({

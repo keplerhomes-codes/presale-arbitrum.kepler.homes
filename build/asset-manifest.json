@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9b6e3c98.css",
-    "main.js": "/static/js/main.3d210a77.js",
+    "main.js": "/static/js/main.df367da1.js",
     "static/js/431.aa967a92.chunk.js": "/static/js/431.aa967a92.chunk.js",
     "static/js/126.7e6ff5a4.chunk.js": "/static/js/126.7e6ff5a4.chunk.js",
     "static/js/489.28668acf.chunk.js": "/static/js/489.28668acf.chunk.js",
@@ -78,6 +78,7 @@
     "static/media/pancake.svg": "/static/media/pancake.f492524fab60dbefe8500c3e871a1e8b.svg",
     "static/media/rewards.svg": "/static/media/rewards.b5a4f023eba72723f92198691b91e020.svg",
     "static/media/marketplace.svg": "/static/media/marketplace.90c82f3b484b4cf5268b9f8c6d4bbfcb.svg",
+    "static/media/CAKE.svg": "/static/media/CAKE.a943066195c075bf552c890823c25b73.svg",
     "static/media/share.svg": "/static/media/share.a673337ca61b96979ee85cb12d04de85.svg",
     "static/media/mynft_active.svg": "/static/media/mynft_active.2b606e283017b88c70c4178ea21be8d9.svg",
     "static/media/serum.svg": "/static/media/serum.5107fd33cca0d4cc6f4970176d564e8c.svg",
@@ -199,7 +200,7 @@
     "static/media/arrow-right.svg": "/static/media/arrow-right.6fefd3df518071e6d6b9158f17b20ffb.svg",
     "static/media/arrow-left.svg": "/static/media/arrow-left.6cb32aa4931942784a632ca5daa5480e.svg",
     "main.9b6e3c98.css.map": "/static/css/main.9b6e3c98.css.map",
-    "main.3d210a77.js.map": "/static/js/main.3d210a77.js.map",
+    "main.df367da1.js.map": "/static/js/main.df367da1.js.map",
     "431.aa967a92.chunk.js.map": "/static/js/431.aa967a92.chunk.js.map",
     "126.7e6ff5a4.chunk.js.map": "/static/js/126.7e6ff5a4.chunk.js.map",
     "489.28668acf.chunk.js.map": "/static/js/489.28668acf.chunk.js.map",
@@ -209,6 +210,6 @@
   },
   "entrypoints": [
     "static/css/main.9b6e3c98.css",
-    "static/js/main.3d210a77.js"
+    "static/js/main.df367da1.js"
   ]
 }

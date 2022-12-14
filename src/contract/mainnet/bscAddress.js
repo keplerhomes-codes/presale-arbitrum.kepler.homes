@@ -3,6 +3,8 @@ export default {
     "PreKEPL": "0x6eb376d9bc067cdad77041ba73d2de0ce2b70f79",
     "WBNB": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
     "BUSD": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+    "BNB": "0x0000000000000000000000000000000000000000",
+    "CAKE": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
     "BTCB": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
     "ETH": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
     "USDT": "0x55d398326f99059ff775485246999027b3197955",
