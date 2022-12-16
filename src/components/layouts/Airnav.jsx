@@ -151,6 +151,11 @@ const Login = async() => {
                     <img src={require('../../assets/images/token/Aptos.png')} alt="" style={{width: 20}} className="m-r-5"/>
                    Aptos Presale
               </a>
+
+              <a className="nav-item cf  fz-16 m-l-40 islink" href="https://presale-bsc.kepler.homes" target="_blank">
+                    <img src={require('../../assets/images/ConnectWallet/binance.png')} alt="" style={{width: 20}} className="m-r-5"/>
+                   BSC Presale
+              </a>
       </div>
       <div className="header-right">
         {/* <a href="https://nft-mint.kepler.homes" target="_blank">
@@ -158,7 +163,7 @@ const Login = async() => {
         </a> */}
         <span className="flex flex-center ">
         <Button className='invite-btn m-l-12 cf fz-16' onClick={copyAddress}>Invite friends</Button>
-        <Tooltip title="Holders whose KEPL asset is over $200 could get a referral bonus by inviting others.">
+        <Tooltip title="Holders whose KEPL asset is over $500 could get a referral bonus by inviting others.">
                                         <span>
                                         <img className='m-l-3' src={require('../../assets/images/passport/question.svg').default} alt="" />
                                         </span>
@@ -166,7 +171,7 @@ const Login = async() => {
         </span>
       </div>
       <div className='connect'>
-        <ConnectWallet hideChain={['ETH','Avalanche', 'Polygon', 'Solana']} isVisible={isConnectWalletVisible} handleOk={handleConnectWalletOk} handleCancel={handleConnectCancel} />
+        <ConnectWallet hideChain={['ETH','Avalanche', 'Polygon', 'Solana' ,'BSC']} isVisible={isConnectWalletVisible} handleOk={handleConnectWalletOk} handleCancel={handleConnectCancel} />
       </div>
     </div>
 

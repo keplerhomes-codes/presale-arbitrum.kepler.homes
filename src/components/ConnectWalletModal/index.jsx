@@ -6,6 +6,7 @@ import { CloseOutlined } from '@ant-design/icons';
 import ethereum from '../../assets/images/ConnectWallet/ethereum.png'
 import binance from '../../assets/images/ConnectWallet/binance.png'
 import solana from '../../assets/images/ConnectWallet/solana.png'
+import arbitrum from '../../assets/images/ConnectWallet/arbitrum.jpg'
 import avalanche from '../../assets/images/ConnectWallet/avalanche.png'
 import polygon from '../../assets/images/ConnectWallet/polygon.png'
 import metamask from '../../assets/images/wallets/metamask.png'
@@ -26,7 +27,7 @@ import {setChain,setconnect, connect, disconnect} from '../../store'
 import { useWallet } from '@solana/wallet-adapter-react';
 
 function ConnectWalletModal(props) {
-  const [selectChain, setSelectChain] = useState('BSC')
+  const [selectChain, setSelectChain] = useState('Arbitrum')
   const [isCheck, setIsCheck] = useState(true)
   const { wallets: solWallets, select: solSelect, connect: solConnect, disconnect: solDisconnect, publicKey: solPublicKey, wallet: solWallet } = useWallet();
   const [solConnecting, setSolConnecting] = useState(false)
@@ -93,8 +94,8 @@ function ConnectWalletModal(props) {
         {/* <div className="fw500 thermofservice-checkbox"><img className="checkbox" src={isCheck ? checkboxChecked : checkboxUncheck} alt=""  onClick={_ => setIsCheck(!isCheck)} /><div>I have read, understand, and agree to the <a className="highlight">Terms of Service</a>.</div></div> */}
       </div>
       <div className={classnames(["wallet-choose", {"disabled": !isCheck}])}>
-        <h3 className="fw500 wallet-choose-title">Step1: Choose Network</h3>
-        <div className="chain-list">
+        {/* <h3 className="fw500 wallet-choose-title">Step1: Choose Network</h3> */}
+        {/* <div className="chain-list">
           <div className={classnames(["chain-item", {"active": selectChain === 'ETH'}, {"hide": props.hideChain.includes('ETH')}])} onClick={_ => {
             setSelectChain('ETH')
           }}>
@@ -102,6 +103,15 @@ function ConnectWalletModal(props) {
               <img src={ethereum} alt="ethereum" />
             </div>
             <div className="chain-name">Ethereum</div>
+          </div>
+
+          <div className={classnames(["chain-item", {"active": selectChain === 'Arbitrum'}, {"hide": props.hideChain.includes('Arbitrum')}])} onClick={_ => {
+            setSelectChain('Arbitrum')
+          }}>
+            <div className="chain-image">
+              <img src={arbitrum} alt="ethereum" />
+            </div>
+            <div className="chain-name">Binance</div>
           </div>
           <div className={classnames(["chain-item", {"active": selectChain === 'BSC'}, {"hide": props.hideChain.includes('BSC')}])} onClick={_ => {
             setSelectChain('BSC')
@@ -143,8 +153,8 @@ function ConnectWalletModal(props) {
             
           </div>
           </Tooltip>
-        </div>
-        <h3 className="fw500 wallet-choose-title">Step2: Choose Wallet</h3>
+        </div> */}
+        <h3 className="fw500 wallet-choose-title">Choose Wallet</h3>
         <div className="wallet-list">
           {
             selectChain !== 'Solana' ?

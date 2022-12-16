@@ -38,7 +38,35 @@ export const getBSCNetwork = () => {
     }
   }
 }
-
+export const getArbitrumNetwork = () => {
+  return {
+    name: 'ARB',
+    params: {
+      chainId: '42161',
+      chainName: 'ARB MainNet',
+      nativeCurrency: {
+        name: 'Ethereum',
+        symbol: 'ETH',
+        decimals: 18,
+      },
+      rpcUrls: ['https://arb1.arbitrum.io/rpc/'],
+      blockExplorerUrls: ['https://arbiscan.io/'],
+    },
+    networkId: 42161,
+    httpProviderURL: 'https://arb1.arbitrum.io/rpc/',
+    connectors: {
+      network: 'arbitrum',
+      cacheProvider: true,
+      providerOptions: providerOptions({
+        walletconnectOptions: {
+          rpc: {
+            42161: 'https://arb1.arbitrum.io/rpc/'
+          }
+        }
+      })
+    }
+  }
+}
 export const getETHNetwork = () => {
   return {
     name: 'ETH',
@@ -179,5 +207,6 @@ export default {
   getBSCNetwork,
   getETHNetwork,
   getPolygonNetwork,
-  getAvalancheNetwork
+  getAvalancheNetwork,
+  getArbitrumNetwork
 }

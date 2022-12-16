@@ -32,21 +32,24 @@ export const ChainIdName = {
   56: 'bsc',
   137: 'matic',
   43113: 'avax',
-  666: 'sol'
+  666: 'sol',
+  42161: 'arb'
 }
 export const FullChainIdName = {
   1: 'Ethereum',
   56: 'Binance Smart Chain',
   137: 'Matic',
   43113: 'Avax',
-  666: 'Solana'
+  666: 'Solana',
+  42161: 'Arbitrum'
 }
 export const ChainIdMap = {
   'ETH': 1,  // 5test 1main
   'BSC': 56,
   'Polygon': 137,
   'Avalanche': 43114,
-  'Solana': 666
+  'Solana': 666,
+  'Arbitrum': 42161
 }
 export const fullNameBySymbol = {
   'BNB': 'binancecoin',

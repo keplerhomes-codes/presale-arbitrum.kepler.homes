@@ -22,7 +22,7 @@ import store from '../../store'
 import BigNumber from 'bignumber.js'
 const chain = localStorage.getItem('kepler_chain') || 'BSC'
 
-const httpProviderURL = 'https://data-seed-prebsc-1-s1.binance.org:8545/'
+const httpProviderURL = 'https://arb1.arbitrum.io/rpc/'
 console.log(httpProviderURL)
 // const provider = await createProviderController(chain).connect()
 export const web3 = new Web3(new Web3.providers.HttpProvider(httpProviderURL))
@@ -41,6 +41,8 @@ function createWeb3(chain) {
     httpProviderURL = getNetworkData.getPolygonNetwork().httpProviderURL
   } else if (chain === 'Avalanche') {
     httpProviderURL = getNetworkData.getAvalancheNetwork().httpProviderURL
+  } else if (chain === 'Arbitrum') {
+    httpProviderURL = getNetworkData.getArbitrumNetwork().httpProviderURL
   }
   
   return new Web3(new Web3.providers.HttpProvider(httpProviderURL))

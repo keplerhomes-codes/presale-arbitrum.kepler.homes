@@ -100,7 +100,7 @@ const ChooseToken = (props) => {
     let [percent , setPercent] = useState(0)
     let [currentList, setCurrentList] = useState([])
     let [balance, setBalance] = useState(0)
-    let [selectCur, setSelectCur] = useState('BUSD')
+    let [selectCur, setSelectCur] = useState('USDC')
     let [inputNum, setInputNum] = useState('')
     let [price, setPrice] = useState(1)
     let timer = useRef()
@@ -153,14 +153,14 @@ const ChooseToken = (props) => {
                 name: findNameByAddress(item)
             })
         })
-        list.push({
-            icon: BNB,
-            name: 'BNB'
-        })
-        list.push({
-            icon: CAKE,
-            name: 'CAKE'
-        })
+        // list.push({
+        //     icon: BNB,
+        //     name: 'BNB'
+        // })
+        // list.push({
+        //     icon: CAKE,
+        //     name: 'CAKE'
+        // })
         setCurrentList(list)
         currencyChange(selectCur)
     }, [props.account])
@@ -235,7 +235,7 @@ export default connect(
     let [price, setPrice] = useState(0)
     let [tokenPrice, setTokenPrice] = useState(1)
     let [inputNum, setInputNum] = useState('')
-    let [cur, setCur] = useState('BUSD')
+    let [cur, setCur] = useState('USDC')
     let [needApprove, setNeedApprove] = useState(false)
     let [loading, setLoading] = useState(false)
     let [isLoading, setIsLoading] = useState(false)
@@ -464,12 +464,12 @@ export default connect(
                     Approve {cur}
                   </Button>:(
                     props.account ? (
-                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < 200 || inputNum*tokenPrice > 100000}>
+                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount/tokenPrice)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount/tokenPrice)*1}>
                         {
-                           inputNum*tokenPrice < 200 ? (
+                           inputNum*tokenPrice < fromUnit(config.minBuyAmount/tokenPrice)*1 ? (
                             inputNum == 0 ? 'Please input your amount':'Amount is too small'
                            ):(
-                            inputNum * tokenPrice > 100000 ? (
+                            inputNum * tokenPrice > fromUnit(config.maxBuyAmount/tokenPrice)*1 ? (
                             'Amount is too large'
                             ):'Submit KEPL PreSale'
                            )

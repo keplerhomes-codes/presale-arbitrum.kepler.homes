@@ -18,6 +18,7 @@ import {useNavigate} from 'react-router-dom'
 let chainIcon = {
   'eth': require('../../assets/images/ConnectWallet/ethereum.png'),
   'bsc': require('../../assets/images/ConnectWallet/binance.png'),
+  'arbitrum': require('../../assets/images/ConnectWallet/arbitrum.jpg'),
   'avalanche': require('../../assets/images/ConnectWallet/avalanche.png'),
 }
 
