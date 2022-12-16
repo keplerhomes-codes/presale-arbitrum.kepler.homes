@@ -295,7 +295,9 @@ export default connect(
     const toBuy = () => {
         setLoading(true)
         console.log(cur)
-       buy(findAddressByName(cur),toWei(Number(inputNum).toString()), selectMonths, (referAddress && referAddress.toLowerCase() != props.account)?referAddress:ZERO_ADDRESS).then(res => {
+        console.log(decimal[cur])
+        console.log(toWei(Number(inputNum).toString(), decimal[cur]))
+       buy(findAddressByName(cur),toWei(Number(inputNum).toString(), decimal[cur]), selectMonths, (referAddress && referAddress.toLowerCase() != props.account)?referAddress:ZERO_ADDRESS).then(res => {
         setLoading(false)
         setRefresh(refresh+1)
         setShowTip(true)
