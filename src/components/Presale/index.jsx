@@ -78,6 +78,13 @@ let iconMap = {
     'CAKE': CAKE,
     'BNB': BNB,
 }
+let extraDecimal = {
+    'BUSD': 0,
+    'USDT': 0,
+    'USDC': 0,
+    'CAKE': 0.01,
+    'BNB': 0.01,
+}
 
 let selectOptions = (currentList)=> {
     let arr = []
@@ -377,10 +384,10 @@ export default connect(
              
              <div className="flex flex-between m-t-12  p-l-24 p-r-24 min-max">
                 <span className='c06 flex min-max-inner'><span>Min buyable: </span>    
-                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.minBuyAmount/tokenPrice),2))} {cur}</span>}
+                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.minBuyAmount/tokenPrice),2)*1+extraDecimal[cur])} {cur}</span>}
                 </span>
                 <span className='c06 flex min-max-inner'><span>Max buyable: </span>  
-                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.maxBuyAmount/tokenPrice),2))} {cur}</span>}
+                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.maxBuyAmount/tokenPrice),2)*1-+extraDecimal[cur])} {cur}</span>}
                 </span>
              </div>
              <div className="hr w100 m-t-24"></div>
