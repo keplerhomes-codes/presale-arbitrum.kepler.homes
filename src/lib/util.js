@@ -70,8 +70,8 @@ export const showConnectWallet = (chain) => {
 export const toUnit = (amount) => {
   return toBN(web3.utils.toWei(amount.toString(), "ether").toString());
 };
-export const toWei = (amount) => {
-  return web3.utils.toWei(amount, "ether");
+export const toWei = (amount, decimal=18) => {
+  return web3.utils.toWei(amount, decimal==18?"ether":"mwei");
 };
 export const toFixed = (amount, num) => {
   return new BigNumber(
