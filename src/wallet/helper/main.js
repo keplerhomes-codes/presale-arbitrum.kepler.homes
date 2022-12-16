@@ -49,18 +49,18 @@ export const getArbitrumNetwork = () => {
         symbol: 'ETH',
         decimals: 18,
       },
-      rpcUrls: ['https://arb1.arbitrum.io/rpc/'],
+      rpcUrls: ['https://arb1.arbitrum.io/rpc'],
       blockExplorerUrls: ['https://arbiscan.io/'],
     },
     networkId: 42161,
-    httpProviderURL: 'https://arb1.arbitrum.io/rpc/',
+    httpProviderURL: 'https://arb1.arbitrum.io/rpc',
     connectors: {
       network: 'arbitrum',
       cacheProvider: true,
       providerOptions: providerOptions({
         walletconnectOptions: {
           rpc: {
-            42161: 'https://arb1.arbitrum.io/rpc/'
+            42161: 'https://arb1.arbitrum.io/rpc'
           }
         }
       })

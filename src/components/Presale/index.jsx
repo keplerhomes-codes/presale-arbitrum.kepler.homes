@@ -6,6 +6,7 @@ import USDT from '../../assets/images/token/USDT.svg'
 import USDC from '../../assets/images/token/USDC.svg'
 import CAKE from '../../assets/images/token/CAKE.svg'
 import BNB from '../../assets/images/token/BNB.svg'
+import ETH from '../../assets/images/token/ETH.svg'
 import Tangle from '../../assets/images/base/tangle.svg'
 
 import Slider, { Range } from 'rc-slider';
@@ -72,20 +73,21 @@ let displayMoths = [
 ]
 
 let iconMap = {
-    'BUSD': BUSD,
     'USDT': USDT,
     'USDC': USDC,
-    'CAKE': CAKE,
-    'BNB': BNB,
+    'ETH': ETH,
 }
 let extraDecimal = {
-    'BUSD': 0,
     'USDT': 0,
     'USDC': 0,
-    'CAKE': 0.01,
-    'BNB': 0.01,
+    'ETH': 0.01,
 }
 
+let decimal = {
+    'USDT': 6,
+    'USDC': 6,
+    'ETH': 18,
+}
 let selectOptions = (currentList)=> {
     let arr = []
     currentList.map(item => {
@@ -109,9 +111,12 @@ const ChooseToken = (props) => {
         setSelectCur(e)
         props.curChange(e)
         if(props.account) {
-            let bal = await balanceOf(findAddressByName(e), props.account)
-            setBalance(fromUnit(bal))
-            
+            try {
+                let bal = await balanceOf(findAddressByName(e), props.account)
+                console.log(bal)
+                setBalance(fromUnit(bal, decimal[e]))
+            } catch (err) {
+            }
         }
     }
 
@@ -147,16 +152,18 @@ const ChooseToken = (props) => {
         let currencies = await queryStableCoins()
         let list = []
         console.log(currencies)
-        currencies.map(item => {
+        currencies.map((item, index) => {
             list.push({
                 icon: iconMap[findNameByAddress(item)],
                 name: findNameByAddress(item)
             })
+            if(index==0) {
+                list.push({
+                    icon: ETH,
+                    name: 'ETH'
+                })
+            }
         })
-        // list.push({
-        //     icon: BNB,
-        //     name: 'BNB'
-        // })
         // list.push({
         //     icon: CAKE,
         //     name: 'CAKE'
@@ -254,7 +261,7 @@ export default connect(
   const Login = async() => {
     let signature = await sign('login')
     post('/api/account/connect', {
-      chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'BSC'],
+      chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'Arbitrum'],
       user: props.account,
       signature
     }).then(res => {
@@ -283,12 +290,12 @@ export default connect(
         setCur(name)
         if(props.account) {
             console.log(cur)
-            let allow = name == 'BNB' ? 1: await allowance(findAddressByName(name), getCurAddress().Presale).call()
+            let allow = name == 'ETH' ? 1: await allowance(findAddressByName(name), getCurAddress().Presale).call()
             console.log(allow)
             setNeedApprove(allow <= 0 )
             // setNeedApprove(false )
           }
-          if(['CAKE', 'BNB'].includes(name)) {
+          if(['CAKE', 'ETH'].includes(name)) {
             let prices = await getPrice(findAddressByName(name))
             setTokenPrice(fromUnit(prices))
             console.log(fromUnit(prices))
@@ -387,7 +394,7 @@ export default connect(
                 {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.minBuyAmount/tokenPrice),2)*1+extraDecimal[cur])} {cur}</span>}
                 </span>
                 <span className='c06 flex min-max-inner'><span>Max buyable: </span>  
-                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.maxBuyAmount/tokenPrice),2)*1-+extraDecimal[cur])} {cur}</span>}
+                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.maxBuyAmount/tokenPrice),2)*1)} {cur}</span>}
                 </span>
              </div>
              <div className="hr w100 m-t-24"></div>

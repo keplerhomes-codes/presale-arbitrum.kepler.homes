@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9b6e3c98.css",
-    "main.js": "/static/js/main.0a08310b.js",
+    "main.js": "/static/js/main.b7de108e.js",
     "static/js/431.aa967a92.chunk.js": "/static/js/431.aa967a92.chunk.js",
     "static/js/126.7e6ff5a4.chunk.js": "/static/js/126.7e6ff5a4.chunk.js",
     "static/js/489.28668acf.chunk.js": "/static/js/489.28668acf.chunk.js",
@@ -128,6 +128,7 @@
     "static/media/telegram.svg": "/static/media/telegram.2a278241f8416438358ae7482a35b2fe.svg",
     "static/media/fb.svg": "/static/media/fb.2b4d43657969c17c06673d0ae0cbcf42.svg",
     "static/media/tipf.svg": "/static/media/tipf.caf452f847c2c0af48463b37d04a0111.svg",
+    "static/media/ETH.svg": "/static/media/ETH.3a612f071f32ca46b19ee5b410f15546.svg",
     "static/media/wallet.svg": "/static/media/wallet.4511b78e4a15aaa3d374415ad17a56de.svg",
     "static/media/checkbox-uncheck.svg": "/static/media/checkbox-uncheck.06aaeaba9756cbffeb04763432f05eb8.svg",
     "static/media/tokenomics_active.svg": "/static/media/tokenomics_active.94fb207a67f3f145910cb9b4302cab5f.svg",
@@ -201,7 +202,7 @@
     "static/media/arrow-right.svg": "/static/media/arrow-right.6fefd3df518071e6d6b9158f17b20ffb.svg",
     "static/media/arrow-left.svg": "/static/media/arrow-left.6cb32aa4931942784a632ca5daa5480e.svg",
     "main.9b6e3c98.css.map": "/static/css/main.9b6e3c98.css.map",
-    "main.0a08310b.js.map": "/static/js/main.0a08310b.js.map",
+    "main.b7de108e.js.map": "/static/js/main.b7de108e.js.map",
     "431.aa967a92.chunk.js.map": "/static/js/431.aa967a92.chunk.js.map",
     "126.7e6ff5a4.chunk.js.map": "/static/js/126.7e6ff5a4.chunk.js.map",
     "489.28668acf.chunk.js.map": "/static/js/489.28668acf.chunk.js.map",
@@ -211,6 +212,6 @@
   },
   "entrypoints": [
     "static/css/main.9b6e3c98.css",
-    "static/js/main.0a08310b.js"
+    "static/js/main.b7de108e.js"
   ]
 }

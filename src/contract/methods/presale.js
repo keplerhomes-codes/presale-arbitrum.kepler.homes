@@ -20,9 +20,9 @@ import getNetworkData, { chainSymbolMap } from '../../wallet/helper/getNetworkDa
 import { createProviderController } from '../../wallet/web3/createProviderController'
 import store from '../../store'
 import BigNumber from 'bignumber.js'
-const chain = localStorage.getItem('kepler_chain') || 'BSC'
+const chain = localStorage.getItem('kepler_chain') || 'Arbitrum'
 
-const httpProviderURL = 'https://arb1.arbitrum.io/rpc/'
+const httpProviderURL = 'https://arb1.arbitrum.io/rpc'
 console.log(httpProviderURL)
 // const provider = await createProviderController(chain).connect()
 export const web3 = new Web3(new Web3.providers.HttpProvider(httpProviderURL))
@@ -50,6 +50,7 @@ function createWeb3(chain) {
 
 function createCurWeb3() {
   const chain = store.getState().chain
+  console.log(chain)
   return createWeb3(chain)
 }
 
@@ -65,7 +66,8 @@ const stringToBytes32 = (s) => {
 
 export function balanceOf (contractAddress, address) {
   const web3 = createCurWeb3()
-  return contractAddress == ZERO_ADDRESS ? web3.eth.getBalance(address) : new web3.eth.Contract(bep20ABI, contractAddress).methods.balanceOf(address).call()
+  return contractAddress == ZERO_ADDRESS ? web3.eth.getBalance(address) : 
+  new web3.eth.Contract(bep20ABI, contractAddress).methods.balanceOf(address).call()
 }
 
 export function getPrice (address) {

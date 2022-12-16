@@ -18,6 +18,6 @@ export function getAddress (chain) {
 }
 
 export function getCurAddress () {
-  const chain = localStorage.getItem('kepler_chain') || 'BSC'
+  const chain = localStorage.getItem('kepler_chain') || 'Arbitrum'
   return getAddress(chain)
 }

@@ -92,9 +92,9 @@ const numberToStr = (num = 0) => {
     useGrouping: false,
   });
 };
-export const fromUnit = (wei) => {
+export const fromUnit = (wei, decimal=18) => {
   let weiwei = Number(wei) || 0
-  return web3.utils.fromWei((numberToStr(weiwei) || 0).toString(), "ether");
+  return web3.utils.fromWei((numberToStr(weiwei) || 0).toString(), decimal==18?"ether":"mwei");
 };
 export const findNameByNftId = (id) => {
   let name = ''
@@ -159,7 +159,7 @@ export const findNameByAddress = (address) => {
 }
 
 export const findCurrencyByAddress = (address, chainName) => {
-    let chain = chainName || localStorage.getItem('kepler_chain') || 'BSC'
+    let chain = chainName || localStorage.getItem('kepler_chain') || 'Arbitrum'
     console.log(chain)
     if(address == ZERO_ADDRESS) {
       return chainCurrency[chain]
