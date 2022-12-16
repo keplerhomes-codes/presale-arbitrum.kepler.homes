@@ -119,7 +119,6 @@ const ChooseToken = (props) => {
             }
         }
     }
-
     // const polling = () => {
     //     timer.current && clearInterval(timer.current)
     //     timer.current = setInterval(() => {
@@ -275,16 +274,6 @@ export default connect(
     });
     })
   }
-    // const curChange = async (name) => {
-    //     console.log(name)
-    //     setCur(name)
-    //     if(props.account) {
-    //         console.log(cur)
-    //         let allow = await allowance(findAddressByName(name), getCurAddress().Presale).call()
-    //         console.log(allow)
-    //         setNeedApprove(allow <= 0 )
-    //       }
-    // }
     const curChange = useCallback( async (name) => {
            console.log(name)
         setCur(name)
@@ -295,7 +284,7 @@ export default connect(
             setNeedApprove(allow <= 0 )
             // setNeedApprove(false )
           }
-          if(['CAKE', 'ETH'].includes(name)) {
+          if(['ETH'].includes(name)) {
             let prices = await getPrice(findAddressByName(name))
             setTokenPrice(fromUnit(prices))
             console.log(fromUnit(prices))
