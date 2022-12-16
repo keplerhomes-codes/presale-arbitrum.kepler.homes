@@ -460,12 +460,12 @@ export default connect(
                     Approve {cur}
                   </Button>:(
                     props.account ? (
-                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount/tokenPrice)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount/tokenPrice)*1}>
+                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount)*1}>
                         {
-                           inputNum*tokenPrice < fromUnit(config.minBuyAmount/tokenPrice)*1 ? (
+                           inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 ? (
                             inputNum == 0 ? 'Please input your amount':'Amount is too small'
                            ):(
-                            inputNum * tokenPrice > fromUnit(config.maxBuyAmount/tokenPrice)*1 ? (
+                            inputNum * tokenPrice > fromUnit(config.maxBuyAmount)*1 ? (
                             'Amount is too large'
                             ):'Submit KEPL PreSale'
                            )
@@ -481,7 +481,6 @@ export default connect(
                   )
                   
                 }
-                
              </div>
              {
                 (referAddress && referAddress.toLowerCase() != props.account.toLowerCase()) && <div className='ta cd fz-14'>
