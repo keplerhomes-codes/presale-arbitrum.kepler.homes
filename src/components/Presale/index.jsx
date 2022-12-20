@@ -400,7 +400,7 @@ export default connect(
                 </div>
                 <span className='fz-16 cf m-l-11 flex flex-center'>
                     <span style={{color: 'red', top: '3px', position: 'relative'}}>*&nbsp;</span>
-                    Select the locking period</span>
+                    Choose release period</span>
              </div>
              {
                 isCheck && (
