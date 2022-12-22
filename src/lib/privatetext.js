@@ -8,11 +8,10 @@ export default {
     ],
     "presale rules": [
         "1 million USD will be raised through 10 rounds KEPL token presale activities.",
-        "The KEPL token price is $0.0293 in the first round and will get an additional 5% increase in the following nine rounds.",
-        "The KEPL token bought in the presale will be released in batches each month depending on the locking period that selected by the user during the purchase.",
-        "The locking weight is 1:1 (KEPL: veKEPL) and it remains constant in all rounds.",
-        "The minimum subscription is $500. Holders whose KEPL asset is over $500 could get a referral bonus by inviting others.",
-        "All KEPL tokens sold in presale can circulate freely after IDO."
+"The KEPL token price is $0.0293 in the first round and will get an additional 5% increase in the following nine rounds.",
+"The KEPL tokens bought in the presale will be released in batches each month depending on the locking period that is selected by the user during the purchase. The minimum locking period would be 12 months, and maximum locking period would be 60 months.",
+"Depending on the amount of KEPL bought by the user, veKEPL(1:1) would be deposited into the user's wallet as soon as the purchase is made and the veKEPL token would be burned each month after IDO when the user unlocks the KEPL token. veKEPL tokens are short for voting-escrow KEPL, which gives the user the ability to conduct governance & receive dividends from our marketplace profit. The longer the locking period is, the more dividends will be received for the veKEPL holder. Details of veKEPL can be found in the page. ",
+"The minimum pre-sale purchase  is $200. Holders whose KEPL asset is over $200 could get a referral bonus by inviting others to participate in the presale."
     ],
     "benefits": [
         "KEPL holders can lock their tokens into the vote escrow contract to receive veKEPL.",
@@ -27,10 +26,11 @@ export default {
         
         {
             "q": "What is veKEPL?",
-            "a": <span>veKEPL denotes voting-escrow KEPL. <br/>
-                    It is a non-transferable implementation, used to determine each account’s voting power and earning power. veKEPL is a token that is issued upon the locking of KEPL tokens in the vote escrow smart contract. The amount of veKEPL received in exchange for KEPL tokens is only dependent on the lock amount.  <br/>
-                    For example, a balance of 2000 KEPL locked for one year provides the same amount of veKEPL as 2000 KEPL locked for two years. The voting power is equal to the amount of veKEPL on a user’s balance, but dividends differ by how long KEPL tokens are locked. <br/>
-                    veKEPL’s supply is in accordance with how many KEPL are locked, and it is burned when holders unlock their KEPL token.</span>
+            "a": <span>
+                veKEPL denotes voting-escrow KEPL.It is a non-transferable implementation, used to determine each account’s voting power and earning power. veKEPL is a token that is issued upon the locking of KEPL tokens in the vote escrow smart contract. The amount of veKEPL received in exchange for KEPL tokens is only dependent on the lock amount.
+                <br/>
+For example, user A bought $1000 worth of KEPL token ($1000 would give the user in total $1000/$0.0293 = 34129 KEPL tokens) in the first round of presale and selected 24 months as the locking period. 34129 veKEPL tokens and 0 KEPL token will be deposited into the user’s wallet as soon as the purchase is complete. After IDO each month the user can unlock 1/24 of the total KEPL token, which is about 34129/12 = 1422 number of tokens. After  24 months, all KEPL tokens would be unlocked. Everytime the user chooses to claim the unlocked KEPL token, same number of veKEPL tokens would be burned to convert to the KEPL token.
+                    </span>
         },
         
         {
