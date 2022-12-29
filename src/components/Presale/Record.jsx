@@ -84,7 +84,7 @@ export default connect(
     },[props.account, page])
     return (
         <div className="claim-wrap">
-             <p className="c06 fz-14 invite-tip">Holders whose KEPL asset is over $500 could get a referral bonus by inviting others.</p>
+             <p className="c06 fz-14 invite-tip">Holders whose KEPL asset is over $200 could get a referral bonus by inviting others.</p>
             <Table loading={loading} columns={columns} dataSource={list} pagination={false} className="my-table m-t-20" />
             {
               total > 0 && <div className="flex flex-last m-t-20">
