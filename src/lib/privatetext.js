@@ -11,7 +11,7 @@ export default {
 "The KEPL token price is $0.0293 in the first round and will get an additional 5% increase in the following nine rounds.",
 "The KEPL tokens bought in the presale will be released in batches each month depending on the locking period that is selected by the user during the purchase. The minimum locking period would be 12 months, and maximum locking period would be 60 months.",
 "Depending on the amount of KEPL bought by the user, veKEPL(1:1) would be deposited into the user's wallet as soon as the purchase is made and the veKEPL token would be burned each month after IDO when the user unlocks the KEPL token. veKEPL tokens are short for voting-escrow KEPL, which gives the user the ability to conduct governance & receive dividends from our marketplace profit. The longer the locking period is, the more dividends will be received for the veKEPL holder. Details of veKEPL can be found in the page. ",
-"The minimum pre-sale purchase  is $2000. Holders whose KEPL asset is over $200 could get a referral bonus by inviting others to participate in the presale."
+"The minimum pre-sale purchase  is $2000. Holders whose KEPL asset is over $500 could get a referral bonus by inviting others to participate in the presale."
     ],
     "benefits": [
         "KEPL holders can lock their tokens into the vote escrow contract to receive veKEPL.",
@@ -61,7 +61,7 @@ For example, user A bought $1000 worth of KEPL token ($1000 would give the user 
         {
             "q": "What is the referral bonus?",
             "a": <span>All KEPL or veKEPL token holders are recommended to share an invitation link to their friends. <br/>
-            Holders whose KEPL asset is over $200 could get 5% of their friend's purchase amount as a referral bonus.
+            Holders whose KEPL asset is over $500 could get 5% of their friend's purchase amount as a referral bonus.
             </span>
         },
         {
