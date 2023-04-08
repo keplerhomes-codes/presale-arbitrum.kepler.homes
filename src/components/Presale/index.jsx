@@ -19,13 +19,13 @@ import { useEffect } from 'react'
 import { balanceOf, buy, getPrice, queryConfig, queryRoundPrices, querySaledUsdAmount, queryStableCoins } from '../../contract/methods/presale'
 import { addPoint, ChainIdMap, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, numFormat, showConnectWallet, toFixed, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
 import { connect } from 'react-redux'
-import { getCurAddress } from '../../contract/mainnet/address'
+import { getCurAddress } from '../../contract/testnet/address'
 import { allowance, approve, sign } from '../../contract/methods'
 import { formatTimeStr } from 'antd/lib/statistic/utils'
 import Modal from '../../components/Base/Modal'
 import notification from '../notification'
 import { useRef } from 'react'
-import { post } from '../../http'
+import { get, post } from '../../http'
 import { setToken } from '../../store'
 
 let marks = {
@@ -84,10 +84,15 @@ let extraDecimal = {
 }
 
 let decimal = {
-    'USDT': 6,
-    'USDC': 6,
+    'USDT': 18,
+    'USDC': 18,
     'ETH': 18,
 }
+// let decimal = { // main
+//     'USDT': 6,
+//     'USDC': 6,
+//     'ETH': 18,
+// }
 let selectOptions = (currentList)=> {
     let arr = []
     currentList.map(item => {
@@ -233,7 +238,7 @@ export default connect(
     }
   )( (props)=> {
     let location = useLocation()
-    let [selectMonths, setSelectMonths] = useState(60)
+    let [selectMonths, setSelectMonths] = useState(12)
     let [showMonths, setShowMonths] = useState(false)
     let [config, setConfig] = useState({})
     let [rounds, setRounds] = useState(1)
@@ -248,6 +253,7 @@ export default connect(
     let [refresh, setRefresh] = useState(0)
     let [isCheck, setIsCheck] = useState(false)
     let [showTip, setShowTip] = useState(false)
+    let [signature, setSignature] = useState('')
     let [claimStart, setClaimStart] = useState(new Date().getTime()/1000)
     let [isLogin, setIsLogin] = useState(false)
     let [referAddress, setAddress] = useState(location.search ? location.search.replace('?','').split('=')[1]?.toLowerCase():'')
@@ -297,7 +303,7 @@ export default connect(
         console.log(cur)
         console.log(decimal[cur])
         console.log(toWei(Number(inputNum).toString(), decimal[cur]))
-       buy(findAddressByName(cur),toWei(Number(inputNum).toString(), decimal[cur]), selectMonths, (referAddress && referAddress.toLowerCase() != props.account)?referAddress:ZERO_ADDRESS).then(res => {
+       buy(findAddressByName(cur),toWei(Number(inputNum).toString(), decimal[cur]), (referAddress && referAddress.toLowerCase() != props.account)?referAddress:ZERO_ADDRESS, signature).then(res => {
         setLoading(false)
         setRefresh(refresh+1)
         setShowTip(true)
@@ -342,17 +348,30 @@ export default connect(
         setClaimStart(config.claimStartTime)
         setRounds(curentRounds*1+1)
         setPrice(fromUnit(prices[curentRounds]))
-        setSelectMonths(60)
+        setSelectMonths(12)
         setShowMonths(false)
         setProgress((fromUnit(saledUsd)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
         setIsLoading(false)
     }, [refresh])
-    useEffect(() => {
+    useEffect(async() => {
         setIsLogin(false)
         if(props.account && !localStorage.getItem(props.account)) {
             Login()
         } else {
             setIsLogin(true)
+        }
+        if(props.account) {
+            try {
+                let {data: {signature}} = await get('/api/evm/presale/buyParams', {
+                    contract: findAddressByName('Presale'),
+                    account: props.account
+                })
+                console.log(signature)
+                setSignature(signature)
+            } catch {
+                setSignature('')
+            }
+            
         }
     }, [props.account])
     return (
@@ -365,7 +384,7 @@ export default connect(
              <div className=' p-l-24 p-r-24 w100'>
                 <div className="progress flex flex-start w100 m-t-12">
                     <div className="progress-inner bgblue" style={{width: progress+'%'}}></div>
-                    <Tooltip title={(progress*1000).toFixed(2)+'/'+100000}><div className="star"></div></Tooltip>
+                    <Tooltip title={(progress*fromUnit(config?.saleAmountPerRound)/100).toFixed(2)+'/'+fromUnit(config?.saleAmountPerRound)}><div className="star"></div></Tooltip>
                     
                 </div>
              </div>
@@ -394,14 +413,14 @@ export default connect(
               <ChooseToken {...props} onChange={numChange} refresh={refresh} curChange={curChange}/>
              </div>
              {/* choose-token */}
-             <div className="p-l-24 p-t-10 flex flex-center pointer" onClick={()=>setIsCheck(!isCheck)}>  
+             {/* <div className="p-l-24 p-t-10 flex flex-center pointer" onClick={()=>setIsCheck(!isCheck)}>  
                 <div className={"checkbox  "+ (isCheck ?'active':'')} >
                     <img src={require('../../assets/images/private/yes.svg').default} alt="" />
                 </div>
                 <span className='fz-16 cf m-l-11 flex flex-center'>
                     <span style={{color: 'red', top: '3px', position: 'relative'}}>*&nbsp;</span>
                     Choose release period</span>
-             </div>
+             </div> */}
              {
                 isCheck && (
                    <>
@@ -425,7 +444,7 @@ export default connect(
                                     downIcon: <span> <img src={Tangle} alt="" className='input-icon' /></span>,
                                     upIcon: <span> <img src={Tangle} alt="" className='rotate input-icon'/></span>
                                 }
-                              } className='month-input fz-20' min={12} max={60} defaultValue={60} value={selectMonths} onChange={setSelectMonths}/> Months
+                              } className='month-input fz-20' min={12} max={60} defaultValue={12} value={selectMonths} onChange={setSelectMonths}/> Months
                             </span>
                             <div className="choose-btn fz-16 ta flex-middle flex flex-center pointer" onClick={()=>setShowMonths(!showMonths)}>
                                 {showMonths ?'Hide':'Choose'} preset
@@ -455,14 +474,16 @@ export default connect(
                    </>
                 )
              }
-             
-             <div className="p-l-24 p-r-24 p-t-24 p-b-10">
+             {
+                !signature && <div className='c06 ta fz-14'>You're not in whitelist</div>
+             }
+             <div className="p-l-24 p-r-24 p-t-5 p-b-10">
                 {
-                    needApprove ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toApprove}>
+                    needApprove ? <Button className='w100 submit-btn cf fz-20' disabled={!signature} loading={loading} onClick={toApprove}>
                     Approve {cur}
                   </Button>:(
                     props.account ? (
-                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount)*1}>
+                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount)*1 || !signature}>
                         {
                            inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 ? (
                             inputNum == 0 ? 'Please input your amount':'Amount is too small'

@@ -1,25 +1,13 @@
 import Web3 from 'web3'
-import {erc721ABI} from '../abi/erc721'
 import {bep20ABI} from '../abi/bep20'
-import nftmarket from '../mainnet/Nftmarket'
-import PoolFactory from '../mainnet/PoolFactory'
-import DepositPool from '../mainnet/DepositPool'
-import RewardPool from '../mainnet/RewardPool'
-import Bridge from '../mainnet/Bridge'
-import { erc20ABI } from '../../contract/abi/erc20'
-import nft from '../mainnet/nft'
-import Airdrop from '../mainnet/Airdrop'
-import Presale from '../mainnet/Presale'
+import Presale from '../testnet/Presale'
 import ChainlinkOracle from '../mainnet/chainlinkOracle'
-import { toWei, ZERO_ADDRESS } from '../../lib/util'
-import {getAddress, getCurAddress}  from '../mainnet/address'
-import { MaxUint256 } from '@ethersproject/constants'
-import { post } from '../../http'
+import { ZERO_ADDRESS } from '../../lib/util'
+import {getCurAddress}  from '../testnet/address'
 import notification from '../../components/notification'
 import getNetworkData, { chainSymbolMap } from '../../wallet/helper/getNetworkData';
 import { createProviderController } from '../../wallet/web3/createProviderController'
 import store from '../../store'
-import BigNumber from 'bignumber.js'
 const chain = localStorage.getItem('kepler_chain') || 'Arbitrum'
 
 const httpProviderURL = 'https://arb1.arbitrum.io/rpc'
@@ -110,12 +98,11 @@ export function queryBuyRecords(address) {
 export function buy(
   usdToken,
   usdAmount,
-  lockPeriods,
-   referrer
+   referrer,
+   signature
 ) {
   console.log(usdToken,
     usdAmount,
-    lockPeriods,
      referrer)
   return new Promise(async (res, rej) => {
     try{
@@ -127,8 +114,8 @@ export function buy(
       new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy(
         usdToken,
         usdAmount,
-        lockPeriods,
-        referrer
+        referrer,
+        signature
       ).estimateGas(innerJson).then(res=>{
         console.log(res)
       }).catch(err => {
@@ -137,8 +124,8 @@ export function buy(
       new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy(
         usdToken,
         usdAmount,
-        lockPeriods,
-        referrer
+        referrer,
+        signature
       )
       .send(innerJson)
       .then((result) => {

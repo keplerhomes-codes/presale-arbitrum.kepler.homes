@@ -7,7 +7,7 @@ import getNetworkData, {chainIdMap} from '../helper/getNetworkData';
 import notification from '../../components/notification'
 
 const networkCheck  = (web3, provider, chainId) => {
-  const chain = localStorage.getItem('kepler_chain') || 'Arbitrum'
+  const chain = 'Arbitrum'
   const params = getNetworkData[`get${chain}Network`]().params
   const _networkId = getNetworkData[`get${chain}Network`]().networkId
   console.log(params)
@@ -18,12 +18,12 @@ const networkCheck  = (web3, provider, chainId) => {
       message: i18n.t('Please connect to the correct network first'),
     });
   
-    if (_networkId === 1) {
+    if (_networkId === 421613) {
       provider
       .request({
         method: 'wallet_switchEthereumChain',
         params: [{
-          chainId: '0x1',
+          chainId: web3.utils.toHex(421613),
         }],
       })
       .then((res) => {
@@ -38,12 +38,12 @@ const networkCheck  = (web3, provider, chainId) => {
           message: i18n.t('Please connect to the correct network first'),
         });
       });
-    } else if (_networkId === 5) {
+    } else if (_networkId === 42161) {
       provider
       .request({
         method: 'wallet_switchEthereumChain',
         params: [{
-          chainId: '0x5',
+          chainId: web3.utils.toHex(421611),
         }],
       })
       .then((res) => {

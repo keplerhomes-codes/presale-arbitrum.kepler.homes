@@ -15,6 +15,7 @@ import binanceChain from '../../assets/images/wallets/binance-chain.png'
 import math from '../../assets/images/wallets/math.png'
 import onto from '../../assets/images/wallets/onto.png'
 import coin98 from '../../assets/images/wallets/coin98.png'
+import tokenpocket from '../../assets/images/wallets/tokenpocket.png'
 import ledger from '../../assets/images/wallets/ledger.png'
 import solflare from '../../assets/images/wallets/solflare.png'
 import sollet from '../../assets/images/wallets/sollet.png'
@@ -155,7 +156,7 @@ function ConnectWalletModal(props) {
           </Tooltip>
         </div> */}
         <h3 className="fw500 wallet-choose-title">Choose Wallet</h3>
-        <div className="wallet-list">
+        <div className="wallet-list flex-wrap">
           {
             selectChain !== 'Solana' ?
             <>
@@ -171,11 +172,18 @@ function ConnectWalletModal(props) {
                 <img src={walletconnect} alt="walletconnect" className="wallet-image" />
                 <div className="wallet-name">WalletConnect</div>
               </div>
-              <div className="wallet-item" onClick={async _ => {
+              {/* <div className="wallet-item" onClick={async _ => {
                 handleConnect('custom-binance')
               }}>
                 <img src={binanceChain} alt="binanceChain" className="wallet-image" />
                 <div className="wallet-name">Binance Chain</div>
+              </div> */}
+
+              <div className="wallet-item" onClick={async _ => {
+                handleConnect('custom-tokenpocket')
+              }}>
+                <img src={tokenpocket} alt="tokenpocket" className="wallet-image" />
+                <div className="wallet-name">TokenPocket</div>
               </div>
               <div className="wallet-item" onClick={async _ => {
                 handleConnect('custom-math')
@@ -189,12 +197,12 @@ function ConnectWalletModal(props) {
                 <img src={onto} alt="onto" className="wallet-image" />
                 <div className="wallet-name">ONTO</div>
               </div>
-              <div className="wallet-item" onClick={async _ => {
+              {/* <div className="wallet-item" onClick={async _ => {
                 handleConnect('custom-coin')
               }}>
                 <img src={coin98} alt="coin98" className="wallet-image" />
                 <div className="wallet-name">Coin98</div>
-              </div>
+              </div> */}
             </>
             :
             selectChain === 'Solana' ?

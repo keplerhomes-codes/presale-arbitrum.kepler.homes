@@ -168,3 +168,13 @@
 		}
 	}
 }
+@media screen and (max-width: 768px) {
+  .wallet-list {
+		display: flex;
+    flex-wrap: wrap;
+
+		.wallet-item {
+			// margin-right: 20px;
+      width: 33% !important;
+   }}
+}

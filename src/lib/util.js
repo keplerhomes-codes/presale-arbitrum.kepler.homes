@@ -1,7 +1,7 @@
 import store,{ setToLogin, setToConnectWallet, setConnectWalletChain } from "../store";
 import web3 from 'web3';
 import BigNumber from "bignumber.js";
-import {getCurAddress} from "../contract/mainnet/address";
+import {getCurAddress} from "../contract/testnet/address";
 import chainCurrency from "./chainCurrency";
 import Nftlist from "../contract/mainnet/Nftlist";
 export const emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
@@ -33,7 +33,7 @@ export const ChainIdName = {
   137: 'matic',
   43113: 'avax',
   666: 'sol',
-  42161: 'arb'
+  421613: 'arb'
 }
 export const FullChainIdName = {
   1: 'Ethereum',
@@ -41,7 +41,7 @@ export const FullChainIdName = {
   137: 'Matic',
   43113: 'Avax',
   666: 'Solana',
-  42161: 'Arbitrum'
+  421613: 'Arbitrum'
 }
 export const ChainIdMap = {
   'ETH': 1,  // 5test 1main
@@ -49,7 +49,7 @@ export const ChainIdMap = {
   'Polygon': 137,
   'Avalanche': 43114,
   'Solana': 666,
-  'Arbitrum': 42161
+  'Arbitrum': 421613
 }
 export const fullNameBySymbol = {
   'BNB': 'binancecoin',

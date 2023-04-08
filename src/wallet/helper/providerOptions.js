@@ -53,6 +53,24 @@ export const providerOptions = ({walletconnectOptions}) => {
           return null;
         },
       },
+      'custom-tokenpocket': {
+        display: {
+          name: 'TokenPocket',
+          description: 'TokenPocket-Wallet',
+          logo: tokenpocket,
+        },
+        package: 'tokenpocket',
+        connector: async (ProviderPackage, options) => {
+          if (window.ethereum && window.ethereum.isTokenPocket) {
+            console.log('TokenPocket Extension is installed!');
+            const provider = (window).ethereum;
+            await provider.enable();
+            return provider;
+          }
+          window.open('https://extension.tokenpocket.pro/')
+          return null
+        },
+      },
       'custom-math': {
         display: {
           name: 'Math',

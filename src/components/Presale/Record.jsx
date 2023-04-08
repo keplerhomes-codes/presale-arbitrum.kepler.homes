@@ -61,11 +61,11 @@ export default connect(
     let [total, setTotal] = useState(0)
     let getRecordData = (page) => {
         setLoading(true)
-        get('/api/presale/records', {
-            chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'BSC'],
-            user: props.account.toLowerCase(),
-            limit,
-            skip: page-1
+        get('/api/evm/presale/referRecords', {
+            chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'Arbitrum'],
+            account: props.account.toLowerCase(),
+            // limit,
+            page: page-1
         }).then(res => {
             setLoading(false)
             setList(res.data.list)

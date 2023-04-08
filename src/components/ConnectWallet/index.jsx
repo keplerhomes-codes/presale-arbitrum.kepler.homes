@@ -69,32 +69,44 @@ function ConnectWallet(props) {
   const handleConnectWallet = () => {
     setIsModalVisible(true)
   }
-  const Login = async(index) => {
-    let signature = await sign('login')
-    post('/api/account/connect', {
-      chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'ETH'],
-      user: props.account,
-      signature
-    }).then(res => {
-      props.dispatch(setToken(res.data.token))
-      // get person info
-      get('/api/v1/account').then(res => {
-        store.dispatch(setUserInfo(res.data))
-        nav('/profile?tab='+index)
+  const Login = async() => {
+    try {
+      if(localStorage.getItem('token')) {
+        return
+      }
+      let signature = await sign('login')
+      post('/api/account/connect', {
+        chainId: ChainIdMap[localStorage.getItem('kepler_chain')||'Arbitrum'],
+        user: props.account,
+        signature
+      }).then(res => {
+        props.dispatch(setToken(res.data.token))
+        // get person info
+        get('/api/v1/account').then(res => {
+          store.dispatch(setUserInfo(res.data))
+          // nav('/profile?tab='+index)
+        })
+      }).catch(err => {
+        handleDisconnect()
+        notification.error({
+          message: t('Login Fail'),
+          description: t('Please sign login at first')
+      });
       })
-    }).catch(err => {
+    } catch {
+      handleDisconnect()
       notification.error({
         message: t('Login Fail'),
-        description: t('Something goes wrong')
+        description: t('Please sign login at first')
     });
-    })
+    }
   }
-  const toUser = async (index) => {
+  const toUser = async () => {
     if(props.token) {
-      nav('/profile?tab='+index)
+      // nav('/profile?tab='+)
       return
     } else {
-      Login(index)
+      Login()
     }
   }
 
@@ -113,6 +125,12 @@ function ConnectWallet(props) {
     }
     store.dispatch(setToConnectWallet(isModalVisible))
   }, [isModalVisible])
+
+  useEffect(()=> {
+    if(props.account) {
+      toUser()
+    }
+  } ,[props.account])
 
   return (
     <div>
@@ -164,10 +182,10 @@ function ConnectWallet(props) {
         }>
           <div className="fw500 connected-wallet p-r-10 p-l-10 flex flex-center">
             <div className="connected-chain">
-              <img src={chainIcon[props.chain.toLowerCase()]} alt="" className='bsc-iocn'/>
+              <img src={chainIcon['arbitrum']} alt="" className='bsc-iocn'/>
               </div>
             <div className="cf m-l-8 m-r-8">{props.account.substr(0, 5)+'...'+ props.account.substr(props.account.length-5,)}</div>
-            <img src={require('../../assets/images/passport/arrow1.svg').default} alt="" />
+            <img src={require('../../assets/images/wallets/arrow1.svg').default} alt="" />
           </div>
         </Dropdown>
         :
