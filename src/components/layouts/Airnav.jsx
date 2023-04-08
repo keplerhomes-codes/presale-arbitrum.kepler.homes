@@ -1,20 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback} from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import {Tooltip} from 'antd'
-import iconMenu from '../../assets/images/home/icon-menu.svg'
-import { Menu, Dropdown } from 'antd';
-import iconArrow from '../../assets/images/home/icon-arrow.svg'
 // import logo from '../../assets/images/home/logo.svg'
-import iconLanguage from '../../assets/images/home/icon-language.svg'
-import iconDownload from '../../assets/images/home/icon-download.svg'
 import logo from '../../assets/images/nav/logo.svg'
-import menu from '../../assets/images/nav/menu.svg'
 import classnames from 'classnames'
 import './Airnav.scss'
 import { useTranslation} from 'react-i18next'
 import ConnectWallet from '../ConnectWallet';
-import Login from '../Login';
-import Menumint from './Menumint'
-import {connect, useSelector} from 'react-redux'
+import {connect} from 'react-redux'
 import notification from '../notification'
 
 import Bus from '../../lib/eventBus'
@@ -22,7 +14,7 @@ import { NavLink } from 'react-router-dom';
 import { sign } from '../../contract/methods/mint';
 import { post,get} from '../../http';
 import { ChainIdMap } from '../../lib/util';
-import store, { setFirst, setToken, setUserInfo} from '../../store';
+import store, { setToken, setUserInfo} from '../../store';
 import {Button} from 'antd'
 
 let communityList = [{
