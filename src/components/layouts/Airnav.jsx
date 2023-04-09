@@ -71,7 +71,7 @@ function Header(props) {
         });
         return
      }
-    await navigator.clipboard.writeText('https://'+window.location.host+'?referee='+props.account);
+    await navigator.clipboard.writeText('https://'+window.location.host+'?code='+props.account);
     notification.success({
       message: t('The invitation link has been copied. Please paste it to your friends!'),
     });

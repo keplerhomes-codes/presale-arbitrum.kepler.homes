@@ -7,11 +7,10 @@ export default {
         <span><span className="fwb">Non-stop superior game contents and features.</span>  <br/>Three characters and two maps are supported in the beta version game and more superior features will be added in later versions.</span> 
     ],
     "presale rules": [
-        "1 million USD will be raised through 10 rounds KEPL token presale activities.",
-"The KEPL token price is $0.0293 in the first round and will get an additional 5% increase in the following nine rounds.",
-"The KEPL tokens bought in the presale will be released in batches each month depending on the locking period that is selected by the user during the purchase. The minimum locking period would be 12 months, and maximum locking period would be 60 months.",
-"Depending on the amount of KEPL bought by the user, veKEPL(1:1) would be deposited into the user's wallet as soon as the purchase is made and the veKEPL token would be burned each month after IDO when the user unlocks the KEPL token. veKEPL tokens are short for voting-escrow KEPL, which gives the user the ability to conduct governance & receive dividends from our marketplace profit. The longer the locking period is, the more dividends will be received for the veKEPL holder. Details of veKEPL can be found in the page. ",
-"The minimum pre-sale purchase  is $2000. Holders whose KEPL asset is over $500 could get a referral bonus by inviting others to participate in the presale."
+        "500K USD will be raised through 10 rounds KEPL token presale activities.",
+        "The KEPL token price is $0.0293 in the first round and will get an additional 2% increase in the following nine rounds.",
+        "The KEPL purchased in the pre-sale have a default lock-up period of 12 months and will be released in 1/12 monthly batches.Depending on the amount of KEPL bought by the user, veKEPL(1:1) would be deposited into the user's wallet as soon as the purchase is made and the veKEPL token would be burned each month after IDO when the user unlocks the KEPL token. veKEPL tokens are short for voting-escrow KEPL, which gives the user the ability to conduct governance & receive dividends from our marketplace profit. The longer the locking period is, the more dividends will be received for the veKEPL holder. Details of veKEPL can be found in the page.",
+        "The minimum pre-sale purchase is $20000. Holders whose KEPL asset is over $500 could get a referral bonus by inviting others to participate in the presale."
     ],
     "benefits": [
         "KEPL holders can lock their tokens into the vote escrow contract to receive veKEPL.",
@@ -21,16 +20,16 @@ export default {
     "faq": [
         {
             "q": "What is KEPL presale?",
-            "a": "KEPL presale is a fair token launch for all participants, no matter individuals or institutions. 1 million USD will be raised through 10 rounds presale activities. All KEPL tokens are sold on a first come, first serve basis."
+            "a": "KEPL presale is a fair token launch for all participants, no matter individuals or institutions. 500K USD will be raised through 10 rounds presale activities. All KEPL tokens are sold on a first come, first serve basis."
         },
         
         {
             "q": "What is veKEPL?",
             "a": <span>
                 veKEPL denotes voting-escrow KEPL.It is a non-transferable implementation, used to determine each account’s voting power and earning power. veKEPL is a token that is issued upon the locking of KEPL tokens in the vote escrow smart contract. The amount of veKEPL received in exchange for KEPL tokens is only dependent on the lock amount.
-                <br/>
-For example, user A bought $1000 worth of KEPL token ($1000 would give the user in total $1000/$0.0293 = 34129 KEPL tokens) in the first round of presale and selected 24 months as the locking period. 34129 veKEPL tokens and 0 KEPL token will be deposited into the user’s wallet as soon as the purchase is complete. After IDO each month the user can unlock 1/24 of the total KEPL token, which is about 34129/12 = 1422 number of tokens. After  24 months, all KEPL tokens would be unlocked. Everytime the user chooses to claim the unlocked KEPL token, same number of veKEPL tokens would be burned to convert to the KEPL token.
-                    </span>
+<br/>
+For example, user A bought $1000 worth of KEPL token ($1000 would give the user in total $1000/$0.0293 = 34129 KEPL tokens) in the first round of presale and default 12 months as the locking period. 34129 veKEPL tokens and 0 KEPL token will be deposited into the user’s wallet as soon as the purchase is complete. After IDO each month the user can unlock 1/12 of the total KEPL token, which is about 34129/12 = 2849 number of tokens. After 12 months, all KEPL tokens would be unlocked. Everytime the user chooses to claim the unlocked KEPL token, same number of veKEPL tokens would be burned to convert to the KEPL token.
+</span>
         },
         
         {
@@ -52,7 +51,7 @@ For example, user A bought $1000 worth of KEPL token ($1000 would give the user 
         },
         {
             "q": "Am I must to lock my KEPL tokens?",
-            "a": "Users can choose a period of 1-5 years and release KEPL in batches every month. This is for KEPL to have a good performance in the long run."
+            "a": "The KEPL purchased in the pre-sale have a default lock-up period of 12 months and will be released in 1/12 monthly batches.This is for KEPL to have a good performance in the long run."
         },
         {
             "q": "How does dividends are allocated and distributed?",

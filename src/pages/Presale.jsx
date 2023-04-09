@@ -75,7 +75,7 @@ export default connect(
             });
             return
          }
-        await navigator.clipboard.writeText('https://'+window.location.host+'?referee='+props.account);
+        await navigator.clipboard.writeText('https://'+window.location.host+'?code='+props.account);
         notification.success({
           message: ('The invitation link has been copied. Please paste it to your friends!'),
         });
@@ -132,10 +132,10 @@ export default connect(
                           <Record/>
                       </TabPane>
                
-                      
+{/*                       
                       <TabPane tab="Raffle" key="7">
                           <Raffle/>
-                      </TabPane>
+                      </TabPane> */}
                
                      </Tabs>
                   </div>

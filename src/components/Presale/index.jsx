@@ -329,7 +329,7 @@ export default connect(
             });
             return
          }
-        await navigator.clipboard.writeText('https://'+window.location.host+'?referee='+props.account);
+        await navigator.clipboard.writeText('https://'+window.location.host+'?code='+props.account);
         notification.success({
           message: ('The invitation link has been copied. Please paste it to your friends!'),
         });
@@ -475,7 +475,7 @@ export default connect(
                 )
              }
              {
-                !signature && <div className='c06 ta fz-14'>You're not in whitelist <a><u className='cblue'>Apply for whitelist</u></a></div>
+                !signature && <div className='c06 ta fz-14'>You're not in whitelist <a target='_blank' href="https://passport-arbitrum.kepler.homes"><u className='cblue'>Apply for whitelist</u></a></div>
              }
              <div className="p-l-24 p-r-24 p-t-5 p-b-10">
                 {
