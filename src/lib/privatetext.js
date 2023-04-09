@@ -43,7 +43,7 @@ For example, user A bought $1000 worth of KEPL token ($1000 would give the user 
         
         {
             "q": "Are there any limitations on how many KEPL token I can buy?",
-            "a": "In presale, the minimum subscription is $2000 for a wallet address, and the maximum is $100,000."
+            "a": "In presale, the minimum subscription is $500 for a wallet address, and the maximum is $2,000."
         },
         {
             "q": "Am I allowed to participate more than one round?",
