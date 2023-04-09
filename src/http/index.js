@@ -19,7 +19,7 @@ axios.interceptors.response.use(
   }
 )
 
-export const baseUrl = 'https://api.kepler.homes'
+export const baseUrl = 'https://api-beta.kepler.homes'
 export function get(
   url,
   data

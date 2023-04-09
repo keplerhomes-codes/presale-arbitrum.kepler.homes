@@ -475,7 +475,7 @@ export default connect(
                 )
              }
              {
-                !signature && <div className='c06 ta fz-14'>You're not in whitelist</div>
+                !signature && <div className='c06 ta fz-14'>You're not in whitelist <a><u className='cblue'>Apply for whitelist</u></a></div>
              }
              <div className="p-l-24 p-r-24 p-t-5 p-b-10">
                 {
