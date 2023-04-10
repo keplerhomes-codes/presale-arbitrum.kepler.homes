@@ -294,7 +294,7 @@ export default connect(
         setCur(name)
         if(props.account) {
             console.log(cur)
-            let allow = name == 'ETH' ? 100000000: await allowance(findAddressByName(name), getCurAddress().Presale).call()
+            let allow = name == 'ETH' ? 100000: await allowance(findAddressByName(name), getCurAddress().Presale).call()
             console.log(allow)
             setTokenAllow(allow)
             // setNeedApprove(false )
@@ -494,7 +494,7 @@ export default connect(
              }
              <div className="p-l-24 p-r-24 p-t-5 p-b-10">
                 {
-                    fromUnit(tokenAllow, decimal[cur]) < inputNum ? <Button className='w100 submit-btn cf fz-20' disabled={!signature} loading={loading} onClick={toApprove}>
+                    fromUnit(tokenAllow, decimal[cur]) < inputNum && cur != 'ETH' ? <Button className='w100 submit-btn cf fz-20' disabled={!signature} loading={loading} onClick={toApprove}>
                     Approve {cur}
                   </Button>:(
                     props.account ? (
