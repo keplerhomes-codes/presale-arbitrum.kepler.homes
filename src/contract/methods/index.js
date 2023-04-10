@@ -14,7 +14,7 @@ import {getAddress, getCurAddress}  from '../mainnet/address'
 import { MaxUint256 } from '@ethersproject/constants'
 import { post } from '../../http'
 import notification from '../../components/notification'
-import getNetworkData from '../../wallet/helper/getNetworkData';
+import getNetworkData, { chainSymbolMap } from '../../wallet/helper/getNetworkData';
 import { createProviderController } from '../../wallet/web3/createProviderController'
 import store from '../../store'
 import BigNumber from 'bignumber.js'
@@ -112,7 +112,7 @@ export function close(
        listSuccess(orderId, result.transactionHash)
        notification.success({
          message: 'Transaction Success',
-         description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+         description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
        })
       })
       .catch((error) => {
@@ -138,7 +138,7 @@ export function buy(
        res(result)
        notification.success({
         message: 'Transaction Success',
-        description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
       })
       })
       .catch((error) => {
@@ -180,7 +180,7 @@ export function list(
        listSuccess(orderId, result.transactionHash)
        notification.success({
         message: 'Transaction Success',
-        description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
       })
       })
       .catch((error) => {
@@ -291,7 +291,7 @@ export const setApprovalForAll = async (nftaddress, contractAddress) => {
         res()
         notification.success({
           message: 'Transaction Success',
-          description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+          description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
         })
       }).on('error', function (error) {
         console.log(error)
@@ -315,7 +315,7 @@ export const approve = async (tokenaddress, contractAddress) => {
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
       new web3.eth.Contract(bep20ABI, tokenaddress).methods.approve(contractAddress, MaxUint256)
-      .send({from: address})
+      .send({from: address, gasLimit: 1000000})
       .on('transactionHash', function() {
       })
       .on('receipt', function(result){
@@ -323,7 +323,7 @@ export const approve = async (tokenaddress, contractAddress) => {
         res(Number(MaxUint256.toString()))
         notification.success({
           message: 'Transaction Success',
-          description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+          description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
         })
       }).on('error', function (error) {
         console.log(error)
@@ -380,7 +380,7 @@ export function stake(
        res(result)
        notification.success({
         message: 'Transaction Success',
-        description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
       })
       })
       .catch((error) => {
@@ -407,7 +407,7 @@ export function unstake(
        res(result)
        notification.success({
         message: 'Transaction Success',
-        description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
       })
       })
       .catch((error) => {
@@ -449,7 +449,7 @@ export function withdraw(
        res(result)
        notification.success({
         message: 'Transaction Success',
-        description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
       })
       })
       .catch((error) => {
@@ -476,7 +476,7 @@ export function claim(
        res(result)
        notification.success({
         message: 'Transaction Success',
-        description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
       })
       })
       .catch((error) => {
@@ -537,7 +537,7 @@ export function applyToken({
         res(result)
         notification.success({
           message: 'Transaction Success',
-          description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+          description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
         })
       })
       .catch((error) => {
@@ -582,7 +582,7 @@ export function applyNFT({
         res(result)
         notification.success({
           message: 'Transaction Success',
-          description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+          description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
         })
       })
       .catch((error) => {
@@ -633,7 +633,7 @@ export function claimToken({
         res(result)
         notification.success({
           message: `Claim ${new BigNumber(amount).dividedBy(10 ** 18).toString()} ${tokenSymbol}, Please wait minutes to check the cross-chain tx status on the explorer`,
-          description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+          description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
         })
       })
       .catch((error) => {
@@ -676,7 +676,7 @@ export function claimNFT({
         res(result)
         notification.success({
           message: `Claim ${nftName}, Please wait minutes to check the cross-chain tx status on the explorer`,
-          description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+          description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
         })
       })
       .catch((error) => {
@@ -728,7 +728,7 @@ export function mint(
        res(result)
        notification.success({
         message: 'Transaction Success',
-        description: <a  target="_blank" href={`https://testnet.bscscan.com/tx/${result.transactionHash}`}>Go to browser to view</a>
+        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
       })
       })
       .catch((error) => {
