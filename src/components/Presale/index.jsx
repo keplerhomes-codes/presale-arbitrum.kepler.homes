@@ -256,7 +256,7 @@ export default connect(
     let [tokenPrice, setTokenPrice] = useState(1)
     let [inputNum, setInputNum] = useState('')
     let [cur, setCur] = useState('ARB')
-    let [needApprove, setNeedApprove] = useState(false)
+    let [tokenAllow, setTokenAllow] = useState(0)
     let [loading, setLoading] = useState(false)
     let [isLoading, setIsLoading] = useState(false)
     let [refresh, setRefresh] = useState(0)
@@ -296,7 +296,7 @@ export default connect(
             console.log(cur)
             let allow = name == 'ETH' ? 100000000: await allowance(findAddressByName(name), getCurAddress().Presale).call()
             console.log(allow)
-            setNeedApprove(allow<=0)
+            setTokenAllow(allow)
             // setNeedApprove(false )
           }
           if(['ETH', 'ARB'].includes(name)) {
@@ -329,7 +329,7 @@ export default connect(
     let toApprove = () => {
         setLoading(true)
         approve(findAddressByName(cur), getCurAddress().Presale).then(res => {
-        setNeedApprove(false)
+        setTokenAllow(res)
         setLoading(false)
         }).catch(err => {
         setLoading(false)
@@ -494,7 +494,7 @@ export default connect(
              }
              <div className="p-l-24 p-r-24 p-t-5 p-b-10">
                 {
-                    needApprove ? <Button className='w100 submit-btn cf fz-20' disabled={!signature} loading={loading} onClick={toApprove}>
+                    fromUnit(tokenAllow, decimal[cur]) < inputNum ? <Button className='w100 submit-btn cf fz-20' disabled={!signature} loading={loading} onClick={toApprove}>
                     Approve {cur}
                   </Button>:(
                     props.account ? (

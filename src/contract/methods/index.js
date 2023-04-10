@@ -320,7 +320,7 @@ export const approve = async (tokenaddress, contractAddress) => {
       })
       .on('receipt', function(result){
         console.log(result)
-        res(Number(MaxUint256.toString()))
+        res(result.events.Approval.returnValues.value)
         notification.success({
           message: 'Transaction Success',
           description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
