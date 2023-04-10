@@ -97,7 +97,7 @@ export function buy(
       const web3 = new Web3(provider)
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
-      let innerJson = usdToken == ZERO_ADDRESS ? {from: address, value: usdAmount}:{from: address}
+      let innerJson = usdToken == ZERO_ADDRESS ? {from: address, value: usdAmount, gasLimit: 2500000}:{from: address, gasLimit: 2500000}
       // new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy(
       //   usdToken,
       //   usdAmount,
