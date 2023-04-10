@@ -98,16 +98,16 @@ export function buy(
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
       let innerJson = usdToken == ZERO_ADDRESS ? {from: address, value: usdAmount}:{from: address}
-      // new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy(
-      //   usdToken,
-      //   usdAmount,
-      //   referrer,
-      //   signature
-      // ).estimateGas(innerJson).then(res=>{
-      //   console.log(res)
-      // }).catch(err => {
-      //   console.log(err)
-      // })
+      new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy(
+        usdToken,
+        usdAmount,
+        referrer,
+        signature
+      ).estimateGas(innerJson).then(res=>{
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
       new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy(
         usdToken,
         usdAmount,
