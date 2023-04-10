@@ -320,6 +320,9 @@ export default connect(
         props.onSuccess()
        }).catch(err=>{
         setLoading(false)
+        notification.error({
+            message: 'Transaction Failed'
+          })
        })
     }
     
