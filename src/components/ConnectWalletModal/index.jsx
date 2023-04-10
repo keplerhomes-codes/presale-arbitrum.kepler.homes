@@ -161,7 +161,7 @@ function ConnectWalletModal(props) {
             selectChain !== 'Solana' ?
             <>
               <div className="wallet-item" onClick={async _ => {
-                handleConnect('injected')
+                typeof window.ethereum  ===  "undefined" ?handleConnect('walletconnect'):handleConnect('injected')
               }}>
                 <img src={metamask} alt="metamask" className="wallet-image" />
                 <div className="wallet-name">MetaMask</div>
