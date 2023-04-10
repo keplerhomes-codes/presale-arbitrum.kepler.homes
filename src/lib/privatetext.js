@@ -13,7 +13,8 @@ let pretext = (props) => {
         "500K USD will be raised through 10 rounds KEPL token presale activities.",
         "The KEPL token price is $0.0293 in the first round and will get an additional 2% increase in the following nine rounds.",
         "The KEPL purchased in the pre-sale have a default lock-up period of 12 months and will be released in 1/12 monthly batches.Depending on the amount of KEPL bought by the user, veKEPL(1:1) would be deposited into the user's wallet as soon as the purchase is made and the veKEPL token would be burned each month after IDO when the user unlocks the KEPL token. veKEPL tokens are short for voting-escrow KEPL, which gives the user the ability to conduct governance & receive dividends from our marketplace profit. The longer the locking period is, the more dividends will be received for the veKEPL holder. Details of veKEPL can be found in the page.",
-        `The minimum pre-sale purchase is $${fromUnit(props.presaleConfig.minBuyAmount)}. Holders whose KEPL asset is over $${fromUnit(props.presaleConfig.refeererMinBuyAmount)} could get a referral bonus by inviting others to participate in the presale.`
+        `The minimum pre-sale purchase is $${fromUnit(props.presaleConfig.minBuyAmount)}. Holders whose KEPL asset is over $${fromUnit(props.presaleConfig.refeererMinBuyAmount)} could get a referral bonus by inviting others to participate in the presale.`,
+        "The exchange ratio of Arbitrum Token and ETH participating in the Presale is an exchange relationship that estimates the dynamic changes of the Chainlink oracle machine, and is consistent with the minimum and maximum participation amounts equivalent to USDT and USDC."
     ],
     "benefits": [
         "KEPL holders can lock their tokens into the vote escrow contract to receive veKEPL.",

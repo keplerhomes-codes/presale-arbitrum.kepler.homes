@@ -10,31 +10,32 @@ export const getArbitrumNetwork = () => {
   return {
     name: 'ARB',
     params: {
-      chainId: '421613',
-      chainName: 'ARB TestNet',
+      chainId: '42161',
+      chainName: 'Arbitrum One',
       nativeCurrency: {
         name: 'Ethereum',
         symbol: 'GoerliETH',
         decimals: 18,
       },
-      rpcUrls: ['https://goerli-rollup.arbitrum.io/rpc'],
-      blockExplorerUrls: ['https://goerli.arbiscan.io'],
+      rpcUrls: ['https://arb1.arbitrum.io/rpc'],
+      blockExplorerUrls: ['https://arbiscan.io'],
     },
-    networkId: 421613,
-    httpProviderURL: 'https://goerli-rollup.arbitrum.io/rpc',
+    networkId: 42161,
+    httpProviderURL: 'https://arb1.arbitrum.io/rpc',
     connectors: {
       network: 'arbitrum',
       cacheProvider: true,
       providerOptions: providerOptions({
         walletconnectOptions: {
           rpc: {
-            421613: 'https://goerli-rollup.arbitrum.io/rpc'
+            42161: 'https://arb1.arbitrum.io/rpc'
           }
         }
       })
     }
   }
 }
+
 
 export const getBSCNetwork = () => {
   return {

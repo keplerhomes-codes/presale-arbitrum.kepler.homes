@@ -82,7 +82,7 @@ let extraDecimal = {
     'USDT': 0,
     'USDC': 0,
     'ETH': 0.01,
-    'ETH': 0.1,
+    'ARB': 0.1,
 }
 
 let decimal = {
@@ -110,7 +110,7 @@ const ChooseToken = (props) => {
     let [percent , setPercent] = useState(0)
     let [currentList, setCurrentList] = useState([])
     let [balance, setBalance] = useState(0)
-    let [selectCur, setSelectCur] = useState('USDC')
+    let [selectCur, setSelectCur] = useState('ARB')
     let [inputNum, setInputNum] = useState('')
     let [price, setPrice] = useState(1)
     let timer = useRef()
@@ -159,7 +159,12 @@ const ChooseToken = (props) => {
         let currencies = await queryStableCoins()
         let list = []
         console.log(currencies)
-        currencies.map((item, index) => {
+        currencies.map((item, index) => {if(index==0) {
+            list.push({
+                icon: ARB,
+                name: 'ARB'
+            })
+        }
             list.push({
                 icon: iconMap[findNameByAddress(item)],
                 name: findNameByAddress(item)
@@ -249,7 +254,7 @@ export default connect(
     let [price, setPrice] = useState(0)
     let [tokenPrice, setTokenPrice] = useState(1)
     let [inputNum, setInputNum] = useState('')
-    let [cur, setCur] = useState('USDC')
+    let [cur, setCur] = useState('ARB')
     let [needApprove, setNeedApprove] = useState(false)
     let [loading, setLoading] = useState(false)
     let [isLoading, setIsLoading] = useState(false)
@@ -288,12 +293,12 @@ export default connect(
         setCur(name)
         if(props.account) {
             console.log(cur)
-            let allow = name == 'ETH' ? 1: await allowance(findAddressByName(name), getCurAddress().Presale).call()
+            let allow = name == 'ETH' ? 100000000: await allowance(findAddressByName(name), getCurAddress().Presale).call()
             console.log(allow)
             setNeedApprove(allow <= 0 )
             // setNeedApprove(false )
           }
-          if(['ETH'].includes(name)) {
+          if(['ETH', 'ARB'].includes(name)) {
             let prices = await getPrice(findAddressByName(name))
             setTokenPrice(fromUnit(prices))
             console.log(fromUnit(prices))

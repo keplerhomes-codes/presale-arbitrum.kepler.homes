@@ -18,12 +18,12 @@ const networkCheck  = (web3, provider, chainId) => {
       message: i18n.t('Please connect to the correct network first'),
     });
   
-    if (_networkId === 421613) {
+    if (_networkId === 42161) {
       provider
       .request({
         method: 'wallet_switchEthereumChain',
         params: [{
-          chainId: web3.utils.toHex(421613),
+          chainId: web3.utils.toHex(42161),
         }],
       })
       .then((res) => {
