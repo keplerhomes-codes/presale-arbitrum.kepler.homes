@@ -9,6 +9,6 @@ export default {
     "PresaleBak": "0xc1384173d4cc32ba87fe34d654fcd9c0ae754cf1",
     "BoxAirdropNFT": "0x03e3fa5c54ee6ae1a7a2843639bf179bc6f7b6bd",
     "AvatarAirdropNFT": "0xe406ae51389acadf87964ce0073b9724cc25d25c",
-    "Presale": "0x573e96b7a4c977025b513996d3592155d5fca11d",
+    "Presale": "0xf13245c3418afda822c687a3ce37a75b7c3d96dc",
     "ETH": '0x0000000000000000000000000000000000000000'
 }
