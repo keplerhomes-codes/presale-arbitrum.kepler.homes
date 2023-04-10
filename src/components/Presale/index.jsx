@@ -296,7 +296,7 @@ export default connect(
             console.log(cur)
             let allow = name == 'ETH' ? 100000000: await allowance(findAddressByName(name), getCurAddress().Presale).call()
             console.log(allow)
-            setNeedApprove(allow)
+            setNeedApprove(allow<=0)
             // setNeedApprove(false )
           }
           if(['ETH', 'ARB'].includes(name)) {
