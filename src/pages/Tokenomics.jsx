@@ -31,7 +31,7 @@ export default function ({width=700}) {
                 </TabPane>
                 <TabPane tab="veKEPL dividends" key="1">
                     {
-                      privatetext({}).benefits.map(item => {
+                      privatetext({presaleConfig:{}}).benefits.map(item => {
                           return <div className="cf fz-16 m-b-20">{item}</div>
                       })
                     }

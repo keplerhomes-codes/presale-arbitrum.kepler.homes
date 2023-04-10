@@ -139,12 +139,12 @@ const Login = async() => {
               <NavLink className="nav-item cf  fz-16 m-l-40 islink" to="/">
                  Presale
               </NavLink>
-              {/* <a className="nav-item cf  fz-16 m-l-40 islink" href="https://presale-aptos.kepler.homes" target="_blank">
-                    <img src={require('../../assets/images/token/Aptos.png')} alt="" style={{width: 20}} className="m-r-5"/>
-                   Aptos Presale
+              <a className="nav-item cf  fz-16 m-l-40 islink" href="https://passport-arbitrum.kepler.homes" target="_blank">
+                    {/* <img src={require('../../assets/images/token/Aptos.png')} alt="" style={{width: 20}} className="m-r-5"/> */}
+                   Whitelist
               </a>
 
-              <a className="nav-item cf  fz-16 m-l-40 islink" href="https://presale-bsc.kepler.homes" target="_blank">
+               {/*<a className="nav-item cf  fz-16 m-l-40 islink" href="https://presale-bsc.kepler.homes" target="_blank">
                     <img src={require('../../assets/images/ConnectWallet/binance.png')} alt="" style={{width: 20}} className="m-r-5"/>
                    BSC Presale
               </a> */}

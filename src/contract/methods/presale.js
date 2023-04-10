@@ -19,20 +19,7 @@ export const web3 = new Web3(new Web3.providers.HttpProvider(httpProviderURL))
 // }
 
 function createWeb3(chain) {
-  let httpProviderURL
-
-  if (chain === 'ETH') {
-    httpProviderURL = getNetworkData.getETHNetwork().httpProviderURL
-  } else if (chain === 'BSC') {
-    httpProviderURL = getNetworkData.getBSCNetwork().httpProviderURL
-  } else if (chain === 'Polygon') {
-    httpProviderURL = getNetworkData.getPolygonNetwork().httpProviderURL
-  } else if (chain === 'Avalanche') {
-    httpProviderURL = getNetworkData.getAvalancheNetwork().httpProviderURL
-  } else if (chain === 'Arbitrum') {
-    httpProviderURL = getNetworkData.getArbitrumNetwork().httpProviderURL
-  }
-  
+  let httpProviderURL = getNetworkData.getArbitrumNetwork().httpProviderURL
   return new Web3(new Web3.providers.HttpProvider(httpProviderURL))
 }
 

@@ -1,7 +1,7 @@
 import store,{ setToLogin, setToConnectWallet, setConnectWalletChain } from "../store";
 import web3 from 'web3';
 import BigNumber from "bignumber.js";
-import {getCurAddress} from "../contract/testnet/address";
+import {getCurAddress} from "../contract/mainnet/address";
 import chainCurrency from "./chainCurrency";
 import Nftlist from "../contract/mainnet/Nftlist";
 export const emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;

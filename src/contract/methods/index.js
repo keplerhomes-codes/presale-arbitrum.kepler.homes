@@ -319,6 +319,7 @@ export const approve = async (tokenaddress, contractAddress) => {
       .on('transactionHash', function() {
       })
       .on('receipt', function(result){
+        console.log(result)
         res(Number(MaxUint256.toString()))
         notification.success({
           message: 'Transaction Success',

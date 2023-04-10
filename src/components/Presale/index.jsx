@@ -19,7 +19,7 @@ import { useEffect } from 'react'
 import { balanceOf, buy, getPrice, queryConfig, queryRoundPrices, querySaledUsdAmount, queryStableCoins } from '../../contract/methods/presale'
 import { addPoint, ChainIdMap, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, numFormat, showConnectWallet, toFixed, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
 import { connect } from 'react-redux'
-import { getCurAddress } from '../../contract/testnet/address'
+import { getCurAddress } from '../../contract/mainnet/address'
 import { allowance, approve, isAddress, sign } from '../../contract/methods'
 import { formatTimeStr } from 'antd/lib/statistic/utils'
 import Modal from '../../components/Base/Modal'
@@ -86,8 +86,8 @@ let extraDecimal = {
 }
 
 let decimal = {
-    'USDT': 18,
-    'USDC': 18,
+    'USDT': 6,
+    'USDC': 6,
     'ETH': 18,
     'ARB': 18,
 }
@@ -120,6 +120,7 @@ const ChooseToken = (props) => {
         props.curChange(e)
         if(props.account) {
             try {
+                // let a = '0x8333A45A74C33b99C31e228B7E168D1F18513F33'
                 let bal = await balanceOf(findAddressByName(e), props.account)
                 console.log(bal)
                 setBalance(fromUnit(bal, decimal[e]))
@@ -412,10 +413,10 @@ export default connect(
              
              <div className="flex flex-between m-t-12  p-l-24 p-r-24 min-max">
                 <span className='c06 flex min-max-inner'><span>Min buyable: </span>    
-                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.minBuyAmount/tokenPrice),2)*1+extraDecimal[cur])} {cur}</span>}
+                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.minBuyAmount/tokenPrice)*1+extraDecimal[cur],4))} {cur}</span>}
                 </span>
                 <span className='c06 flex min-max-inner'><span>Max buyable: </span>  
-                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.maxBuyAmount/tokenPrice),2)*1)} {cur}</span>}
+                {isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: <span className='cf m-l-3'>{numFormat(toFixed(fromUnit(config.maxBuyAmount/tokenPrice),4)*1)} {cur}</span>}
                 </span>
              </div>
              <div className="hr w100 m-t-24"></div>
