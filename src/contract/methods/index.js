@@ -315,7 +315,7 @@ export const approve = async (tokenaddress, contractAddress) => {
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
       new web3.eth.Contract(bep20ABI, tokenaddress).methods.approve(contractAddress, MaxUint256)
-      .send({from: address, gasLimit: 500000})
+      .send({from: address, gasLimit: 1000000})
       .on('transactionHash', function() {
       })
       .on('receipt', function(result){
