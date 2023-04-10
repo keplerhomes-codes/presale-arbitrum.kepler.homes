@@ -1,7 +1,7 @@
 
 import './index.scss'
 import Select from './Select'
-import BUSD from '../../assets/images/token/BUSD.svg'
+import ARB from '../../assets/images/token/ARB.jpg'
 import USDT from '../../assets/images/token/USDT.svg'
 import USDC from '../../assets/images/token/USDC.svg'
 import CAKE from '../../assets/images/token/CAKE.svg'
@@ -20,13 +20,13 @@ import { balanceOf, buy, getPrice, queryConfig, queryRoundPrices, querySaledUsdA
 import { addPoint, ChainIdMap, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit, numFormat, showConnectWallet, toFixed, toUnit, toWei, ZERO_ADDRESS } from '../../lib/util'
 import { connect } from 'react-redux'
 import { getCurAddress } from '../../contract/testnet/address'
-import { allowance, approve, sign } from '../../contract/methods'
+import { allowance, approve, isAddress, sign } from '../../contract/methods'
 import { formatTimeStr } from 'antd/lib/statistic/utils'
 import Modal from '../../components/Base/Modal'
 import notification from '../notification'
 import { useRef } from 'react'
 import { get, post } from '../../http'
-import { setToken } from '../../store'
+import store, { setPresaleConfig, setToken } from '../../store'
 
 let marks = {
     12: {
@@ -76,17 +76,20 @@ let iconMap = {
     'USDT': USDT,
     'USDC': USDC,
     'ETH': ETH,
+    'ARB': ARB
 }
 let extraDecimal = {
     'USDT': 0,
     'USDC': 0,
     'ETH': 0.01,
+    'ETH': 0.1,
 }
 
 let decimal = {
     'USDT': 18,
     'USDC': 18,
     'ETH': 18,
+    'ARB': 18,
 }
 // let decimal = { // main
 //     'USDT': 6,
@@ -303,7 +306,8 @@ export default connect(
         console.log(cur)
         console.log(decimal[cur])
         console.log(toWei(Number(inputNum).toString(), decimal[cur]))
-       buy(findAddressByName(cur),toWei(Number(inputNum).toString(), decimal[cur]), (referAddress && referAddress.toLowerCase() != props.account)?referAddress:ZERO_ADDRESS, signature).then(res => {
+        let referrer = isAddress(referAddress) ? referAddress:ZERO_ADDRESS
+       buy(findAddressByName(cur),toWei(Number(inputNum).toString(), decimal[cur]), (referrer && referrer.toLowerCase() != props.account)?referrer:ZERO_ADDRESS, signature).then(res => {
         setLoading(false)
         setRefresh(refresh+1)
         setShowTip(true)
@@ -344,6 +348,7 @@ export default connect(
         let prices = await queryRoundPrices()
         let curentRounds = Math.floor(fromUnit(saledUsd)/fromUnit(config.saleAmountPerRound))
         setConfig(config)
+        store.dispatch(setPresaleConfig(config))
         console.log(config)
         setClaimStart(config.claimStartTime)
         setRounds(curentRounds*1+1)
@@ -362,12 +367,13 @@ export default connect(
         }
         if(props.account) {
             try {
-                let {data: {signature}} = await get('/api/evm/presale/buyParams', {
+                let {data: {signature, referrer}} = await get('/api/evm/presale/buyParams', {
                     contract: findAddressByName('Presale'),
                     account: props.account
                 })
                 console.log(signature)
                 setSignature(signature)
+                referrer && referrer != ZERO_ADDRESS && setAddress(referrer)
             } catch {
                 setSignature('')
             }

@@ -13,15 +13,6 @@ export default function ({width=700}) {
   let { t ,i18n} = useTranslation()
   console.log(useLocation().search ? useLocation().search.replace('?','').split('=')[1]?.toLowerCase():'tokenomics')
   let [defaultTab, setDefaultTab] = useState(useLocation().search ? useLocation().search.replace('?','').split('=')[1]?.toLowerCase():'tokenomics')
-  
-  
- 
-  
-  
-  
-  
-  
-      
   return (
     <div className={"tokenomic flex flex-column flex-middle flex-center "+(' p-t-'+(width-550))}>
       {/* '{point.name}: <b>{point.percentage:.1f}%</b>' */}
@@ -40,7 +31,7 @@ export default function ({width=700}) {
                 </TabPane>
                 <TabPane tab="veKEPL dividends" key="1">
                     {
-                      privatetext.benefits.map(item => {
+                      privatetext({}).benefits.map(item => {
                           return <div className="cf fz-16 m-b-20">{item}</div>
                       })
                     }

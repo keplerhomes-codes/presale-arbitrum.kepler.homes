@@ -92,24 +92,24 @@ export default connect(
                      <Tabs className='my-tab mint-tab' tabPosition="top" defaultActiveKey="0" >
                       <TabPane tab="Hightlights" key="0">
                         {
-                            privatetext.highlights.map(item => {
-                                return <div className="cf fz-16 m-b-20">{item}</div>
+                            privatetext(props).highlights.map((item, index) => {
+                                return <div className="cf fz-16 m-b-20" key={index}>{item}</div>
                             })
                           }
                       </TabPane>
                       
                       <TabPane tab="PreSale Rules & FAQ" key="2">
                          {
-                            privatetext["presale rules"].map(item => {
-                                return <div className="cf fz-16 m-b-20">{item}</div>
+                            privatetext(props)["presale rules"].map((item, index) => {
+                                return <div className="cf fz-16 m-b-20" key={index}>{item}</div>
                             })
                           }
                           <div className="fz-24 fwb cf m-b-20">FAQ</div>
                           <Space direction="vertical" size={0}>
                       {
-                            privatetext["faq"].map(item => {
+                            privatetext(props)["faq"].map((item, index) => {
                                 return (
-                                    <Collapse  expandIcon={() => <img src={arrow1} alt="" className="arrow" />} expandIconPosition="right">
+                                    <Collapse key={index}  expandIcon={() => <img src={arrow1} alt="" className="arrow" />} expandIconPosition="right">
                                         <Panel header={item.q}>
                                         {item.a}
                                         </Panel>

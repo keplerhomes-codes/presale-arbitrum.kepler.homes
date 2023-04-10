@@ -11,6 +11,7 @@ export const setToLogin = createAction('setToLogin')
 export const setToConnectWallet = createAction('setToConnectWallet')
 export const setConnectWalletChain = createAction('setConnectWalletChain')
 export const setFirst = createAction('setFirst')
+export const setPresaleConfig = createAction('setPresaleConfig')
 
 function getChainType(chain) {
   if (chain === 'Solana') {
@@ -34,7 +35,8 @@ const reducer = createReducer(
     showLogin: false,
     showConnectWallet: false,
     connectWalletChain: 'Avalanche',
-    isFirst: true
+    isFirst: true,
+    presaleConfig: {}
   },
   builder => builder
     .addCase(connect, (state, action) => {
@@ -114,6 +116,12 @@ const reducer = createReducer(
       return {
         ...state,
         isFirst: action.payload
+      }
+    })
+    .addCase(setPresaleConfig, (state, action) => {
+      return {
+        ...state,
+        presaleConfig: action.payload
       }
     })
 )

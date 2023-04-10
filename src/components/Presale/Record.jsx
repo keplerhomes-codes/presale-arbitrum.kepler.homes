@@ -5,12 +5,13 @@ import { useEffect } from "react"
 import { connect } from 'react-redux'
 import { queryBuyRecords } from "../../contract/methods/presale"
 import { balanceOf } from "../../contract/methods"
-import { addPoint, ChainIdMap, findAddressByName, formatTime, formatTimeShort, fromUnit } from "../../lib/util"
+import { addPoint, ChainIdMap, findAddressByName, findNameByAddress, formatTime, formatTimeShort, fromUnit } from "../../lib/util"
 import { format } from "date-fns"
 import { get } from "../../http"
 import Pagination from "../Base/Pagination"
 import { chainSymbolMap } from "../../wallet/helper/getNetworkData"
 import store from "../../store"
+import { toFixed } from "../../lib/util"
 export default connect(
     (state, props) => {
       return {...state, ...props}
@@ -25,36 +26,36 @@ export default connect(
         )
     },{
         title: "Buy amount",
-        key: "amount",
-        dataIndex: "amount",
+        key: "currency_amount",
+        dataIndex: "currency_amount",
         render: (amount, record) => (
-          <span className='flex-1'>${Number(fromUnit(amount)).toFixed(2)}</span>
+          <span className='flex-1'>{toFixed(Number(fromUnit(amount)),4)}{findNameByAddress(record.currency)}</span>
         )
     },{
         title: "Rewards amount",
         key: "reward",
         dataIndex: "reward",
         render: (amount, record) => (
-          <span className='flex-1'>${Number(fromUnit(amount)).toFixed(2)}</span>
+          <span className='flex-1'>{toFixed(Number(fromUnit(amount)),4)}{findNameByAddress(record.currency)}</span>
         )
     },{
         title: "Transition time",
-        key: "buyTime",
-        dataIndex: "buyTime",
+        key: "time",
+        dataIndex: "time",
         render: (time, record) => (
           <span className='flex-1'>{formatTime(time)}</span>
         )
     },{
         title: "Hash",
-        key: "hash",
-        dataIndex: "hash",
+        key: "transaction_hash",
+        dataIndex: "transaction_hash",
         render: (hash, record) => (
           <a className='flex' target="_blank" title={hash} href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${hash}`}>{addPoint(hash)}
           <img src={require('../../assets/images/mint/share.svg').default} className="m-l-5" alt="" />
           </a>
         )
     }]
-    let limit = 10
+    let limit = 20
     let [loading, setLoading] = useState(false)
     let [list, setList] = useState([])
     let [page, setPage] = useState(1)
@@ -68,7 +69,7 @@ export default connect(
             page: page-1
         }).then(res => {
             setLoading(false)
-            setList(res.data.list)
+            setList(res.data.items)
             setTotal(res.data.count)
         })
     }

@@ -1,5 +1,8 @@
-export default {
-    "highlights": [
+import { fromUnit } from "./util"
+
+    
+let pretext = (props) => {
+    return {"highlights": [
         <span><span className="fwb">Original IP from the Kepler team.</span> <br/>The story of the Kepler galaxy is very sustainable with more scope for Kepler to follow on top of the RPG basic gameplay.</span>,
         <span><span className="fwb">Well-designed quest and grind paths plus fantastic HD visual graphics. </span> <br/>As positioned itself as an AAA level 3D Sci-Fi MMORPG, Kepler pursues the ultimate immersive game-playing experience.</span>,
         <span><span className="fwb">Dual-currency tokenomics.</span> <br/> By implementing a dual-currency mechanism, Kepler could balance the players’ entertainment needs and play-to-earn needs at a golden section ratio.</span> ,
@@ -10,7 +13,7 @@ export default {
         "500K USD will be raised through 10 rounds KEPL token presale activities.",
         "The KEPL token price is $0.0293 in the first round and will get an additional 2% increase in the following nine rounds.",
         "The KEPL purchased in the pre-sale have a default lock-up period of 12 months and will be released in 1/12 monthly batches.Depending on the amount of KEPL bought by the user, veKEPL(1:1) would be deposited into the user's wallet as soon as the purchase is made and the veKEPL token would be burned each month after IDO when the user unlocks the KEPL token. veKEPL tokens are short for voting-escrow KEPL, which gives the user the ability to conduct governance & receive dividends from our marketplace profit. The longer the locking period is, the more dividends will be received for the veKEPL holder. Details of veKEPL can be found in the page.",
-        "The minimum pre-sale purchase is $20000. Holders whose KEPL asset is over $500 could get a referral bonus by inviting others to participate in the presale."
+        `The minimum pre-sale purchase is $${fromUnit(props.presaleConfig.minBuyAmount)}. Holders whose KEPL asset is over $${fromUnit(props.presaleConfig.refeererMinBuyAmount)} could get a referral bonus by inviting others to participate in the presale.`
     ],
     "benefits": [
         "KEPL holders can lock their tokens into the vote escrow contract to receive veKEPL.",
@@ -43,7 +46,7 @@ For example, user A bought $1000 worth of KEPL token ($1000 would give the user 
         
         {
             "q": "Are there any limitations on how many KEPL token I can buy?",
-            "a": "In presale, the minimum subscription is $500 for a wallet address, and the maximum is $2,000."
+            "a": `In presale, the minimum subscription is $${fromUnit(props.presaleConfig.minBuyAmount)} for a wallet address, and the maximum is $${fromUnit(props.presaleConfig.maxBuyAmount)}.`
         },
         {
             "q": "Am I allowed to participate more than one round?",
@@ -60,12 +63,12 @@ For example, user A bought $1000 worth of KEPL token ($1000 would give the user 
         {
             "q": "What is the referral bonus?",
             "a": <span>All KEPL or veKEPL token holders are recommended to share an invitation link to their friends. <br/>
-            Holders whose KEPL asset is over $500 could get 5% of their friend's purchase amount as a referral bonus.
+            Holders whose KEPL asset is over ${fromUnit(props.presaleConfig.refeererMinBuyAmount)} could get 5% of their friend's purchase amount as a referral bonus.
             </span>
         },
         {
             "q": "What are the unlocking rules?",
             "a": "After starting to claim, release once a month. The release quantity is equal to the purchase quantity divided by the locked months"
         }
-    ]
-}
+    ]}}
+    export default pretext
