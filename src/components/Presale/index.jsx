@@ -313,7 +313,7 @@ export default connect(
         console.log(decimal[cur])
         console.log(toWei(Number(inputNum).toString(), decimal[cur]))
         let referrer = isAddress(referAddress) ? referAddress:ZERO_ADDRESS
-       buy(findAddressByName(cur),toWei(Number(inputNum).toString(), decimal[cur]), (referrer && referrer.toLowerCase() != props.account)?referrer:ZERO_ADDRESS, signature).then(res => {
+       buy(findAddressByName(cur),toWei(Number(inputNum).toString(), decimal[cur]), (referrer && referrer.toLowerCase() != props.account)?referrer:ZERO_ADDRESS).then(res => {
         setLoading(false)
         setRefresh(refresh+1)
         setShowTip(true)
@@ -373,20 +373,6 @@ export default connect(
             Login()
         } else {
             setIsLogin(true)
-        }
-        if(props.account) {
-            try {
-                let {data: {signature, referrer}} = await get('/api/evm/presale/buyParams', {
-                    contract: findAddressByName('Presale'),
-                    account: props.account
-                })
-                console.log(signature)
-                setSignature(signature)
-                referrer && referrer != ZERO_ADDRESS && setAddress(referrer)
-            } catch {
-                setSignature('')
-            }
-            
         }
     }, [props.account])
     return (
@@ -489,16 +475,13 @@ export default connect(
                    </>
                 )
              }
-             {
-                !signature && props.account && <div className='c06 ta fz-14'>You're not in whitelist <a target='_blank' href="https://passport-arbitrum.kepler.homes"><u className='cblue'>Apply for whitelist</u></a></div>
-             }
              <div className="p-l-24 p-r-24 p-t-5 p-b-10">
                 {
-                    fromUnit(tokenAllow, decimal[cur]) < inputNum && cur != 'ETH' ? <Button className='w100 submit-btn cf fz-20' disabled={!signature} loading={loading} onClick={toApprove}>
+                    fromUnit(tokenAllow, decimal[cur]) < inputNum && cur != 'ETH' ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toApprove}>
                     Approve {cur}
                   </Button>:(
                     props.account ? (
-                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount)*1 || !signature}>
+                        isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount)*1}>
                         {
                            inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 ? (
                             inputNum == 0 ? 'Please input your amount':'Amount is too small'

@@ -132,6 +132,29 @@ export default  [
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "usdToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "usdAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "referrer",
+        "type": "address"
+      }
+    ],
+    "name": "buy2",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "claim",
     "outputs": [],
@@ -167,22 +190,27 @@ export default  [
           },
           {
             "internalType": "address",
-            "name": "feeToken",
+            "name": "currency",
             "type": "address"
           },
           {
             "internalType": "uint256",
-            "name": "feeTokenAmount",
+            "name": "currencyAmount",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "referrerReward",
+            "name": "usdAmount",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "buyTime",
+            "name": "reward",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "time",
             "type": "uint256"
           },
           {
