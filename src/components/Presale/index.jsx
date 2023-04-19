@@ -113,17 +113,22 @@ const ChooseToken = (props) => {
     let [selectCur, setSelectCur] = useState('ARB')
     let [inputNum, setInputNum] = useState('')
     let [price, setPrice] = useState(1)
+    let [isLoading, setLoading] = useState(false)
     let timer = useRef()
+    const getBalance = async (tokenName) => {
+        setLoading(true)
+        let bal = await balanceOf(findAddressByName(tokenName), props.account)
+        console.log(bal)
+        setLoading(false)
+        setBalance(fromUnit(bal, decimal[tokenName]))
+    }
     const currencyChange = async (e) => {
         console.log(e)
         setSelectCur(e)
         props.curChange(e)
         if(props.account) {
             try {
-                // let a = '0x8333A45A74C33b99C31e228B7E168D1F18513F33'
-                let bal = await balanceOf(findAddressByName(e), props.account)
-                console.log(bal)
-                setBalance(fromUnit(bal, decimal[e]))
+                getBalance(e)
             } catch (err) {
             }
         }
@@ -207,7 +212,14 @@ const ChooseToken = (props) => {
         <div className="choose w100">
             <div className='choose-token flex flex-column p-l-24 p-r-16'>
                 <div className="left-item flex flex-center">
-                   <span className='c06 fz-14 m-b-9 flex-1 m-t-11'>Available:{props.account ? (balance ? toFixed(Number(balance), 3):0):'--'}</span>
+                <span className='c06 fz-14 m-b-9 flex-1 m-t-11 flex'>Available:{props.account ? 
+                   <span className='flex '>
+                    {
+                        isLoading ? <Skeleton.Button active={true} size='small' shape='default' block={false} />: (balance ? toFixed(Number(balance), 3):0)
+                    }
+                        <img className='m-l-5 pointer ' onClick={()=>getBalance(selectCur)} src={require('../../assets/images/base/refresh.svg').default} style={{width: '18px'}} alt="" />
+                   </span>
+                   :'--'}</span>
                    <div className="percent flex flex-between m-t-11">
                         <div className={"pointer fz-14 percent-item ta c06 "+(percent == 25 ? 'active':'')} onClick={()=> {setPercent(25)}}>
                             25%
@@ -296,7 +308,7 @@ export default connect(
             console.log(cur)
             let allow = name == 'ETH' ? 100000: await allowance(findAddressByName(name), getCurAddress().Presale).call()
             console.log(allow)
-            // setTokenAllow(allow)
+            setTokenAllow(0)
             // setNeedApprove(false )
           }
           if(['ETH', 'ARB'].includes(name)) {
