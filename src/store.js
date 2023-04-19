@@ -121,7 +121,7 @@ const reducer = createReducer(
     .addCase(setPresaleConfig, (state, action) => {
       return {
         ...state,
-        presaleConfig: action.payload
+        presaleConfig: {...action.payload, refeererMinBuyAmount: 0}
       }
     })
 )
