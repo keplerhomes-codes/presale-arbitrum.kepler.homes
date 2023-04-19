@@ -308,19 +308,24 @@ export const setApprovalForAll = async (nftaddress, contractAddress) => {
 
 // approve
 export const approve = async (tokenaddress, contractAddress) => {
-  return new Promise(async (res, rej) => {
+  return new Promise(async (resp, rej) => {
     try{
       const provider = await createProviderController(store.getState().chain).connect()
       const web3 = new Web3(provider)
       const accounts = await web3.eth.getAccounts();
       const address = accounts[0];
       new web3.eth.Contract(bep20ABI, tokenaddress).methods.approve(contractAddress, MaxUint256)
-      .send({from: address})
+      .estimateGas({from: address}).then(async(res)=>{
+        console.log(res)
+        let gas_price = (Math.ceil(await web3.eth.getGasPrice()*1/1000000000)).toString()
+        // let gas_price = (await web3.eth.getGasPrice())
+        console.log(gas_price)
+        new web3.eth.Contract(bep20ABI, tokenaddress).methods.approve(contractAddress, MaxUint256).send({from: address, gas: res, gasPrice: web3.utils.toWei(gas_price, "gwei")})
       .on('transactionHash', function() {
       })
       .on('receipt', function(result){
         console.log(result)
-        res(result.events.Approval.returnValues.value)
+        resp(result.events.Approval.returnValues.value)
         notification.success({
           message: 'Transaction Success',
           description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
@@ -332,6 +337,11 @@ export const approve = async (tokenaddress, contractAddress) => {
       .catch((error) => {
         rej(error);
       });
+      }).catch(err => {
+        console.log(err)
+      })
+
+      
     } catch (err) {
       rej(err);
     }

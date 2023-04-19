@@ -91,7 +91,7 @@ export function buy(
   console.log(usdToken,
     usdAmount,
      referrer)
-  return new Promise(async (res, rej) => {
+  return new Promise(async (resp, rej) => {
     try{
       const provider = await createProviderController(store.getState().chain).connect()
       const web3 = new Web3(provider)
@@ -102,27 +102,28 @@ export function buy(
         usdToken,
         usdAmount,
         referrer
-      ).estimateGas(innerJson).then(res=>{
-        console.log(res)
+      ).estimateGas(innerJson).then(async(res)=>{
+        let gas_price = (Math.ceil(await web3.eth.getGasPrice()*1/1000000000)).toString()
+        new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy2(
+          usdToken,
+          usdAmount,
+          referrer
+        )
+        .send({...innerJson, gas: res, gasPrice: web3.utils.toWei(gas_price, "gwei")})
+        .then((result) => {
+         resp(result)
+         notification.success({
+          message: 'Transaction Success',
+          description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
+        })
+        })
+        .catch((error) => {
+          rej(error);
+        });
       }).catch(err => {
         console.log(err)
       })
-      new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy2(
-        usdToken,
-        usdAmount,
-        referrer
-      )
-      .send(innerJson)
-      .then((result) => {
-       res(result)
-       notification.success({
-        message: 'Transaction Success',
-        description: <a  target="_blank" href={`${chainSymbolMap[store.getState().chain]().params.blockExplorerUrls[0]}/tx/${result.transactionHash}`}>Go to browser to view</a>
-      })
-      })
-      .catch((error) => {
-        rej(error);
-      });
+      
     } catch (err) {
       rej(err);
     }
