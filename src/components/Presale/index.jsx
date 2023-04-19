@@ -477,7 +477,7 @@ export default connect(
              }
              <div className="p-l-24 p-r-24 p-t-5 p-b-10">
                 {
-                    fromUnit(tokenAllow, decimal[cur]) < inputNum && cur != 'ETH' ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toApprove}>
+                    fromUnit(tokenAllow, decimal[cur])*2 < inputNum*1 && cur != 'ETH' ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toApprove}>
                     Approve {cur}
                   </Button>:(
                     props.account ? (
