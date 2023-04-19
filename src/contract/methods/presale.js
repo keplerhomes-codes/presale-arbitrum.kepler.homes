@@ -103,13 +103,13 @@ export function buy(
         usdAmount,
         referrer
       ).estimateGas(innerJson).then(async(res)=>{
-        let gas_price = (Math.ceil(await web3.eth.getGasPrice()*1/1000000000)).toString()
+        let gas_price = await web3.eth.getGasPrice()*1.2/1000000000
         new web3.eth.Contract(Presale, getCurAddress()[`Presale`]).methods.buy2(
           usdToken,
           usdAmount,
           referrer
         )
-        .send({...innerJson, gas: res, gasPrice: web3.utils.toWei(gas_price, "gwei")})
+        .send({...innerJson, gas: res, gasPrice: Math.ceil(gas_price*1000000000)})
         .then((result) => {
          resp(result)
          notification.success({

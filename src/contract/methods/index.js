@@ -317,10 +317,10 @@ export const approve = async (tokenaddress, contractAddress) => {
       new web3.eth.Contract(bep20ABI, tokenaddress).methods.approve(contractAddress, MaxUint256)
       .estimateGas({from: address}).then(async(res)=>{
         console.log(res)
-        let gas_price = (Math.ceil(await web3.eth.getGasPrice()*1/1000000000)).toString()
+        let gas_price = await web3.eth.getGasPrice()*1.2/1000000000
         // let gas_price = (await web3.eth.getGasPrice())
         console.log(gas_price)
-        new web3.eth.Contract(bep20ABI, tokenaddress).methods.approve(contractAddress, MaxUint256).send({from: address, gas: res, gasPrice: web3.utils.toWei(gas_price, "gwei")})
+        new web3.eth.Contract(bep20ABI, tokenaddress).methods.approve(contractAddress, MaxUint256).send({from: address, gas: res, gasPrice: Math.ceil(gas_price*1000000000)})
       .on('transactionHash', function() {
       })
       .on('receipt', function(result){
