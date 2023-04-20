@@ -324,7 +324,9 @@ export default connect(
         console.log(cur)
         console.log(decimal[cur])
         console.log(toWei(Number(inputNum).toString(), decimal[cur]))
-        let referrer = isAddress(referAddress) ? referAddress:ZERO_ADDRESS
+        // let referrer = isAddress(referAddress) ? referAddress:ZERO_ADDRESS
+        // 测试邀请返佣
+        let referrer = isAddress(referAddress) ? referAddress:findAddressByName('referAddressTest')
        buy(findAddressByName(cur),toWei(Number(inputNum).toString(), decimal[cur]), (referrer && referrer.toLowerCase() != props.account)?referrer:ZERO_ADDRESS).then(res => {
         setLoading(false)
         setRefresh(refresh+1)

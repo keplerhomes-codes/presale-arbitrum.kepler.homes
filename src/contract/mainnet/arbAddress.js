@@ -10,5 +10,6 @@ export default {
     "BoxAirdropNFT": "0x03e3fa5c54ee6ae1a7a2843639bf179bc6f7b6bd",
     "AvatarAirdropNFT": "0xe406ae51389acadf87964ce0073b9724cc25d25c",
     "Presale": "0xf13245c3418afda822c687a3ce37a75b7c3d96dc",
-    "ETH": '0x0000000000000000000000000000000000000000'
+    "ETH": '0x0000000000000000000000000000000000000000',
+    "referAddressTest": "0xC441eeA7f13a3AaDDD6E7c2B015fd0315a4d9949"
 }
