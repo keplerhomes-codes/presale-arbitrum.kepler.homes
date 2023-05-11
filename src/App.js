@@ -17,6 +17,7 @@ import {
   SolletWalletAdapter,
   TorusWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
+import ConnectWallet from "./components/ConnectWallet";
 import Presale from "./pages/Presale";
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <div className="App">
+        <ConnectWallet />
           <Layout>
             <Routes>
               <Route path="/" element={<Presale />} />

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback} from 'react';
-import {Tooltip} from 'antd'
+import {Drawer, Tooltip} from 'antd'
 // import logo from '../../assets/images/home/logo.svg'
+import lines from '../../assets/images/nav/lines.svg'
 import logo from '../../assets/images/nav/logo.svg'
 import classnames from 'classnames'
 import './Airnav.scss'
 import { useTranslation} from 'react-i18next'
-import ConnectWallet from '../ConnectWallet';
+import ConnectWallet from '../ConnectWalletUi';
 import {connect} from 'react-redux'
 import notification from '../notification'
 
@@ -50,6 +51,7 @@ function Header(props) {
   let [hasBg, setBg] = useState(false)
   const [isConnectWalletVisible, setIsConnectWalletVisible] = useState(false)
   
+  let [open, setOpen] = useState(false)
   let [isFold, setFold] = useState(false)
 
 
@@ -161,11 +163,31 @@ const Login = async() => {
                                         </span>
                                 </Tooltip>
         </span>
-      </div>
+
       <div className='connect'>
         <ConnectWallet hideChain={['ETH','Avalanche', 'Polygon', 'Solana' ,'BSC']} isVisible={isConnectWalletVisible} handleOk={handleConnectWalletOk} handleCancel={handleConnectCancel} />
       </div>
+      </div>
+      <div className="m-r-20" onClick={() => setOpen(true)}>
+        <img src={lines} alt="" className='show-m'/>
+      </div>
     </div>
+    <Drawer closable={false} title={<img src={logo} alt="" className='logo' />} placement="right" onClose={() => { setOpen(false) }} visible={open}>
+    <a className="nav-item cf fwb  fz-16 m-l-20 m-b-20 islink"  target="_blank" href="https://kepler.homes">
+                      Home
+                    </a>
+                    <NavLink className="nav-item cf fwb  fz-16 m-l-20 m-b-20 islink" to={'/'} >
+                    Presale
+                    </NavLink>
+                    <a className="nav-item cf fwb  fz-16 m-l-20 m-b-20 islink"  target="_blank" href="https://passport-arbitrum.kepler.homes">
+                    Whitelist
+                    </a>
+    <div className='m-t-60'>
+            <div className='connect'>
+            <ConnectWallet hideChain={['BSC', 'Avalanche', 'Polygon', 'Solana']} isVisible={isConnectWalletVisible} handleOk={handleConnectWalletOk} handleCancel={handleConnectCancel} />
+            </div>
+          </div>
+    </Drawer>
 
     </div>
   )

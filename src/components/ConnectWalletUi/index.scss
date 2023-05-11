@@ -1,0 +1,84 @@
+.connect-wallet {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 144px;
+  height: 44px;
+  font-weight: bold;
+  color: #E07D26;
+  border: 1px solid #E07D26;
+  box-shadow: 0px 0px 8px 3px rgba(203, 98, 77, 0.5);
+  border-radius: 300px;
+}
+
+.connected-wallet {
+  height: 44px;
+  font-weight: bold;
+  color: #E07D26;
+  border: 1px solid #E07D26;
+  box-shadow: 0px 0px 8px 3px rgba(203, 98, 77, 0.5);
+  border-radius: 300px;
+  cursor: pointer;
+  .connected-chain {
+    // padding: 0 14px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    // background: linear-gradient(57deg, #3B3AD0 0%, #FC7500 100%);
+    .bsc-iocn {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .connected-account {
+    // background-color: #141416;
+    height: 100%;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    // border: 1px solid;
+    // background-color: transparent;
+    // border-image: radial-gradient(circle, rgba(59, 58, 208, 1), rgba(252, 117, 0, 1)) 1 1;
+  }
+}
+.ant-dropdown-menu {
+  background: #242429;
+  .ant-dropdown-menu-title-content  {
+    color: #fff !important
+  }
+  .ant-dropdown-menu-item {
+    padding: 20px 45px;
+  }
+
+  .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
+    background: #242429;
+    .menu-title {
+      color: #fff !important;
+    }
+  }
+  
+  .active {
+    .menu-title{
+      color:#ead8b7 !important
+    }
+  }
+  .menu-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    margin-bottom: 4px;
+    display: flex;
+    align-self: center;
+  }
+
+  .menu-title-sub {
+    color: rgba($color: #fff, $alpha: .4);
+    font-size: 14px;
+    line-height: 18px;
+  }
+}

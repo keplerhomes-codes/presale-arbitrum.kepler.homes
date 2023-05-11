@@ -133,65 +133,7 @@ function ConnectWallet(props) {
   } ,[props.account])
 
   return (
-    <div>
-      {
-        props.connect ?
-        <Dropdown placement="bottom"  atip overlay={
-          <Menu>
-            <Menu.Item key="0" onClick={_ => {
-                copyAddress()
-              }}>
-              <div className="menu-title fz-16 flex flex-center">
-                 <img src={require('../../assets/images/ConnectWallet/copy.svg').default} alt="" className='m-r-10'/>
-                {copied ? 'Copied' : 'Copy Address'}</div>
-            </Menu.Item>
-            <Menu.Item key="1" onClick={handleConnectWallet}>
-              <div className="menu-title fz-16">
-                
-              <img src={require('../../assets/images/ConnectWallet/wallet.svg').default} alt="" className='m-r-10'/>
-                Change Wallet</div>
-            </Menu.Item>
-            {
-              (!props.hideChain || !props.hideChain.length) && 
-              <Menu.Item key="2" onClick={()=>toUser('profile')}>
-                <div className="menu-title fz-16">
-                  
-                 <img src={require('../../assets/images/ConnectWallet/member.svg').default} alt="" className='m-r-10'/>
-                  My Profile</div>
-              </Menu.Item>
-            }
-            
-            {
-              (!props.hideChain || !props.hideChain.length) && 
-            <Menu.Item key="3" onClick={()=>toUser('game')}>
-                <div className="menu-title fz-16">
-                  
-                 <img src={require('../../assets/images/ConnectWallet/game.svg').default} alt="" className='m-r-10'/>
-                  Game Account</div>
-            </Menu.Item>
-          }
-            <Menu.Item key="4" onClick={_ => {
-              handleDisconnect()
-            }}>
-              <div className="menu-title fz-16">
-                
-              <img src={require('../../assets/images/ConnectWallet/disconnect.svg').default} alt="" className='m-r-10'/>
-                Disconnect</div>
-            </Menu.Item>
-          </Menu>
-        }>
-          <div className="fw500 connected-wallet p-r-10 p-l-10 flex flex-center">
-            <div className="connected-chain">
-              <img src={chainIcon['arbitrum']} alt="" className='bsc-iocn'/>
-              </div>
-            <div className="cf m-l-8 m-r-8">{props.account.substr(0, 5)+'...'+ props.account.substr(props.account.length-5,)}</div>
-            <img src={require('../../assets/images/wallets/arrow1.svg').default} alt="" />
-          </div>
-        </Dropdown>
-        :
-        <div className="connect-wallet" onClick={handleConnectWallet}>{'Connect Wallet'}</div>
-      }
-
+    <div style={{display: 'none'}}>
       <ConnectWalletModal isVisible={isModalVisible} hideChain={props.hideChain||[]} handleOk={handleModalOk} handleCancel={handleModalCancel} />
     </div>
   )
