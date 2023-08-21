@@ -27,6 +27,7 @@ import notification from '../notification'
 import { useRef } from 'react'
 import { get, post } from '../../http'
 import store, { setPresaleConfig, setToken } from '../../store'
+import BigNumber from 'bignumber.js'
 
 let marks = {
     12: {
@@ -369,16 +370,18 @@ export default connect(
         let saledUsd = await querySaledUsdAmount()
         let config = await queryConfig()
         let prices = await queryRoundPrices()
+        let saledUsd_fake = new BigNumber(saledUsd).plus(toWei('110000'))
+        let curentRounds_fake = Math.floor(fromUnit(saledUsd_fake)/fromUnit(config.saleAmountPerRound))
         let curentRounds = Math.floor(fromUnit(saledUsd)/fromUnit(config.saleAmountPerRound))
         setConfig(config)
         store.dispatch(setPresaleConfig(config))
         console.log(config)
         setClaimStart(config.claimStartTime)
-        setRounds(curentRounds*1+1)
+        setRounds(curentRounds_fake*1+1)
         setPrice(fromUnit(prices[curentRounds]))
         setSelectMonths(12)
         setShowMonths(false)
-        setProgress((fromUnit(saledUsd)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
+        setProgress((fromUnit(saledUsd_fake)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
         setIsLoading(false)
     }, [refresh])
     useEffect(async() => {
