@@ -377,11 +377,11 @@ export default connect(
         store.dispatch(setPresaleConfig(config))
         console.log(config)
         setClaimStart(config.claimStartTime)
-        setRounds(curentRounds_fake*1+1)
+        setRounds(curentRounds*1+1)
         setPrice(fromUnit(prices[curentRounds]))
         setSelectMonths(12)
         setShowMonths(false)
-        setProgress((fromUnit(saledUsd_fake)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
+        setProgress((fromUnit(saledUsd)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
         setIsLoading(false)
     }, [refresh])
     useEffect(async() => {
