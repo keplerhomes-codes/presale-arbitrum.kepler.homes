@@ -121,9 +121,9 @@ export default connect(
                         </Space>
                       </TabPane>
                       
-                      <TabPane tab="Tokenomics" key="3">
+                      {/* <TabPane tab="Tokenomics" key="3">
                          <Tokenomics width={500}/>
-                      </TabPane>
+                      </TabPane> */}
                       <TabPane tab="Claim" key="5">
                           <Claim refresh={refresh}/>
                       </TabPane>
