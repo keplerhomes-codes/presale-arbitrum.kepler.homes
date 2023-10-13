@@ -122,6 +122,11 @@ export function buy(
         });
       }).catch(err => {
         console.log(err)
+        notification.error({
+          message: 'Transaction Failed',
+          description: 'Please check your token balance and try again later'
+        })
+        rej(err)
       })
       
     } catch (err) {
