@@ -128,9 +128,9 @@ export default connect(
                           <Claim refresh={refresh}/>
                       </TabPane>
                       
-                      <TabPane tab="Invite Record" key="6">
+                      {/* <TabPane tab="Invite Record" key="6">
                           <Record/>
-                      </TabPane>
+                      </TabPane> */}
                
 {/*                       
                       <TabPane tab="Raffle" key="7">
@@ -141,7 +141,7 @@ export default connect(
                   </div>
                   <div className="right-part flex flex-column">
                       <Presale onSuccess={onSuccess}/>
-                      <div className="invite-area w100 m-t-24 flex flex-center">
+                      {/* <div className="invite-area w100 m-t-24 flex flex-center">
                            <div className="cf">
                               You can get <span className="percent-num">5%</span> of your friend's purchase amount as a reward by inviting friends. 
                            </div>
@@ -156,7 +156,7 @@ export default connect(
                                 </Tooltip>
                            </div>
                            
-                      </div>
+                      </div> */}
                   </div>
             </div>
 

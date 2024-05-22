@@ -523,11 +523,11 @@ export default connect(
                   
                 }
              </div>
-             {
+             {/* {
                 (referAddress && referAddress.toLowerCase() != props.account.toLowerCase()) && <div className='ta cd fz-14'>
                 Inviter: <Tooltip title={referAddress}><u>{addPoint(referAddress)}</u></Tooltip>
              </div>
-             }
+             } */}
              
              
              <Modal isVisible={showTip} onClose={() => {setShowTip(false)}}  title="Successful Presale">
