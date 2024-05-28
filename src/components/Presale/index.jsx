@@ -499,8 +499,8 @@ export default connect(
                   </Button>:(
                     props.account ? (
                         isLogin ? <Button className='w100 submit-btn cf fz-20' loading={loading} onClick={toBuy} 
-                        // disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount)*1}
-                        disabled
+                        disabled={inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 || inputNum*tokenPrice > fromUnit(config.maxBuyAmount)*1}
+                        // disabled
                         >
                         {
                            inputNum*tokenPrice < fromUnit(config.minBuyAmount)*1 ? (
