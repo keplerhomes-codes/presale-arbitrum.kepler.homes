@@ -277,7 +277,7 @@ export default connect(
     let [showTip, setShowTip] = useState(false)
     let [signature, setSignature] = useState('')
     let [claimStart, setClaimStart] = useState(new Date().getTime()/1000)
-    let [isLogin, setIsLogin] = useState(false)
+    let [isLogin, setIsLogin] = useState(true)
     let [referAddress, setAddress] = useState(location.search ? location.search.replace('?','').split('=')[1]?.toLowerCase():'')
     let [endDate, setEndDate] = useState(new Date(new Date(claimStart*1000).getFullYear(), new Date(claimStart*1000).getMonth()*1+60, new Date(claimStart*1000).getDate()))
     const numChange = (num) => {
@@ -384,14 +384,14 @@ export default connect(
         setProgress((fromUnit(saledUsd)%fromUnit(config.saleAmountPerRound))*100/fromUnit(config.saleAmountPerRound))
         setIsLoading(false)
     }, [refresh])
-    useEffect(async() => {
-        setIsLogin(false)
-        if(props.account && !localStorage.getItem(props.account)) {
-            Login()
-        } else {
-            setIsLogin(true)
-        }
-    }, [props.account])
+    // useEffect(async() => {
+    //     setIsLogin(false)
+    //     if(props.account && !localStorage.getItem(props.account)) {
+    //         Login()
+    //     } else {
+    //         setIsLogin(true)
+    //     }
+    // }, [props.account])
     return (
         <div className="private-box cf">
              <div className="fz-24 fwb p-l-24 p-r-24">KEPL Presale</div>
